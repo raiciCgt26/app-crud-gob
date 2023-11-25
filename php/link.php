@@ -3,8 +3,6 @@
 $password = '';
 $username = 'root';
 $host = 'localhost';
-$dbname = 'test';
+$dbname = 'app';
 
 $LINK = new mysqli($host, $username, $password, $dbname);
-
-?>

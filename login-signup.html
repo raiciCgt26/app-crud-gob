@@ -1,0 +1,126 @@
+<?php
+$url_base = "http://localhost/app/";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./aseets/img/logo-gob2.png" />
+    <link rel="stylesheet" href="./handlers/css/login-signup.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&family=Montserrat:wght@200;300;400;500;600&family=Quicksand:wght@300;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Login and sign up</title>
+  </head>
+
+  <body>
+    <div id="register" class="container-form register">
+      <div class="information">
+        <div class="info-childs">
+          <img class="icono" src="./aseets/img/logo-round.jpg" alt="" />
+          <h2>Bienvenido al Sistema de incidencias</h2>
+          <p>Para ingresar inicie sesion con su correo y contrasena</p>
+          <input
+            class="btn-login"
+            id="sign-in"
+            type="button"
+            value="iniciar sesion"
+          />
+        </div>
+      </div>
+      <div class="form-information">
+        <div class="form-information-childs">
+          <h2>Crear una cuenta</h2>
+          <div class="icons">
+            <!-- <a class="icono-redes ico-pag" href="https://e-bolivar.gob.ve/" title="pagina e-bolivar.gob.ve"></a>
+             -->
+            <!-- <img class="icono-redes" src="./aseets/icons/bx-layout.svg" /> -->
+            <!-- 
+          <a class="icono-redes" href="https://www.instagram.com/informaticabol/" title="instagram de la direccion de informatica y sistemas"></a> -->
+
+            <!-- <img class="icono-redes" src="./aseets/icons/bxl-instagram.svg" /> -->
+
+            <!-- <a class="icono-redes" href="https://twitter.com/Informaticabol" title="twiter de la direccion de informatica y sistemas"></a> -->
+            <!-- <img class="icono-redes" src="./aseets/icons/bxl-twitter.svg" />
+
+            <p>O puedes usar tu email para registrarte</p> -->
+
+            <form class="form">
+              <label for>
+                <img src="./aseets/icons/bx-user.svg" />
+                <input type="text" placeholder="Nombre Completo" />
+              </label>
+
+              <label for>
+                <img src="./aseets/icons/bx-envelope.svg" />
+                <input type="email" placeholder="Correo Electronico" />
+              </label>
+
+              <label for>
+                <img src="./aseets/icons/bx-lock-alt.svg" />
+                <input type="password" placeholder="Escribe tu contraseña" />
+              </label>
+              <input class="btn-login" type="submit" value="Registrarse" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="login" class="container-form login hide">
+      <div class="information">
+        <div class="info-childs">
+          <img class="icono" src="./aseets/img/logo-round.jpg" alt="" />
+          <h2>Bienvenido de nuevo al Sistema de incidencias</h2>
+          <p>Si no tienes una cuenta puedes registrarte</p>
+          <input
+            class="btn-login"
+            id="sign-up"
+            type="button"
+            value="Registrarse"
+          />
+        </div>
+      </div>
+      <div class="form-information">
+        <div class="form-information-childs">
+          <h2>Iniciar sesion</h2>
+          <div class="icons">
+            <!-- <a class="icono-redes" href="https://e-bolivar.gob.ve/" title="pagina e-bolivar.gob.ve"></a>
+             -->
+            <!-- <img class="icono-redes" src="./aseets/icons/bx-layout.svg" /> -->
+            <!-- 
+          <a class="icono-redes" href="https://www.instagram.com/informaticabol/" title="instagram de la direccion de informatica y sistemas"></a> -->
+
+            <!-- <img class="icono-redes" src="./aseets/icons/bxl-instagram.svg" /> -->
+
+            <!-- <a class="icono-redes" href="https://twitter.com/Informaticabol" title="twiter de la direccion de informatica y sistemas"></a> -->
+            <!-- <img class="icono-redes" src="./aseets/icons/bxl-twitter.svg" />
+
+            <p>O puedes iniciar sesion con una cuenta</p> -->
+
+            <form class="form">
+              <label for>
+                <img src="./aseets/icons/bx-user.svg" />
+                <input type="text" placeholder="Usuario" />
+              </label>
+
+              <label for>
+                <img src="./aseets/icons/bx-lock-alt.svg" />
+                <input type="password" placeholder="Escribe tu contraseña" />
+              </label>
+              <input class="btn-login" type="submit" value="Iniciar sesion" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./handlers/js/login-signup.js"></script>
+  </body>
+</html>
