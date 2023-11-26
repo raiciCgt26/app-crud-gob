@@ -59,9 +59,9 @@ body {
 
 .info-childs input {
   background-color: transparent;
-  outline: none;
+  border: none;
   padding: 10px 20px;
-  border: solid 2px #66cd42;
+  outline: solid 2px #66cd42;
   border-radius: 20px;
   font-size: 0.8rem;
   color: #333;
