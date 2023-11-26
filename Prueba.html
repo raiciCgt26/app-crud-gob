@@ -12,6 +12,18 @@
     <nav class="navbar bg-body-tertiary fixed-top" data-bs-theme="primary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Sistema De Incidencias</a>
+
+        <form class="d-flex m-2" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            id="search"
+            placeholder="Buscar"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -22,6 +34,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div
           class="offcanvas offcanvas-end"
           tabindex="-1"
@@ -32,6 +45,7 @@
             <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
               Sistema De Incidencias
             </h5>
+
             <button
               type="button"
               class="btn-close"
@@ -92,24 +106,13 @@
                 <a class="nav-link" href="#">Configuracion</a>
               </li>
             </ul>
-            <form class="d-flex mt-3" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                id="search"
-                placeholder="Buscar"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">
-                Buscar
-              </button>
-            </form>
           </div>
         </div>
       </div>
     </nav>
     <!--  nav -->
-    <main class="col d-flex justify-content-center">
+
+    <main class="row d-flex justify-content-center m-5 p-5">
       <!-- Formulario -->
       <section class="mt-5">
         <div class="container pt-5">
@@ -117,7 +120,7 @@
             <div class="card" style="width: 800px">
               <div class="card-body">
                 <h3 class="p-auto">Agregar incidencia</h3>
-                <form class="row g-3" id="lista-incidencias">
+                <form class="row g-3" id="lista-incd">
                   <div class="col-6 form-group">
                     <label for="inputEmail4" class="form-label">Titulo</label>
                     <input
@@ -130,7 +133,7 @@
 
                   <div class="col-6">
                     <label for="inputState" class="form-label">Estado</label>
-                    <select id="inputState" class="form-select">
+                    <select id="estado" class="form-select">
                       <option selected>Selecciona el estado...</option>
                       <option>Sin resolver</option>
                       <option>En Curso</option>
@@ -147,7 +150,7 @@
 
                   <div class="col-6">
                     <label for="inputState" class="form-label">Prioridad</label>
-                    <select id="inputState" class="form-select">
+                    <select id="prioridad" class="form-select">
                       <option selected>
                         Selecciona el nivel de prioridad...
                       </option>
@@ -164,7 +167,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      id="inputAddress2"
+                      id="Solicitante"
                       placeholder="Escriba el nombre del solicitante"
                     />
                   </div>
@@ -173,16 +176,16 @@
                     <label for="inputCity" class="form-label"
                       >Asignado a - Tecnico</label
                     >
-                    <input type="text" class="form-control" id="inputCity" />
+                    <input type="text" class="form-control" id="AsigTecnico" />
                   </div>
 
                   <div class="col-6">
                     <label for="inputState" class="form-label"
                       >Asignado a - Grupo Tecnico</label
                     >
-                    <select id="inputState" class="form-select">
+                    <select id="AsigGrupo" class="form-select">
                       <option selected>Seleccionar...</option>
-                      <option>...</option>
+                      <option>QWERTY</option>
                       <option>...</option>
                       <option>...</option>
                     </select>
@@ -190,9 +193,9 @@
 
                   <div class="col-12">
                     <label for="inputZip" class="form-label">Categoria</label>
-                    <select id="inputState" class="form-select">
+                    <select id="Categoria" class="form-select">
                       <option selected>Seleccionar...</option>
-                      <option>...</option>
+                      <option>DSM</option>
                       <option>...</option>
                       <option>...</option>
                     </select>
@@ -227,9 +230,18 @@
       <!-- Formulario -->
 
       <!-- Lista -->
-      <section class="col-md-6 pt-5">
-        <div class="container mt-5">
-          <!-- <h3>Agregar incidencia</h3> -->
+
+      <!-- card -->
+      <section class="col-md-8 m-4">
+        <div class="card text-start p-2" id="ind-result">
+          <div class="card-body">
+            <ul id="container"></ul>
+          </div>
+        </div>
+
+        <!-- card -->
+
+        <div class="mt-4">
           <table class="table table-hover">
             <thead class="table-secondary">
               <tr>
@@ -269,6 +281,7 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
+
     <!-- <script src="handlers/jquery/jquery-3.7.1.min.js"></script> -->
 
     <script src="handlers/js/app.js"></script>
