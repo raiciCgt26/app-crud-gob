@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./handlers/css/mintybootstrap.min.css" />
+    <link rel="stylesheet" href="./handlers/css/template.css" />
+    <title>S.I</title>
+  </head>
+  <body>
+    <!-- nav -->
+    <nav class="navbar fixed-top bg-info p-2" data-bs-theme="black">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sistema De Incidencias</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+              Sistema De Incidencias
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Pagina Principal</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"> Listado de incidencias </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Usuarios </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Configuracion</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="·">Cerrar Sesion</a>
+              </li>
+            </ul>
+            <form class="d-flex mt-3" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                id="search"
+                placeholder="Buscar"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Buscar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!--  nav -->
+
+    <main class="d-flex">
+      <!-- Formulario -->
+      <section
+        class="p-5 ps-0 pe-1 justify-content-center"
+        style="width: 500px"
+      >
+        <div class="container m-5">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="p-1">Agregar incidencia</h3>
+              <form class="row g-3" id="lista-incidencias">
+                <div class="col-6 form-group">
+                  <label for="inputEmail4" class="form-label">Titulo</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="titulo"
+                    placeholder="Escribe el titulo"
+                  />
+                </div>
+
+                <div class="col-6">
+                  <label for="inputState" class="form-label">Estado</label>
+                  <select id="inputState" class="form-select">
+                    <option selected>Selecciona el estado...</option>
+                    <option>Sin resolver</option>
+                    <option>En Curso</option>
+                    <option>Resuelto</option>
+                  </select>
+                </div>
+
+                <div class="col-6">
+                  <label for="inputAddress" class="form-label"
+                    >Fecha de modificacion</label
+                  >
+                  <input type="date" class="form-control" id="modificacion" />
+                </div>
+
+                <div class="col-6">
+                  <label for="inputState" class="form-label">Prioridad</label>
+                  <select id="inputState" class="form-select">
+                    <option selected>
+                      Selecciona el nivel de prioridad...
+                    </option>
+                    <option>Urgente</option>
+                    <option>Media</option>
+                    <option>Baja</option>
+                  </select>
+                </div>
+
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label"
+                    >Solicitante</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder="Escriba el nombre del solicitante"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label for="inputCity" class="form-label"
+                    >Asignado a - Tecnico</label
+                  >
+                  <input type="text" class="form-control" id="inputCity" />
+                </div>
+
+                <div class="col-12">
+                  <label for="inputState" class="form-label"
+                    >Asignado a - Grupo Tecnico</label
+                  >
+                  <select id="inputState" class="form-select">
+                    <option selected>Seleccionar...</option>
+                    <option>...</option>
+                    <option>...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+
+                <div class="col-12">
+                  <label for="inputZip" class="form-label">Categoria</label>
+                  <select id="inputState" class="form-select">
+                    <option selected>Seleccionar...</option>
+                    <option>...</option>
+                    <option>...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+
+                <div class="m-1 p-2">
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <button type="submit" class="btn btn-secondary">
+                    Cancelar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Formulario  -->
+
+      <!-- Lista -->
+      <section
+        class="p-5 ps-4 pe-0 justify-content-center"
+        style="width: 1100px"
+      >
+        <div class="container m-5">
+          <table class="table table-hover">
+            <thead class="table-secondary">
+              <tr>
+                <th scope="col">Titulo</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Fecha de modificacion</th>
+                <th scope="col">Prioridad</th>
+                <th scope="col">Solicitante</th>
+                <th scope="col">Asignado a - Tecnico</th>
+                <th scope="col">Asignado a - Grupo Tecnico</th>
+                <th scope="col">Categoria</th>
+              </tr>
+            </thead>
+
+            <tbody id="list-incidents">
+              <tr>
+                <th class="text-muted" scope="row">1</th>
+                <td class="text-muted">Permiso</td>
+                <td class="text-muted">En curs</td>
+                <td class="text-muted">a</td>
+                <td class="text-muted">a</td>
+                <td class="text-muted">a</td>
+                <td class="text-muted">a</td>
+                <td class="text-muted">a</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!-- lista -->
+    </main>
+
+    <script src="handlers/js/bootstrap.bundle.min.js"></script>
+    <script src="handlers/js/app.js"></script>
+    <script src="services/user.service.js"></script>
+  </body>
+</html>
