@@ -1,230 +1,117 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./handlers/css/mintybootstrap.min.css" />
-    <link rel="stylesheet" href="./handlers/css/template.css" />
-    <title>S.I</title>
-  </head>
-  <body>
-    <!-- nav -->
-    <nav class="navbar fixed-top bg-info p-2" data-bs-theme="white">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Sistema De Incidencias</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="offcanvas offcanvas-end"
-          tabindex="-1"
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-              Sistema De Incidencias
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
-                  >Pagina Principal</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"> Listado de incidencias </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Usuarios </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Configuracion</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="·">Cerrar Sesion</a>
-              </li>
-            </ul>
-            <form class="d-flex mt-3" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                id="search"
-                placeholder="Buscar"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">
-                Buscar
-              </button>
-            </form>
-          </div>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/frontend/aseets/css/index.css" />
+  <link rel="stylesheet" href="/frontend/aseets/css/table.css" />
+  <title>S.I</title>
+</head>
+
+<body>
+
+  <!-- menu-navbar-header -->
+
+  <div class="menu">
+    <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
+    <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
+  </div>
+  <div class="barra-lateral">
+    <div>
+
+      <div class="nombre-pagina">
+        <ion-icon id="cloud" name="cloud-outline">
+          <img id="log-gob" class="img-log" src="/frontend/aseets/img/logo-round.jpg" />
+        </ion-icon>
+        <span class="nombre">Sistema de Incidencias</span>
       </div>
+
+    </div>
+
+    <nav class="navegacion">
+      <ul>
+        <li>
+          <a id="inbox" href="./index.php">
+            <ion-icon name="mail-unread-outline">
+              <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
+            </ion-icon>
+            <span>Pagina principal</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="user" href="./users.html">
+            <ion-icon name="star-outline">
+              <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
+            </ion-icon>
+            <span>Usuarios</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="user" href="./chat.html">
+            <ion-icon name="paper-plane-outline">
+              <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
+            </ion-icon>
+            <span>Chat</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./setting.html">
+            <ion-icon name="paper-plane-outline">
+              <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
+            </ion-icon>
+            <span>Configuracion</span>
+          </a>
+        </li>
+
+
+
+
+
+        <li>
+          <a href="./login_signup.html">
+            <ion-icon name="document-text-outline">
+              <img class="icons-menu ico-center" src="/frontend/aseets/icons/file-lock2.svg" />
+            </ion-icon>
+            <span>Cerrar sesion</span>
+          </a>
+        </li>
+      </ul>
     </nav>
-    <!--  nav -->
 
-    <main class="d-flex">
-      <!-- Formulario -->
-      <section
-        class="p-5 ps-0 pe-1 justify-content-center"
-        style="width: 500px"
-      >
-        <div class="container m-5">
-          <div class="row">
-            <div class="card">
-              <div class="card-body">
-                <h3 class="p-1">Agregar incidencia</h3>
-                <form class="row" id="lista-incidencias">
-                  <div class="col-6 form-group">
-                    <label for="inputEmail4" class="form-label">Titulo</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="titulo"
-                      placeholder="Escribe el titulo"
-                    />
-                  </div>
+    <div>
+      <div class="linea"></div>
 
-                  <div class="col-6">
-                    <label for="inputState" class="form-label">Estado</label>
-                    <select id="inputState" class="form-select">
-                      <option selected>Selecciona el estado...</option>
-                      <option>Sin resolver</option>
-                      <option>En Curso</option>
-                      <option>Resuelto</option>
-                    </select>
-                  </div>
+      <div class="modo-oscuro">
+        <div class="info">
+          <img class="ico ico-center" src="/frontend/aseets/icons/bx-moon.svg" />
+          </ion-icon> <span class="dark-text">Modo oscuro</span> </ion-icon>
+        </div>
+        <div class="switch">
+          <div class="base">
+            <div class="circulo">
 
-                  <div class="col-6">
-                    <label for="inputAddress" class="form-label"
-                      >Fecha de modificacion</label
-                    >
-                    <input type="date" class="form-control" id="modificacion" />
-                  </div>
-
-                  <div class="col-6">
-                    <label for="inputState" class="form-label">Prioridad</label>
-                    <select id="inputState" class="form-select">
-                      <option selected>
-                        Selecciona el nivel de prioridad...
-                      </option>
-                      <option>Urgente</option>
-                      <option>Media</option>
-                      <option>Baja</option>
-                    </select>
-                  </div>
-
-                  <div class="col-12">
-                    <label for="inputAddress2" class="form-label"
-                      >Solicitante</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputAddress2"
-                      placeholder="Escriba el nombre del solicitante"
-                    />
-                  </div>
-
-                  <div class="col-12">
-                    <label for="inputCity" class="form-label"
-                      >Asignado a - Tecnico</label
-                    >
-                    <input type="text" class="form-control" id="inputCity" />
-                  </div>
-
-                  <div class="col-12">
-                    <label for="inputState" class="form-label"
-                      >Asignado a - Grupo Tecnico</label
-                    >
-                    <select id="inputState" class="form-select">
-                      <option selected>Seleccionar...</option>
-                      <option>...</option>
-                      <option>...</option>
-                      <option>...</option>
-                    </select>
-                  </div>
-
-                  <div class="col-12">
-                    <label for="inputZip" class="form-label">Categoria</label>
-                    <select id="inputState" class="form-select">
-                      <option selected>Seleccionar...</option>
-                      <option>...</option>
-                      <option>...</option>
-                      <option>...</option>
-                    </select>
-                  </div>
-
-                  <div class="m-1 p-2">
-                    <button type="submit" class="btn btn-primary">
-                      Guardar
-                    </button>
-                    <button type="submit" class="btn btn-secondary">
-                      Cancelar
-                    </button>
-                  </div>
-                </form>
-              </div>
             </div>
           </div>
         </div>
-      </section>
-      <!-- Formulario -->
+      </div>
 
-      <!-- Lista -->
-      <section
-        class="p-5 ps-4 pe-0 justify-content-center"
-        style="width: 1100px"
-      >
-        <div class="container m-5">
-          <table class="table table-hover">
-            <thead class="table-secondary">
-              <tr>
-                <th scope="col">Titulo</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Fecha de modificacion</th>
-                <th scope="col">Prioridad</th>
-                <th scope="col">Solicitante</th>
-                <th scope="col">Asignado a - Tecnico</th>
-                <th scope="col">Asignado a - Grupo Tecnico</th>
-                <th scope="col">Categoria</th>
-              </tr>
-            </thead>
+    </div>
 
-            <tbody id="list-incidents">
-              <tr>
-                <th class="text-muted" scope="row">1</th>
-                <td class="text-muted">Permiso</td>
-                <td class="text-muted">En curs</td>
-                <td class="text-muted">a</td>
-                <td class="text-muted">a</td>
-                <td class="text-muted">a</td>
-                <td class="text-muted">a</td>
-                <td class="text-muted">a</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-      <!-- lista -->
-    </main>
+  </div>
+  <!-- menu-navbar-header -->
 
-    <script src="handlers/js/bootstrap.bundle.min.js"></script>
-    <script src="handlers/js/app.js"></script>
-    <script src="services/user.service.js"></script>
-  </body>
+  
+  <footer>
+    <!-- scripts -->
+    <script src="/frontend/aseets/js/index.js"></script>
+  </footer>
+
+  </div>
+</body>
+
 </html>

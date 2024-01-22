@@ -1,0 +1,347 @@
+<?php
+include('./dbconnection.php');
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  $titulo = $_POST['titulo'];
+  $estado = $_POST['estado'];
+  $fecha = $_POST['fecha'];
+  $prioridad = $_POST['prioridad'];
+  $solicitante = $_POST['solicitante'];
+  $tecnico = $_POST['tecnico'];
+  $grupo = $_POST['grupo'];
+  $categoria = $_POST['categoria'];
+
+  $query = mysqli_query($con, "insert into incidencias (titulo, estado, fecha, prioridad, solicitante, tecnico, grupo, categoria) Value ('$titulo','$estado','$fecha','$prioridad','$solicitante','$tecnico','$grupo', '$categoria')");
+
+  if ($query) {
+    echo "<script>alert('agregada correctamente')</script>";
+  } else {
+    echo "<script>alert('hubo un error , solicitud denegada')</script>";
+  }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/frontend/aseets/css/index.css" />
+  <link rel="stylesheet" href="/frontend/aseets/css/table.css" />
+  <title>S.I</title>
+</head>
+
+<body>
+
+  <!-- menu-navbar-header -->
+
+  <div class="menu">
+    <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
+    <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
+  </div>
+  <div class="barra-lateral">
+    <div>
+
+      <div class="nombre-pagina">
+        <ion-icon id="cloud" name="cloud-outline">
+          <img id="log-gob" class="img-log" src="/frontend/aseets/img/logo-round.jpg" />
+        </ion-icon>
+        <span class="nombre">Sistema de Incidencias</span>
+      </div>
+
+    </div>
+
+    <nav class="navegacion">
+      <ul>
+        <li>
+          <a id="inbox" href="./index.php">
+            <ion-icon name="mail-unread-outline">
+              <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
+            </ion-icon>
+            <span>Pagina principal</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="user" href="./users.html">
+            <ion-icon name="star-outline">
+              <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
+            </ion-icon>
+            <span>Usuarios</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="user" href="./chat.html">
+            <ion-icon name="paper-plane-outline">
+              <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
+            </ion-icon>
+            <span>Chat</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./setting.html">
+            <ion-icon name="paper-plane-outline">
+              <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
+            </ion-icon>
+            <span>Configuracion</span>
+          </a>
+        </li>
+
+
+
+
+
+        <li>
+          <a href="./login_signup.html">
+            <ion-icon name="document-text-outline">
+              <img class="icons-menu ico-center" src="/frontend/aseets/icons/file-lock2.svg" />
+            </ion-icon>
+            <span>Cerrar sesion</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div>
+      <div class="linea"></div>
+
+      <div class="modo-oscuro">
+        <div class="info">
+          <img class="ico ico-center" src="/frontend/aseets/icons/bx-moon.svg" />
+          </ion-icon> <span class="dark-text">Modo oscuro</span> </ion-icon>
+        </div>
+        <div class="switch">
+          <div class="base">
+            <div class="circulo">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- menu-navbar-header -->
+
+
+  <main class=" table-pos ">
+
+    <div class="formulario">
+
+      <div class="container">
+        <div class="title">Agregar incidencia</div>
+        <div class="content">
+          <form method="POST">
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Titulo</span>
+                <input type="text" name="titulo" placeholder="Escribe el titulo " required />
+              </div>
+
+              <div class="input-box">
+                <span class="details">Estado</span>
+                <select name="estado" class="input-extr">
+                  <option>Sin resolver</option>
+                  <option>En Curso</option>
+                  <option>Resuelto</option>
+                </select>
+              </div>
+
+              <div class="input-box">
+                <span class="details">Fecha de modificacion</span>
+                <input type="date" name="fecha" required />
+              </div>
+
+              <div class="input-box">
+                <span class="details">Prioridad</span>
+                <select name="prioridad" class="input-extr">
+                  <option selected>Urgente</option>
+                  <option>Media</option>
+                  <option>Baja</option>
+                </select>
+
+
+              </div>
+              <div class="input-box">
+                <span class="details">Solicitante</span>
+                <input name="solicitante" type="text" placeholder="Escriba el nombre del solicitante" required />
+              </div>
+
+
+              <div class="input-box">
+                <span class="details">Asignado a - Grupo Tecnico</span>
+                <select name="grupo" class="input-extr">
+                  <option selected>Seleccionar...</option>
+                  <option>...</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
+              </div>
+
+              <div class="input-box">
+                <span class="details">Asignado a - Tecnico</span>
+                <select name="tecnico" class="input-extr">
+                  <option selected>Seleccionar...</option>
+                  <option>...</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
+              </div>
+
+              <div class="input-box">
+                <span class="details">Categoria</span>
+                <select name="categoria" class="input-extr">
+                  <option selected>Seleccionar...</option>
+                  <option>...</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="button-container">
+              <div class="button">
+                <input class="button-grd" type="submit" value="Guardar" />
+              </div>
+              <div class="button">
+                <input class="button-can" type="submit" value="Cancelar" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class=" table">
+      <section class="table__header" id="incident_table">
+        <h1>Lista de Incidencias</h1>
+
+        <div class="input-group">
+          <input type="search" placeholder="Buscar...">
+          <img src="/frontend/aseets/icons/bx-search-alt-2.svg" alt="">
+        </div>
+
+        <div class="export__file">
+          <label for="export-file" class="export__file-btn" title="Export File">
+
+          </label>
+          <input type="checkbox" id="export-file">
+          <div class="export__file-options">
+            <label>Exportar &nbsp; &#10140;</label>
+            <label for="export-file" id="toPDF">PDF <img src="/frontend/aseets/icons/file-earmark-pdf.svg" alt=""></label>
+            <label for="export-file" id="toJSON">JSON <img src="/frontend/aseets/icons/filetype-json.svg" alt=""></label>
+            <label for="export-file" id="toCSV">CSV <img class="ico-csv" src="/frontend/aseets/icons/filetype-csv.svg" alt=""></label>
+            <label for="export-file" id="toEXCEL">EXCEL <img src="/frontend/aseets/icons/file-earmark-excel.svg" alt=""></label>
+          </div>
+        </div>
+      </section>
+      <div class="linea2"></div>
+
+      <section class="table__body">
+        <table>
+          <thead>
+            <tr>
+              <th>Id <span class="icon-arrow">&UpArrow;</span></th>
+              <th>Titulo<span class="icon-arrow">&UpArrow;</span></th>
+              <th>Estado<span class="icon-arrow">&UpArrow;</span></th>
+              <th>Modificacion <span class="icon-arrow">&UpArrow;</span></th>
+              <th> Prioridad <span class="icon-arrow">&UpArrow;</span></th>
+              <th>Solicitante <span class="icon-arrow">&UpArrow;</span></th>
+              <th>Tecnico<span class="icon-arrow">&UpArrow;</span></th>
+              <th>Grupo Tecnico <span class="icon-arrow">&UpArrow;</span></th>
+              <th>Categoria<span class="icon-arrow">&UpArrow;</span></th>
+              <th>Acciones<span class="icon-arrow">&UpArrow;</span></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <?php
+              $fetch = mysqli_query($con, "select * from incidencias");
+              $row = mysqli_num_rows($fetch);
+              if ($row > 0) {
+                while ($r = mysqli_fetch_array($fetch)) {
+              ?>
+            <tr>
+              <td> <?php echo $r['id'] ?></td>
+              <td> <?php echo $r['titulo'] ?></td>
+              <td> <?php echo $r['estado'] ?></td>
+              <td> <?php echo $r['fecha'] ?></td>
+              <td> <?php echo $r['prioridad'] ?></td>
+              <td> <?php echo $r['solicitante'] ?></td>
+              <td> <?php echo $r['tecnico'] ?></td>
+              <td> <?php echo $r['grupo'] ?></td>
+              <td><?php echo $r['categoria'] ?></td>
+              <td>
+                <strong>
+                  <!-- Agrega los botones de borrar y editar aquí -->
+                  <a href=""> <img src="/frontend/aseets/icons/x.svg" alt=""></a>
+
+                  <a href=""> <img src="/frontend/aseets/icons/pencil-fill.svg" alt=""></a>
+                </strong>
+              </td>
+
+              <td> <?php         ?></td>
+            </tr>
+        <?php
+                }
+              }
+
+        ?>
+
+
+
+          </tbody>
+
+        </table>
+        <div>
+          <div class="wrapper">
+            <button class="btn startBtn" disabled>
+              <i class="fas fa-angles-left"></i>
+            </button>
+            <button class="btn stepBtn" disabled>
+              <i class="fas fa-angle-left"></i>
+            </button>
+
+            <div class="nums">
+              <a href="#" class="num active">1</a>
+              <a href="#" class="num">2</a>
+              <a href="#" class="num">3</a>
+              <a href="#" class="num">4</a>
+              <a href="#" class="num">5</a>
+            </div>
+
+            <button class="btn stepBtn" id="next">
+              <i class="fas fa-angle-right"></i>
+            </button>
+            <button class="btn endBtn">
+              <i class="fas fa-angles-right"></i>
+            </button>
+          </div>
+        </div>
+
+
+      </section>
+
+  </main>
+  </div>
+  </div>
+  </div>
+  <!-- main -->
+
+  <footer>
+    <!-- scripts -->
+    <script src="/frontend/aseets/js/index.js"></script>
+  </footer>
+
+  </div>
+</body>
+
+</html>
