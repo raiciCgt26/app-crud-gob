@@ -1,5 +1,5 @@
 <?php
-include('./dbconnection.php');
+include('C:\xampp\htdocs\backend\php\dbconnection.php');
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $titulo = $_POST['titulo'];
   $estado = $_POST['estado'];
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/frontend/aseets/css/index.css" />
-  <link rel="stylesheet" href="/frontend/aseets/css/table.css" />
+  <link rel="stylesheet" href="/frontend/aseets/css/navbar.css" />
   <title>S.I</title>
 </head>
 
@@ -264,6 +264,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <tbody>
             <tr>
               <?php
+              include('C:\xampp\htdocs\backend\php\dbconnection.php');
               $fetch = mysqli_query($con, "select * from incidencias");
               $row = mysqli_num_rows($fetch);
               if ($row > 0) {
@@ -280,15 +281,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               <td> <?php echo $r['grupo'] ?></td>
               <td><?php echo $r['categoria'] ?></td>
               <td>
-                <strong>
-                  <!-- Agrega los botones de borrar y editar aquí -->
-                  <a href=""> <img src="/frontend/aseets/icons/x.svg" alt=""></a>
-
-                  <a href=""> <img src="/frontend/aseets/icons/pencil-fill.svg" alt=""></a>
-                </strong>
+                <div class="acciones-container">
+                  <strong>
+                    <!-- botones de borrar y editar aquí -->
+                    <a href="/backend/php/borrar.php?delete=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/x.svg" alt="Borrar"></a>
+                    <a href="/backend/php/editar.php?id=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/pencil-fill.svg" alt="Editar"></a>
+                  </strong>
+                </div>
               </td>
-
-              <td> <?php         ?></td>
             </tr>
         <?php
                 }
