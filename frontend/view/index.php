@@ -133,6 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
       <div class="container">
         <div class="title">Agregar incidencia</div>
+        <!-- <hr> -->
         <div class="content">
           <form method="POST">
             <div class="user-details">
