@@ -70,11 +70,7 @@ body {
 body {
   height: 100vh;
   width: 100%;
-  background: linear-gradient(
-    90deg,
-    rgb(112, 176, 210),
-    rgb(109, 221, 199) 60%
-  );
+  background: linear-gradient(90deg, rgb(19, 147, 221), rgb(105, 36, 174) 60%);
 }
 
 /*-----------------Menu*/
@@ -328,4 +324,22 @@ body {
   main.min-main {
     margin-left: 0;
   }
+}
+
+.barra-lateral .usuario {
+  width: 100%;
+  display: flex;
+}
+.barra-lateral .usuario .info-usuario {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-texto);
+  overflow: hidden;
+}
+
+.barra-lateral .usuario .nombre {
+  font-size: 15px;
+  font-weight: 600;
 }

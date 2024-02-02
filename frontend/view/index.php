@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </li>
 
         <li>
-          <a class="user" href="./users.html">
+          <a class="user" href="./users.php">
             <ion-icon name="star-outline">
               <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
             </ion-icon>
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </li>
 
         <li>
-          <a class="user" href="./chat.html">
+          <a class="user" href="./chat.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
             </ion-icon>
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </li>
 
         <li>
-          <a href="./setting.html">
+          <a href="./setting.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
             </ion-icon>
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
         <li>
-          <a href="./login_signup.html">
+          <a href="./logout.php">
             <ion-icon name="document-text-outline">
               <img class="icons-menu ico-center" src="/frontend/aseets/icons/file-lock2.svg" />
             </ion-icon>

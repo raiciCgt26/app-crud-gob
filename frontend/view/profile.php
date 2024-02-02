@@ -1,3 +1,7 @@
+<?php
+include("/xampp/htdocs/backend/php/antentication.php");
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +10,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/frontend/aseets/css/index.css" />
-   <link rel="stylesheet" href="/frontend/aseets/css/navbar.css" />
+  <link rel="stylesheet" href="/frontend/aseets/css/navbar.css" />
   <title>S.I</title>
 </head>
 
@@ -14,7 +18,6 @@
 
   <!-- menu-navbar-header -->
 
- 
   <div class="menu">
     <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
     <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
@@ -43,7 +46,7 @@
         </li>
 
         <li>
-          <a class="user" href="./users.html">
+          <a class="user" href="./users.php">
             <ion-icon name="star-outline">
               <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
             </ion-icon>
@@ -52,7 +55,7 @@
         </li>
 
         <li>
-          <a class="user" href="./chat.html">
+          <a class="user" href="./chat.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
             </ion-icon>
@@ -61,7 +64,7 @@
         </li>
 
         <li>
-          <a href="./setting.html">
+          <a href="./setting.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
             </ion-icon>
@@ -74,7 +77,7 @@
 
 
         <li>
-          <a href="./login_signup.html">
+          <a href="./logout.php">
             <ion-icon name="document-text-outline">
               <img class="icons-menu ico-center" src="/frontend/aseets/icons/file-lock2.svg" />
             </ion-icon>
@@ -86,6 +89,18 @@
 
     <div>
       <div class="linea"></div>
+
+      <div class="info-usuario">
+        <div class="nombre-email">
+          <span class="nombre">
+            <span>Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
+          </span>
+        </div>
+      </div>
+
+      <!-- </div>
+      </div> -->
+
 
       <div class="modo-oscuro">
         <div class="info">
@@ -104,10 +119,12 @@
     </div>
 
   </div>
-  
   <!-- menu-navbar-header -->
 
-  
+
+
+  <!-- main -->
+
   <footer>
     <!-- scripts -->
     <script src="/frontend/aseets/js/index.js"></script>
