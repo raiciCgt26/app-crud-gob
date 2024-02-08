@@ -1,5 +1,5 @@
 <?php
-session_start(); // Cambio: session_start() se coloca al principio del archivo
+session_start();
 require('/xampp/htdocs/backend/php/dbconnection.php');
 
 $nameError = "";
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 
     if ($rows == 1) {
       $_SESSION['username'] = $username;
-      header("Location: /frontend/view/profile.php");
+      header("Location: /frontend/view/index.php");
     } else {
       echo "
                 <script>

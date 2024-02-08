@@ -286,7 +286,6 @@ const downloadFile = function (data, fileType, fileName = "") {
   a.remove();
 };
 
-// arreglar descargas faltan columnas
 //tabla-----------------------
 
 // paginacion///
@@ -352,4 +351,9 @@ function updateBtns() {
     stepBtn[0].disabled = false;
     stepBtn[1].disabled = false;
   }
+}
+
+// Función para limpiar el formulario
+function limpiarFormulario() {
+  document.getElementById("miFormulario").reset();
 }

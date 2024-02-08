@@ -369,13 +369,16 @@ tbody td.active {
   transition: all 0.3s ease;
 }
 
-.container .content form .user-details .input-box input:focus,
-.container .content form .user-details .input-box input:valid {
-  border-color: #9b59b6;
+.container .content form .user-details .input-box input:not(:focus) {
+  border-color: #a7a7a7;
 }
 
 .container .content form .user-details .input-box .input-extr:focus {
   border-color: #9b59b6;
+}
+
+.container .content form .user-details .input-box .input-extr:not(:focus) {
+  border-color: #a7a7a7;
 }
 
 .container .content form .button {
@@ -383,6 +386,21 @@ tbody td.active {
 }
 
 .container .content form .button input {
+  height: 100%;
+  width: 40%;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  color: var(--color-barra-lateral);
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.container .content form .button button {
   height: 100%;
   width: 40%;
   border-radius: 5px;
@@ -414,6 +432,9 @@ tbody td.active {
 }
 
 .container .content form .button-container .button input {
+  width: 100%;
+}
+.container .content form .button-container .button button {
   width: 100%;
 }
 
@@ -516,4 +537,9 @@ tbody td.active {
 .wrapper .nums .num:hover {
   background: #0b778c93;
   color: #fff;
+}
+
+.title-profile {
+  margin: 15px;
+  display: block;
 }

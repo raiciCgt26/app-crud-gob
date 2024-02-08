@@ -1,6 +1,10 @@
 <?php
 include('C:\xampp\htdocs\backend\php\dbconnection.php');
+include("/xampp/htdocs/backend/php/antentication.php");
+
+// Verifica si se ha enviado una solicitud POST
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  // Obtén los datos del formulario
   $titulo = $_POST['titulo'];
   $estado = $_POST['estado'];
   $fecha = $_POST['fecha'];
@@ -10,15 +14,31 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $grupo = $_POST['grupo'];
   $categoria = $_POST['categoria'];
 
-  $query = mysqli_query($con, "insert into incidencias (titulo, estado, fecha, prioridad, solicitante, tecnico, grupo, categoria) Value ('$titulo','$estado','$fecha','$prioridad','$solicitante','$tecnico','$grupo', '$categoria')");
+  // Verifica si ya existe un registro con los mismos valores
+  $existing_record_query = mysqli_query($con, "SELECT * FROM incidencias WHERE titulo='$titulo' AND estado='$estado' AND fecha='$fecha' AND prioridad='$prioridad' AND solicitante='$solicitante' AND tecnico='$tecnico' AND grupo='$grupo' AND categoria='$categoria'");
+  $existing_record_count = mysqli_num_rows($existing_record_query);
 
-  if ($query) {
-    echo "<script>alert('agregada correctamente')</script>";
+  // Si ya existe un registro con los mismos valores, muestra un mensaje de alerta
+  if ($existing_record_count > 0) {
+    echo "<script>alert('El registro ya existe.')</script>";
   } else {
-    echo "<script>alert('hubo un error , solicitud denegada')</script>";
+    // Inserta el nuevo registro en la base de datos
+    $query = mysqli_query($con, "INSERT INTO incidencias (titulo, estado, fecha, prioridad, solicitante, tecnico, grupo, categoria) VALUES ('$titulo','$estado','$fecha','$prioridad','$solicitante','$tecnico','$grupo', '$categoria')");
+
+    // Verifica si la consulta se realizó con éxito
+    if ($query) {
+      // Si se inserta el registro correctamente, muestra un mensaje de éxito y redirige a otra página
+      echo "<script>alert('Registro agregado correctamente.')</script>";
+      echo "<script>window.location.href = '/frontend/view/index.php';</script>";
+      exit;
+    } else {
+      // Si hay un error al insertar el registro, muestra un mensaje de error
+      echo "<script>alert('Hubo un error, solicitud denegada.')</script>";
+    }
   }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,9 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </li>
 
 
-
-
-
         <li>
           <a href="./logout.php">
             <ion-icon name="document-text-outline">
@@ -106,6 +123,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <div>
       <div class="linea"></div>
+
+
+
+      <div class="info-usuario">
+        <div class="nombre-email">
+          <span class="nombre">
+            <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
+          </span>
+        </div>
+      </div>
+
+
+
 
       <div class="modo-oscuro">
         <div class="info">
@@ -135,11 +165,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <div class="title">Agregar incidencia</div>
         <!-- <hr> -->
         <div class="content">
-          <form method="POST">
+          <form method="POST" id="miFormulario">
+
             <div class="user-details">
+
               <div class="input-box">
                 <span class="details">Titulo</span>
-                <input type="text" name="titulo" placeholder="Escribe el titulo " required />
+                <input type="text" name="titulo" placeholder="Escribe el titulo" class="input-extr" />
               </div>
 
               <div class="input-box">
@@ -153,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
               <div class="input-box">
                 <span class="details">Fecha de modificacion</span>
-                <input type="date" name="fecha" required />
+                <input type="date" name="fecha" class="input-extr" />
               </div>
 
               <div class="input-box">
@@ -168,17 +200,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               </div>
               <div class="input-box">
                 <span class="details">Solicitante</span>
-                <input name="solicitante" type="text" placeholder="Escriba el nombre del solicitante" required />
+                <input name="solicitante" type="text" placeholder="Escriba el nombre del solicitante" class="input-extr" />
               </div>
 
 
               <div class="input-box">
                 <span class="details">Asignado a - Grupo Tecnico</span>
                 <select name="grupo" class="input-extr">
-                  <option selected>Seleccionar...</option>
-                  <option>...</option>
-                  <option>...</option>
-                  <option>...</option>
+                  <option>Carolina Vixleris</option>
+                  <option>Jose Arenas</option>
+                  <option>Juan Lopez</option>
                 </select>
               </div>
 
@@ -186,9 +217,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <span class="details">Asignado a - Tecnico</span>
                 <select name="tecnico" class="input-extr">
                   <option selected>Seleccionar...</option>
-                  <option>...</option>
-                  <option>...</option>
-                  <option>...</option>
+                  <option>Carolina Vixleris</option>
+                  <option>Jose Arenas</option>
+                  <option>Juan Lopez</option>
                 </select>
               </div>
 
@@ -196,9 +227,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <span class="details">Categoria</span>
                 <select name="categoria" class="input-extr">
                   <option selected>Seleccionar...</option>
-                  <option>...</option>
-                  <option>...</option>
-                  <option>...</option>
+                  <option>01 Direccion de informatica y sistemas > division de desarrollo de sistemas</option>
+                  <option>01 Direccion de informatica y sistemas > division de soporte tecnico</option>
+                  <option>01 Direccion de informatica y sistemas > division de problemas de internet</option>
                 </select>
               </div>
 
@@ -209,8 +240,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <input class="button-grd" type="submit" value="Guardar" />
               </div>
               <div class="button">
-                <input class="button-can" type="submit" value="Cancelar" />
+                <button class="button-can" type="button" onclick="limpiarFormulario()">Cancelar</button>
               </div>
+
             </div>
           </form>
         </div>
@@ -249,7 +281,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <table>
           <thead>
             <tr>
-              <th>Id <span class="icon-arrow">&UpArrow;</span></th>
+              <!-- <th>Id <span class="icon-arrow">&UpArrow;</span></th> -->
               <th>Titulo<span class="icon-arrow">&UpArrow;</span></th>
               <th>Estado<span class="icon-arrow">&UpArrow;</span></th>
               <th>Modificacion <span class="icon-arrow">&UpArrow;</span></th>
@@ -272,7 +304,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 while ($r = mysqli_fetch_array($fetch)) {
               ?>
             <tr>
-              <td> <?php echo $r['id'] ?></td>
+              <!-- <td> <?php echo $r['id'] ?></td> -->
               <td> <?php echo $r['titulo'] ?></td>
               <td> <?php echo $r['estado'] ?></td>
               <td> <?php echo $r['fecha'] ?></td>
@@ -284,8 +316,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               <td>
                 <div class="acciones-container">
                   <strong>
-                    <!-- botones de borrar y editar aquí -->
+                    <!-- botones de borrar y editar -->
                     <a href="/backend/php/borrar.php?delete=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/x.svg" alt="Borrar"></a>
+
                     <a href="/backend/php/editar.php?id=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/pencil-fill.svg" alt="Editar"></a>
                   </strong>
                 </div>
@@ -343,6 +376,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   </footer>
 
   </div>
+
+
 </body>
 
 </html>
