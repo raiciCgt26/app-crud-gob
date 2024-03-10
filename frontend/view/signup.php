@@ -1,12 +1,22 @@
 <?php
+include('C:\xampp\htdocs\backend\php\dbconnection.php');
 $nameError = "";
 $emailError = "";
 $passwordError = "";
+$rolError = "";
 
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $rol = $_POST['rol'];
+
+  // Validaciones para el rol
+  if (empty($_POST['rol'])) {
+    $rolError = "Seleccione un rol";
+  } else {
+    $rol = $_POST['rol'];
+  }
 
   // Validaciones para el nombre de usuario
   if (empty($username)) {
@@ -39,8 +49,12 @@ if (isset($_POST['submit'])) {
     }
   }
 
+  // Hashear la contraseña
+  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+
   // Si todas las validaciones pasan, proceder con la inserción en la base de datos
-  if (empty($nameError) && empty($emailError) && empty($passwordError)) {
+  if (empty($nameError) && empty($emailError) && empty($passwordError) && empty($rolError)) {
     require('/xampp/htdocs/backend/php/dbconnection.php');
 
     // Verificar si el nombre de usuario o correo ya existen
@@ -59,9 +73,9 @@ if (isset($_POST['submit'])) {
       // Insertar en la base de datos
       $username = mysqli_real_escape_string($con, $username);
       $email = mysqli_real_escape_string($con, $email);
-      $password = mysqli_real_escape_string($con, $password);
+      $rol = mysqli_real_escape_string($con, $rol);
 
-      $sql = "INSERT INTO `usuarios` (`username`, `email`,`password`) VALUES ('$username', '$email', '$password')";
+      $sql = "INSERT INTO `usuarios` (`username`, `email`,`password`,`rol`) VALUES ('$username', '$email', '$hashedPassword', '$rol')";
       $result = mysqli_query($con, $sql);
 
       if ($result) {
@@ -137,6 +151,26 @@ if (isset($_POST['submit'])) {
                 <span class="form-error">
                   <?php echo $passwordError ?>
                 </span>
+              </p>
+
+              <p>
+                <label for="rol">
+                  <img src="../aseets/icons/bx-search-alt-2.svg" />
+                  <select name="rol" id="rol">
+                    <option value="">Seleccionar rol</option>
+                    <?php
+                    $rolesfetchQuery = "SELECT * FROM `roles`";
+                    $resul = mysqli_query($con, $rolesfetchQuery);
+                    echo "Aasd";
+                    print_r($resul);
+                    ?>
+                  </select>
+                </label>
+
+                <span class=" form-error">
+                  <?php echo $rolError ?>
+                </span>
+
               </p>
               <input class="btn-login" name="submit" type="submit" value="Registrarse" />
             </form>

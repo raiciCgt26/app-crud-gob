@@ -252,8 +252,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-    <div class=" table">
-      <section class="table__header" id="incident_table">
+    <div class="table" id="tab_inc">
+      <section class="table__header">
         <h1>Lista de Incidencias</h1>
 
         <div class="input-group">
@@ -262,16 +262,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </div>
 
         <div class="export__file">
-          <label for="export-file" class="export__file-btn" title="Export File">
-
-          </label>
+          <label for="export-file" class="export__file-btn" title="Exportar archivo"></label>
           <input type="checkbox" id="export-file">
           <div class="export__file-options">
             <label>Exportar &nbsp; &#10140;</label>
-            <label for="export-file" id="toPDF">PDF <img src="/frontend/aseets/icons/file-earmark-pdf.svg" alt=""></label>
+
+            <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="/frontend/aseets/icons/file-earmark-pdf.svg" alt=""></label>
+
             <label for="export-file" id="toJSON">JSON <img src="/frontend/aseets/icons/filetype-json.svg" alt=""></label>
+
             <label for="export-file" id="toCSV">CSV <img class="ico-csv" src="/frontend/aseets/icons/filetype-csv.svg" alt=""></label>
+
             <label for="export-file" id="toEXCEL">EXCEL <img src="/frontend/aseets/icons/file-earmark-excel.svg" alt=""></label>
+
           </div>
         </div>
       </section>
@@ -295,40 +298,41 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           </thead>
 
           <tbody>
-            <tr>
-              <?php
-              include('C:\xampp\htdocs\backend\php\dbconnection.php');
-              $fetch = mysqli_query($con, "select * from incidencias");
-              $row = mysqli_num_rows($fetch);
-              if ($row > 0) {
-                while ($r = mysqli_fetch_array($fetch)) {
-              ?>
-            <tr>
-              <!-- <td> <?php echo $r['id'] ?></td> -->
-              <td> <?php echo $r['titulo'] ?></td>
-              <td> <?php echo $r['estado'] ?></td>
-              <td> <?php echo $r['fecha'] ?></td>
-              <td> <?php echo $r['prioridad'] ?></td>
-              <td> <?php echo $r['solicitante'] ?></td>
-              <td> <?php echo $r['tecnico'] ?></td>
-              <td> <?php echo $r['grupo'] ?></td>
-              <td><?php echo $r['categoria'] ?></td>
-              <td>
-                <div class="acciones-container">
-                  <strong>
-                    <!-- botones de borrar y editar -->
-                    <a href="/backend/php/borrar.php?delete=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/x.svg" alt="Borrar"></a>
+            <?php
+            include('C:\xampp\htdocs\backend\php\dbconnection.php');
+            $fetch = mysqli_query($con, "select * from incidencias");
+            $row = mysqli_num_rows($fetch);
+            if ($row > 0) {
+              while ($r = mysqli_fetch_array($fetch)) {
+            ?>
 
-                    <a href="/backend/php/editar.php?id=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/pencil-fill.svg" alt="Editar"></a>
-                  </strong>
-                </div>
-              </td>
-            </tr>
-        <?php
-                }
+                <tr>
+                  <?php // echo $r['id'] // 
+                  ?>
+                  <td> <?php echo $r['titulo'] ?></td>
+                  <td> <?php echo $r['estado'] ?></td>
+                  <td> <?php echo $r['fecha'] ?></td>
+                  <td> <?php echo $r['prioridad'] ?></td>
+                  <td> <?php echo $r['solicitante'] ?></td>
+                  <td> <?php echo $r['tecnico'] ?></td>
+                  <td> <?php echo $r['grupo'] ?></td>
+                  <td><?php echo $r['categoria'] ?></td>
+                  <td>
+                    <div class="acciones-container">
+                      <strong>
+                        <!-- botones de borrar y editar -->
+                        <a href="/backend/php/borrar.php?delete=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/x.svg" alt="Borrar"></a>
+
+                        <a href="/backend/php/editar.php?id=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/pencil-fill.svg" alt="Editar"></a>
+                      </strong>
+                    </div>
+                  </td>
+                </tr>
+            <?php
               }
+            }
 
-        ?>
+            ?>
 
 
 
@@ -338,10 +342,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <div>
           <div class="wrapper">
             <button class="btn startBtn" disabled>
-              <i class="fas fa-angles-left"></i>
+              <img src="/frontend/aseets/icons/bx-chevrons-left.svg" alt="">
             </button>
+
             <button class="btn stepBtn" disabled>
-              <i class="fas fa-angle-left"></i>
+              <img src="/frontend/aseets/icons/bx-chevron-left.svg" alt="">
             </button>
 
             <div class="nums">
@@ -353,10 +358,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
 
             <button class="btn stepBtn" id="next">
-              <i class="fas fa-angle-right"></i>
+              <img src="/frontend/aseets/icons/bx-chevron-right.svg" alt="">
             </button>
             <button class="btn endBtn">
-              <i class="fas fa-angles-right"></i>
+              <img src="/frontend/aseets/icons/bx-chevrons-right.svg" alt="">
             </button>
           </div>
         </div>

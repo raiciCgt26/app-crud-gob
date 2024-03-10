@@ -204,8 +204,8 @@ tbody td.active {
 
 .export__file .export__file-btn {
   display: inline-block;
-  margin: 1.5rem 1.5rem;
-  padding: 1rem 1rem;
+  margin-right: 10px;
+  padding-right: 10px;
   width: 2rem;
   height: 2rem;
   background: var(--color-cebra)
@@ -264,7 +264,7 @@ tbody td.active {
 
 .export__file .export__file-options label:first-of-type {
   padding: 1rem 0;
-  background-color: #86e49d !important;
+  background-color: #86d1e4 !important;
 }
 
 .export__file .export__file-options label:hover {
@@ -485,8 +485,8 @@ tbody td.active {
 }
 
 .wrapper .btn {
-  height: 25px;
-  width: 25px;
+  height: 35px;
+  width: 35px;
   background: #f2f2f2;
   border: none;
   border-radius: 6px;
