@@ -30,22 +30,40 @@ if (isset($_POST['submit'])) {
   if (empty($nameError) && empty($passwordError)) {
     $username = mysqli_real_escape_string($con, $username);
     $password = mysqli_real_escape_string($con, $password);
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "SELECT * FROM `usuarios` WHERE username ='$username' AND password='$password'";
+    $sql = "SELECT * FROM `usuarios` WHERE username ='$username'";
     $result = mysqli_query($con, $sql);
-    $rows = mysqli_num_rows($result);
+    $row = mysqli_fetch_assoc($result);
 
-    if ($rows == 1) {
+    if ($row && password_verify($password, $row['password'])) {
+      // Obtener el nivel del usuario
+      $userLevel = $row['role_id_fk'];
+      // Redirigir según el nivel del usuario
+      switch ($userLevel) {
+        case 1:
+          // Usuario de nivel 1 (admin)
+          header("Location: /frontend/view/level_admin.php");
+          break;
+        case 2:
+          // Usuario de nivel 2 (jefe)
+          header("Location: /frontend/view/level_jefe.php");
+          break;
+        case 3:
+          // Usuario de nivel 3 (administrativo)
+          header("Location: /frontend/view/level_pers_admi.php");
+          break;
+          echo "
+        <script>
+            function showAlert() {
+                alert('Usuario o contraseña incorrecta');
+            }
+            showAlert();
+        </script>";
+          break;
+      }
+      // Establecer la sesión
       $_SESSION['username'] = $username;
-      header("Location: /frontend/view/index.php");
-    } else {
-      echo "
-                <script>
-                    function showAlert() {
-                        alert('Usuario o contraseña incorrecta');
-                    }
-                    showAlert();
-                </script>";
     }
   }
 }
@@ -76,6 +94,14 @@ if (isset($_POST['submit'])) {
           <a href="/frontend/view/signup.php">
             <input class="btn-login" type="button" value="Registrarse" />
           </a>
+
+
+          <br>
+          <br>
+          <div>
+            <a class="form-good" href="/frontend/view/recover_password.php">¿Has olvidado tu contraseña? </a>
+          </div>
+
 
         </div>
       </div>
@@ -108,6 +134,7 @@ if (isset($_POST['submit'])) {
               </p>
 
               <input onclick='showAlert()' class="btn-login" type="submit" name="submit" value="Iniciar sesion" />
+
             </form>
 
           </div>

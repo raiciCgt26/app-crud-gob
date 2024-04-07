@@ -4,18 +4,20 @@ $nameError = "";
 $emailError = "";
 $passwordError = "";
 $rolError = "";
+$phoneError = "";
+$descriptionError = "";
 
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $rol = $_POST['rol'];
+  $phone = $_POST['phone'];
+  $description = $_POST['description'];
 
-  // Validaciones para el rol
-  if (empty($_POST['rol'])) {
-    $rolError = "Seleccione un rol";
+  if (isset($_POST['role_id_fk']) && $_POST['role_id_fk'] !== '') {
+    $rol = $_POST['role_id_fk'];
   } else {
-    $rol = $_POST['rol'];
+    $rolError = "Por favor, seleccione un rol válido";
   }
 
   // Validaciones para el nombre de usuario
@@ -49,12 +51,27 @@ if (isset($_POST['submit'])) {
     }
   }
 
+  // Validaciones para el número de teléfono
+  if (empty($phone)) {
+    $phoneError = "Su número de teléfono es obligatorio, no olvide el guion 0414-1234567";
+  } else {
+    $phone = trim($phone);
+    if (!preg_match("/^(0414|0424|0416|0426|0412)[-\/]\d{7}$/", $phone)) {
+      $phoneError = "El número de teléfono debe tener el formato correcto (por ejemplo, 0414-1234567 o 0424/0416/0426/0412/)";
+    }
+  }
+
+  // Validaciones para la institución
+  if (empty($description)) {
+    $descriptionError = "El nombre de la institución es obligatorio";
+  }
+
   // Hashear la contraseña
   $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 
   // Si todas las validaciones pasan, proceder con la inserción en la base de datos
-  if (empty($nameError) && empty($emailError) && empty($passwordError) && empty($rolError)) {
+  if (empty($nameError) && empty($emailError) && empty($passwordError) && empty($rolError) && empty($phoneError) && empty($descriptionError)) {
     require('/xampp/htdocs/backend/php/dbconnection.php');
 
     // Verificar si el nombre de usuario o correo ya existen
@@ -74,8 +91,10 @@ if (isset($_POST['submit'])) {
       $username = mysqli_real_escape_string($con, $username);
       $email = mysqli_real_escape_string($con, $email);
       $rol = mysqli_real_escape_string($con, $rol);
+      $phone = mysqli_real_escape_string($con, $phone);
+      $description = mysqli_real_escape_string($con, $description);
 
-      $sql = "INSERT INTO `usuarios` (`username`, `email`,`password`,`rol`) VALUES ('$username', '$email', '$hashedPassword', '$rol')";
+      $sql = "INSERT INTO `usuarios` (`username`, `email`,`password`,`role_id_fk`, `phone`, `description`) VALUES ('$username', '$email', '$hashedPassword', '$rol', '$phone', '$description')";
       $result = mysqli_query($con, $sql);
 
       if ($result) {
@@ -156,14 +175,16 @@ if (isset($_POST['submit'])) {
               <p>
                 <label for="rol">
                   <img src="../aseets/icons/bx-search-alt-2.svg" />
-                  <select name="rol" id="rol">
-                    <option value="">Seleccionar rol</option>
+                  <select name="role_id_fk" id="rol">
+                    <option selected disabled>-----Seleccionar rol-----</option>
                     <?php
-                    $rolesfetchQuery = "SELECT * FROM `roles`";
+                    $rolesfetchQuery = "SELECT * FROM `roles` WHERE roles != 'Admin';";
                     $resul = mysqli_query($con, $rolesfetchQuery);
-                    echo "Aasd";
-                    print_r($resul);
-                    ?>
+                    while ($row = mysqli_fetch_assoc($resul)) {  ?>
+                      <option value="<?php echo $row['id'] ?>">
+                        <?php echo $row['roles'] ?>
+                      </option>
+                    <?php } ?>
                   </select>
                 </label>
 
@@ -172,6 +193,28 @@ if (isset($_POST['submit'])) {
                 </span>
 
               </p>
+
+
+              <p>
+                <label for="phone">
+                  <img src="../aseets/icons/pen.svg" />
+                  <input type="text" placeholder="Escribe tu numero de telefono" name="phone" />
+                </label>
+                <span class="form-error">
+                  <?php echo $phoneError  ?>
+                </span>
+              </p>
+
+              <p>
+                <label for="description">
+                  <img src="../aseets/icons/bx-home.svg" />
+                  <input type="text" placeholder="Escriba su institucion" name="description" />
+                </label>
+                <span class="form-error">
+                  <?php echo $descriptionError ?>
+                </span>
+              </p>
+
               <input class="btn-login" name="submit" type="submit" value="Registrarse" />
             </form>
           </div>
