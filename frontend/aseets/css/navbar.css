@@ -7,6 +7,10 @@
 }
 
 :root {
+  --fondo: rgb(221, 235, 238);
+  /* --color-gradiente2: #b9fffe; */
+  --color-gradiente: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  --color-mod: rgb(92, 91, 91);
   --color-icons: rgb(232, 239, 244);
   --color-cebra: rgba(212, 216, 218, 0.422);
 
@@ -32,6 +36,10 @@
 }
 
 .dark-mode {
+  --fondo: rgb(128, 175, 186);
+  --color-gradiente: linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%);
+  --color-mod: rgb(218, 218, 218);
+
   --color-cebra: rgba(168, 176, 180, 0.82);
   --color-barra-lateral: rgb(44, 45, 49);
 
@@ -70,7 +78,9 @@ body {
 body {
   height: 100vh;
   width: 100%;
-  background: linear-gradient(90deg, rgb(19, 147, 221), rgb(105, 36, 174) 60%);
+  /* background: linear-gradient(135deg, #f8b645, #ffb0cb);
+  backdrop-filter: blur(6px); */
+  background-color: var(--fondo);
   min-height: 100vh;
   display: flex;
 }
@@ -86,6 +96,11 @@ body {
 }
 .ico-csv {
   margin-left: 12px;
+}
+
+img.icono-inc {
+  margin-left: 18px;
+  margin-top: 5px;
 }
 
 .menu {
@@ -132,6 +147,7 @@ body {
   opacity: 1;
   transition: opacity 0.5s ease, width 0.5s ease;
 }
+
 .barra-lateral span.oculto {
   opacity: 0;
   width: 0;
@@ -344,4 +360,10 @@ body {
 .barra-lateral .usuario .nombre {
   font-size: 15px;
   font-weight: 600;
+}
+
+.title-profile {
+  margin: 15px;
+  display: block;
+  color: var(--color-texto);
 }

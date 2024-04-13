@@ -1,10 +1,14 @@
+<?php
+session_start(); // Inicia la sesión
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/frontend/aseets/css/chat.css" />
+  <link rel="stylesheet" href="/frontend/aseets/css/index.css" />
   <link rel="stylesheet" href="/frontend/aseets/css/navbar.css" />
   <title>S.I</title>
 </head>
@@ -12,7 +16,6 @@
 <body>
 
   <!-- menu-navbar-header -->
-
 
   <div class="menu">
     <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
@@ -33,7 +36,7 @@
     <nav class="navegacion">
       <ul>
         <li>
-          <a id="inbox" href="./index.php">
+          <a id="inbox" href="/frontend/view/admin/index.php">
             <ion-icon name="mail-unread-outline">
               <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
             </ion-icon>
@@ -42,7 +45,17 @@
         </li>
 
         <li>
-          <a class="user" href="./users.php">
+          <a class="user" href="/frontend/view/admin/level_admin.php">
+            <ion-icon name="mail-unread-outline">
+              <img class="icono-inc" src="/frontend/aseets/icons/envelope-paper.svg" />
+            </ion-icon>
+            <span>Incidencias</span>
+          </a>
+        </li>
+
+
+        <li>
+          <a class="user" href="/frontend/view/admin/users.php">
             <ion-icon name="star-outline">
               <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
             </ion-icon>
@@ -51,7 +64,7 @@
         </li>
 
         <li>
-          <a class="user" href="./chat.php">
+          <a class="user" href="/frontend/view/admin/chat.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
             </ion-icon>
@@ -60,7 +73,7 @@
         </li>
 
         <li>
-          <a href="./setting.php">
+          <a href="/frontend/view/admin/setting.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
             </ion-icon>
@@ -70,7 +83,7 @@
 
 
         <li>
-          <a href="./logout.php">
+          <a href="/frontend/view/logout.php">
             <ion-icon name="document-text-outline">
               <img class="icons-menu ico-center" src="/frontend/aseets/icons/file-lock2.svg" />
             </ion-icon>
@@ -83,11 +96,27 @@
     <div>
       <div class="linea"></div>
 
+
+
+      <div class="info-usuario">
+        <div class="nombre-email">
+          <span class="nombre">
+            <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
+            <span class="title-profile">Level 1
+            </span>
+          </span>
+        </div>
+      </div>
+
+
+
+
       <div class="modo-oscuro">
         <div class="info">
           <img class="ico ico-center" src="/frontend/aseets/icons/bx-moon.svg" />
-          </ion-icon> <span class="dark-text">Modo oscuro</span> </ion-icon>
+          <span class="dark-text">Modo oscuro</span>
         </div>
+
         <div class="switch">
           <div class="base">
             <div class="circulo">
@@ -95,7 +124,11 @@
             </div>
           </div>
         </div>
+
       </div>
+
+
+
 
     </div>
 

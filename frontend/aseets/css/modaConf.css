@@ -1,0 +1,149 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: var(--color-barra-lateral);
+  margin: 15% auto;
+  padding: 30px;
+  border: none;
+  width: 60%;
+  border-radius: 8px;
+}
+
+.button-container .button-grd {
+  background: #52c74e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  height: 35px;
+  width: 85px;
+  color: rgb(255, 255, 255);
+  margin: 8px;
+  font-size: 16px;
+}
+
+.button-container .button-grd:hover {
+  background: #2f7e28;
+}
+
+.button-container .button-can {
+  background: #b13e1e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  height: 35px;
+  width: 85px;
+  color: rgb(255, 255, 255);
+  margin: 8px;
+  font-size: 16px;
+}
+.button-container .button-can:hover {
+  background: #991717;
+}
+
+.button-container {
+  text-align: center;
+}
+
+@media (max-width: 450px) {
+  div p.text {
+    color: var(--color-texto);
+    font-size: 10px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+  }
+
+  .button-container .button-can {
+    font-size: 14px;
+    height: 30px;
+    width: 70px;
+    background: #b13e1e;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    color: rgb(255, 255, 255);
+    margin: 8px;
+  }
+
+  .button-container .button-can:hover {
+    background: #991717;
+  }
+
+  .button-container .button-grd {
+    font-size: 14px;
+    height: 30px;
+    width: 70px;
+    background: #52c74e;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    color: rgb(255, 255, 255);
+    margin: 8px;
+  }
+  .button-container .button-grd:hover {
+    background: #2f7e28;
+  }
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+div p.text {
+  color: var(--color-texto);
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+h2.detalles {
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--color-mod);
+  /* text-align: center; */
+}
+
+div.detallesCont {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--color-mod);
+  text-align: justify;
+}
+/* 
+div img.log {
+  height: 150px;
+  border-radius: 50%;
+  margin-top: 8px;
+  margin-left: 0px;
+  margin-right: 5px;
+} */
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

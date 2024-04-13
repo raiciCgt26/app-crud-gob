@@ -27,7 +27,7 @@ menu.addEventListener("click", () => {
 palanca.addEventListener("click", () => {
   let body = document.body;
   body.classList.toggle("dark-mode");
-  body.classList.toggle("");
+  // body.classList.toggle("");
   circulo.classList.toggle("prendido");
 });
 
@@ -223,12 +223,89 @@ const downloadFile = function (data, fileType, fileName = "") {
 };
 //tabla-----------------------
 
-// paginacion///
-let nums = document.querySelectorAll(".num");
+// //paginacion///
+// let startBtn = document.querySelector(".startBtn");
+// let endBtn = document.querySelector(".endBtn");
+// let stepBtn = document.querySelectorAll(".stepBtn");
+// let tbody = document.querySelector("tbody");
+// let nums = document.querySelector(".nums");
+
+// let pageSize = 6; // Número de incidencias por página
+// let currentPage = 0; // Página actual
+
+// function showPage(page) {
+//   let start = page * pageSize;
+//   let end = start + pageSize;
+//   let rows = Array.from(tbody.querySelectorAll("tr"));
+
+//   rows.forEach((row, index) => {
+//     if (index >= start && index < end) {
+//       row.style.display = "";
+//     } else {
+//       row.style.display = "none";
+//     }
+//   });
+// }
+
+// function updateBtns() {
+//   let totalPages = Math.ceil(tbody.querySelectorAll("tr").length / pageSize);
+
+//   startBtn.disabled = currentPage === 0;
+//   endBtn.disabled = currentPage === totalPages - 1;
+//   stepBtn[0].disabled = currentPage === 0;
+//   stepBtn[1].disabled = currentPage === totalPages - 1;
+
+//   // Generar los números de página
+//   nums.innerHTML = "";
+//   for (let i = 0; i < totalPages; i++) {
+//     let num = document.createElement("a");
+//     num.href = "#";
+//     num.classList.add("num");
+//     num.textContent = i + 1;
+//     num.addEventListener("click", () => {
+//       currentPage = i;
+//       showPage(currentPage);
+//       updateBtns();
+//     });
+//     nums.appendChild(num);
+//   }
+
+//   // Marcar como activa la página actual
+//   let numElements = nums.querySelectorAll(".num");
+//   numElements.forEach((num, index) => {
+//     num.classList.toggle("active", index === currentPage);
+//   });
+// }
+
+// endBtn.addEventListener("click", () => {
+//   currentPage = Math.ceil(tbody.querySelectorAll("tr").length / pageSize) - 1;
+//   showPage(currentPage);
+//   updateBtns();
+// });
+
+// startBtn.addEventListener("click", () => {
+//   currentPage = 0;
+//   showPage(currentPage);
+//   updateBtns();
+// });
+
+// stepBtn.forEach((btn) => {
+//   btn.addEventListener("click", (e) => {
+//     currentPage += e.target.id === "next" ? 1 : -1;
+//     showPage(currentPage);
+//     updateBtns();
+//   });
+// });
+
+// // Mostrar la primera página al cargar la página
+// showPage(currentPage);
+// updateBtns();
+
 let startBtn = document.querySelector(".startBtn");
 let endBtn = document.querySelector(".endBtn");
 let stepBtn = document.querySelectorAll(".stepBtn");
 let tbody = document.querySelector("tbody");
+let numsContainer = document.querySelector(".nums");
 
 let pageSize = 6; // Número de incidencias por página
 let currentPage = 0; // Página actual
@@ -255,8 +332,30 @@ function updateBtns() {
   stepBtn[0].disabled = currentPage === 0;
   stepBtn[1].disabled = currentPage === totalPages - 1;
 
-  nums.forEach((num, index) => {
-    num.classList.toggle("active", index === currentPage);
+  // Generar los números de página
+  numsContainer.innerHTML = "";
+  let currentPageGroup = Math.floor(currentPage / 6); // Grupo de seis páginas actual
+  for (
+    let i = currentPageGroup * 6;
+    i < Math.min(currentPageGroup * 6 + 6, totalPages);
+    i++
+  ) {
+    let num = document.createElement("a");
+    num.href = "#";
+    num.classList.add("num");
+    num.textContent = i + 1;
+    num.addEventListener("click", () => {
+      currentPage = i;
+      showPage(currentPage);
+      updateBtns();
+    });
+    numsContainer.appendChild(num);
+  }
+
+  // Marcar como activa la página actual
+  let numElements = numsContainer.querySelectorAll(".num");
+  numElements.forEach((num, index) => {
+    num.classList.toggle("active", index === currentPage % 6);
   });
 }
 
@@ -280,19 +379,6 @@ stepBtn.forEach((btn) => {
   });
 });
 
-nums.forEach((num, index) => {
-  num.addEventListener("click", () => {
-    currentPage = index;
-    showPage(currentPage);
-    updateBtns();
-  });
-});
-
 // Mostrar la primera página al cargar la página
 showPage(currentPage);
 updateBtns();
-
-// Función para limpiar el formulario
-function limpiarFormulario() {
-  document.getElementById("miFormulario").reset();
-}

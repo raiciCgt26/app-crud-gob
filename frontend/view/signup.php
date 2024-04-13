@@ -1,5 +1,5 @@
 <?php
-include('C:\xampp\htdocs\backend\php\dbconnection.php');
+include("/xampp/htdocs/backend/php/dbconnection.php");
 $nameError = "";
 $emailError = "";
 $passwordError = "";
@@ -79,13 +79,9 @@ if (isset($_POST['submit'])) {
     $checkUserEmailResult = mysqli_query($con, $checkUserEmailQuery);
 
     if (mysqli_num_rows($checkUserEmailResult) > 0) {
-      echo "
-                <script>
-                    function showAlert() {
-                        alert('El nombre de usuario o correo electrónico ya están en uso. Por favor, elija otro.');
-                    }
-                    showAlert();
-                </script>";
+      echo "<script>document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('myModalInfo').style.display = 'block';
+  });</script>";
     } else {
       // Insertar en la base de datos
       $username = mysqli_real_escape_string($con, $username);
@@ -98,15 +94,13 @@ if (isset($_POST['submit'])) {
       $result = mysqli_query($con, $sql);
 
       if ($result) {
-        echo "
-                <script>
-                    function showAlert() {
-                        alert('Registro exitoso ahora puedes iniciar sesión.');
-                    }
-                    showAlert();
-                </script>";
+        echo "<script>document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('myModalSuccess').style.display = 'block';
+  });</script>";
       } else {
-        echo "<script>alert('Error en el registro');</script>";
+        echo "<script>document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('myModalError').style.display = 'block';
+  });</script>";
       }
     }
   }
@@ -119,8 +113,9 @@ if (isset($_POST['submit'])) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="../aseets/img/logo-gob2.png" />
-  <link rel="stylesheet" href="../aseets/css/login-signup.css" />
+  <link rel="shortcut icon" href="/frontend/aseets/img/logo-gob2.png" />
+  <link rel="stylesheet" href="/frontend/aseets/css/login-signup.css" />
+  <link rel="stylesheet" href="/frontend/aseets/css/try-error.css" />
 
   <title>Login and sign up</title>
 </head>
@@ -180,13 +175,28 @@ if (isset($_POST['submit'])) {
                     <?php
                     $rolesfetchQuery = "SELECT * FROM `roles` WHERE roles != 'Admin';";
                     $resul = mysqli_query($con, $rolesfetchQuery);
-                    while ($row = mysqli_fetch_assoc($resul)) {  ?>
+                    $adminQuery = "SELECT * FROM `usuarios` WHERE `role_id_fk` = 1 LIMIT 1"; // Selecciona el rol 'Admin'
+                    $adminResult = mysqli_query($con, $adminQuery);
+                    $adminExists = mysqli_num_rows($adminResult) > 0;
+
+                    while ($row = mysqli_fetch_assoc($resul)) {
+                    ?>
                       <option value="<?php echo $row['id'] ?>">
                         <?php echo $row['roles'] ?>
                       </option>
-                    <?php } ?>
+                    <?php
+                    }
+
+                    if (!$adminExists) {
+                    ?>
+                      <option value="1">Admin</option> <!-- Si no existe el rol 'Admin' en la tabla usuarios, se añade como opción -->
+                    <?php
+                    }
+                    ?>
                   </select>
                 </label>
+
+
 
                 <span class=" form-error">
                   <?php echo $rolError ?>
@@ -221,8 +231,36 @@ if (isset($_POST['submit'])) {
         </div>
       </div>
     </div>
-    <script src="../aseets/js/login-signup.js"></script>
+
+
   </div>
+  <!-- Modal for successful registration -->
+  <div id="myModalSuccess" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p class="text-2">Registro exitoso ahora puedes iniciar sesión.</p>
+    </div>
+  </div>
+
+  <!-- Modal for failed registration -->
+  <div id="myModalError" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p class="text-2">Error en el registro. Intente nuevamente.</p>
+    </div>
+  </div>
+
+  <!-- Modal for Info registration -->
+  <div id="myModalInfo" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p class="text-2">El nombre de usuario o correo electrónico ya están en uso.</p>
+    </div>
+  </div>
+
+
+  <script src="../aseets/js/login-signup.js"></script>
+  <script src="/frontend/aseets/js/try-error.js"></script>
 </body>
 
 </html>

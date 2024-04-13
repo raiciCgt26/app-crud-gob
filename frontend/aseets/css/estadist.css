@@ -1,0 +1,203 @@
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  margin: auto;
+}
+
+.estadisticas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 900px;
+  flex-wrap: wrap; /* Para que los elementos se ajusten al ancho */
+}
+
+.estadisticas h2 {
+  text-align: center; /* Centrar el texto */
+  width: 100%; /* Ocupar todo el ancho disponible */
+  color: var(--color-mod);
+  font-size: 28px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+/* Estilo para el contenedor principal de las estadísticas */
+.estadisticas-container {
+  display: flex;
+  flex-direction: column; /* Apila los elementos verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  margin-bottom: 50px; /* Espacio inferior */
+}
+
+/* Estilo para el contenedor de estadísticas de incidencias */
+.estadisticas-incidencias,
+.estadisticas-usuarios {
+  width: 70%; /* Ocupa todo el ancho disponible */
+  margin-bottom: 20px;
+}
+
+/* Estilo específico para las estadísticas de incidencias */
+.estadisticas-incidencias {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Estilo específico para las estadísticas de usuarios */
+.estadisticas-usuarios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.estadisticas .card {
+  width: calc(33% - 20px);
+  background-color: var(--color-barra-lateral);
+  height: 260px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  border-radius: 10%;
+  box-shadow: 0 8px 16px rgb(0, 0, 0, 0.2);
+}
+
+.estadisticas .card .circle {
+  position: relative;
+  height: 160px;
+  width: 160px;
+  border: 8px solid rgb(185, 180, 218);
+  border-radius: 50%;
+}
+
+.card .circle .box,
+.card .circle .box span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.card .circle .box {
+  height: 100%;
+  width: 100%;
+  background: var(--color-gradiente);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+/* .card:hover {
+  transform: scale(1.05);
+  /* background: var(--color-gradiente2); 
+} */
+
+.card .circle .box span {
+  font-size: 48px;
+  font-weight: 600;
+  color: rgb(157, 155, 228);
+  transform: translate(-50%, -50%);
+  /* background: -webkit-linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.card .text {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-mod);
+}
+
+/* Estilo base para las estadísticas */
+.card {
+  opacity: 0; /* Inicialmente oculto */
+  transform: translateY(50px); /* Desplazamiento hacia abajo */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Transiciones suaves */
+}
+
+/* Efecto de deslizamiento y fade-in cuando se vuelven visibles */
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/*
+/*
+/*
+/*
+/* 
+/* Estilo base para los títulos h2 */
+h2 {
+  text-align: center; /* Centrado del texto */
+  margin-bottom: 20px; /* Espacio inferior */
+  opacity: 0; /* Inicialmente invisible */
+  transition: opacity 0.5s; /* Transición de opacidad de 0.5 segundos */
+}
+/* Media query para pantalla pequeña (hasta 600px) */
+@media (max-width: 600px) {
+  .estadisticas .card {
+    width: 160px; /* Ocupa todo el ancho */
+    margin: 0 auto 20px; /* Margen en la parte inferior y centrado horizontalmente */
+    height: 160px; /* Altura fija de la tarjeta */
+    display: flex; /* Para alinear elementos internos */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    padding: 10px; /* Espaciado interno */
+  }
+
+  .card .circle {
+    height: 50px; /* Altura fija del círculo */
+    width: 50px; /* Ancho fijo del círculo */
+    border-width: 4px; /* Grosor del borde */
+    margin: 0; /* Eliminar margen */
+  }
+
+  .card .circle .box {
+    font-size: 18px; /* Tamaño de la fuente */
+  }
+
+  .card .text {
+    font-size: 16px; /* Tamaño del texto */
+  }
+
+  .estadisticas h2 {
+    font-size: 20px; /* Tamaño del título */
+  }
+}
+
+/* Media query para pantalla mediana (entre 401px y 800px) */
+@media (min-width: 401px) and (max-width: 800px) {
+  .estadisticas {
+    flex-wrap: wrap; /* Para que los elementos se ajusten al ancho */
+  }
+
+  .estadisticas .card {
+    width: 200px; /* Ocupa el 50% del ancho con un pequeño margen */
+    height: 200px; /* Altura fija de la tarjeta */
+    margin: 0 auto 20px; /* Margen en la parte inferior y centrado horizontalmente */
+    display: flex; /* Para alinear elementos internos */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    padding: 10px; /* Espaciado interno */
+  }
+
+  .card .circle {
+    height: 100px; /* Altura fija del círculo */
+    width: 100px; /* Ancho fijo del círculo */
+    border-width: 6px; /* Grosor del borde */
+    margin: 0; /* Eliminar margen */
+  }
+
+  .card .circle .box {
+    font-size: 24px; /* Tamaño de la fuente */
+  }
+
+  .card .text {
+    font-size: 20px; /* Tamaño del texto */
+  }
+
+  .estadisticas h2 {
+    font-size: 26px; /* Tamaño del título */
+  }
+}

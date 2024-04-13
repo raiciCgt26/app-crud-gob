@@ -1,4 +1,6 @@
 <?php
+session_start(); // Inicia la sesión
+
 include('C:\xampp\htdocs\backend\php\dbconnection.php');
 ?>
 <!DOCTYPE html>
@@ -14,7 +16,9 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
 </head>
 
 <body>
-  <!-- navbar-->
+
+  <!-- menu-navbar-header -->
+
   <div class="menu">
     <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
     <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
@@ -34,7 +38,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
     <nav class="navegacion">
       <ul>
         <li>
-          <a id="inbox" href="./index.php">
+          <a id="inbox" href="/frontend/view/admin/index.php">
             <ion-icon name="mail-unread-outline">
               <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
             </ion-icon>
@@ -43,7 +47,17 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
         </li>
 
         <li>
-          <a class="user" href="./users.php">
+          <a class="user" href="/frontend/view/admin/level_admin.php">
+            <ion-icon name="mail-unread-outline">
+              <img class="icono-inc" src="/frontend/aseets/icons/envelope-paper.svg" />
+            </ion-icon>
+            <span>Incidencias</span>
+          </a>
+        </li>
+
+
+        <li>
+          <a class="user" href="/frontend/view/admin/users.php">
             <ion-icon name="star-outline">
               <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
             </ion-icon>
@@ -52,7 +66,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
         </li>
 
         <li>
-          <a class="user" href="./chat.php">
+          <a class="user" href="/frontend/view/admin/chat.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
             </ion-icon>
@@ -61,7 +75,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
         </li>
 
         <li>
-          <a href="./setting.php">
+          <a href="/frontend/view/admin/setting.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
             </ion-icon>
@@ -69,8 +83,9 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
           </a>
         </li>
 
+
         <li>
-          <a href="./logout.php">
+          <a href="/frontend/view/logout.php">
             <ion-icon name="document-text-outline">
               <img class="icons-menu ico-center" src="/frontend/aseets/icons/file-lock2.svg" />
             </ion-icon>
@@ -83,11 +98,27 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
     <div>
       <div class="linea"></div>
 
+
+
+      <div class="info-usuario">
+        <div class="nombre-email">
+          <span class="nombre">
+            <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
+            <span class="title-profile">Level 1
+            </span>
+          </span>
+        </div>
+      </div>
+
+
+
+
       <div class="modo-oscuro">
         <div class="info">
           <img class="ico ico-center" src="/frontend/aseets/icons/bx-moon.svg" />
-          </ion-icon> <span class="dark-text">Modo oscuro</span> </ion-icon>
+          <span class="dark-text">Modo oscuro</span>
         </div>
+
         <div class="switch">
           <div class="base">
             <div class="circulo">
@@ -95,10 +126,19 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
             </div>
           </div>
         </div>
+
       </div>
+
+
+
+
     </div>
+
   </div>
-  <!--navbar-->
+  <!-- menu-navbar-header -->
+
+
+
   <!--profile card -->
 
   <section>

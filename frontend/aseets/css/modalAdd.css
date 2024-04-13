@@ -1,0 +1,64 @@
+div.table {
+  position: fixed;
+  z-index: 1;
+  left: -15%;
+  top: 10%;
+  right: 15%;
+  bottom: 0;
+  width: 80%;
+  height: 80%;
+}
+
+#modalForm {
+  display: none;
+}
+
+button.btn-add {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  padding: 14px 22px;
+  border: none;
+  background-color: rgb(74, 182, 212);
+  border-radius: 6px;
+}
+
+button.btn-add:hover {
+  background-color: rgb(0, 164, 201);
+}
+
+button.show-modal {
+  position: absolute;
+  right: 6%;
+  top: 5%;
+  box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
+}
+
+.modal-box {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+div p.text-1 {
+  color: var(--color-texto);
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+@media only screen and (max-width: 450px) {
+  div p.text-1 {
+    color: var(--color-texto);
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+  }
+}

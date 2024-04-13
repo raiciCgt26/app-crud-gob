@@ -43,15 +43,15 @@ if (isset($_POST['submit'])) {
       switch ($userLevel) {
         case 1:
           // Usuario de nivel 1 (admin)
-          header("Location: /frontend/view/level_admin.php");
+          header("Location: /frontend/view/admin/level_admin.php");
           break;
         case 2:
           // Usuario de nivel 2 (jefe)
-          header("Location: /frontend/view/level_jefe.php");
+          header("Location: /frontend/view/jefe/level_jefe.php");
           break;
         case 3:
           // Usuario de nivel 3 (administrativo)
-          header("Location: /frontend/view/level_pers_admi.php");
+          header("Location: /frontend/view/pers_adm/level_pers_admi.php");
           break;
           echo "
         <script>
