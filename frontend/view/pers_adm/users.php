@@ -18,7 +18,6 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
 <body>
 
   <!-- menu-navbar-header -->
-
   <div class="menu">
     <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
     <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
@@ -38,7 +37,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
     <nav class="navegacion">
       <ul>
         <li>
-          <a id="inbox" href="/frontend/view/admin/index.php">
+          <a id="inbox" href="/frontend/view/pers_adm/index.php">
             <ion-icon name="mail-unread-outline">
               <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
             </ion-icon>
@@ -47,7 +46,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
         </li>
 
         <li>
-          <a class="user" href="/frontend/view/admin/level_admin.php">
+          <a class="user" href="/frontend/view/pers_adm/level_pers_admi.php">
             <ion-icon name="mail-unread-outline">
               <img class="icono-inc" src="/frontend/aseets/icons/envelope-paper.svg" />
             </ion-icon>
@@ -57,7 +56,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
 
 
         <li>
-          <a class="user" href="/frontend/view/admin/users.php">
+          <a class="user" href="/frontend/view/pers_adm/users.php">
             <ion-icon name="star-outline">
               <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
             </ion-icon>
@@ -66,7 +65,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
         </li>
 
         <li>
-          <a class="user" href="/frontend/view/admin/chat.php">
+          <a class="user" href="/frontend/view/pers_adm/chat.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
             </ion-icon>
@@ -75,7 +74,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
         </li>
 
         <li>
-          <a href="/frontend/view/admin/setting.php">
+          <a href="/frontend/view/pers_adm/setting.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
             </ion-icon>
@@ -104,7 +103,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
         <div class="nombre-email">
           <span class="nombre">
             <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
-            <span class="title-profile">Level 1
+            <span class="title-profile">Level 3
             </span>
           </span>
         </div>
@@ -199,7 +198,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
                       break;
                   }
               ?>
-                  <tr data-id="<?php echo $r['id'] ?>">
+                  <tr>
                     <td><?php echo $r['username'] ?></td>
                     <td><?php echo $r['email'] ?></td>
                     <td><?php echo $rol ?></td>
@@ -209,23 +208,12 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
                     <td>
                       <div class="acciones-container">
                         <strong>
-                          <!-- <a href="/backend/php/editar_users.php?id=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/pencil-fill.svg" alt="Editar"></a> -->
-
-                          <?php if ($r['activo'] == 1) { ?>
-                            <a href="/backend/php/editar_users.php?id=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/pencil-fill.svg" alt="Editar"></a>
-                          <?php } else { ?>
-                            <span class="disabled"><img src="/frontend/aseets/icons/x.svg" alt=""></span>
-                          <?php } ?>
-
 
                           <a class="ver-detalles" data-username="<?php echo $r['username']; ?>" data-email="<?php echo $r['email']; ?>" data-role="<?php echo $rol; ?>" data-phone="<?php echo $r['phone']; ?>" data-description="<?php echo $r['description']; ?>" data-estado="<?php echo $r['activo'] == 1 ? 'Activo' : 'Deshabilitado'; ?>">
                             <img src="/frontend/aseets/icons/envelope-paper.svg" alt="">
                           </a>
 
 
-                          <a class="desabilitar-usuario" data-id="<?php echo $r['id'] ?>">
-                            <img src="/frontend/aseets/icons/file-lock2.svg" alt="">
-                          </a>
                         </strong>
                       </div>
                     </td>
@@ -259,49 +247,29 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
 
   <!--profile card-->
 
+</body>
 
-  <footer>
-    <!-- Modal para mostrar los detalles -->
-    <div id="modalDetalles" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 class="detalles">Usuarios</h2>
-        <div class="detallesCont" id="detallesContent"></div>
-      </div>
+<footer>
+  <!-- Modal para mostrar los detalles -->
+  <div id="modalDetalles" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 class="detalles">Usuarios</h2>
+      <div class="detallesCont" id="detallesContent"></div>
     </div>
-
-    <!-- Modal para confirmar la deshabilitación -->
-    <div id="modalConfirmacion" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p class="text">¿Estás seguro de que deseas deshabilitar este usuario?</p>
-        <div class="button-container">
-          <button id="confirmarDeshabilitar" class="button-grd">Confirmar</button>
-          <button class="close-btn button-can">Cancelar</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal de alerta de usuario deshabilitado -->
-    <div id="modalUsuarioDeshabilitado" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Usuario deshabilitado con éxito</p>
-      </div>
-    </div>
-
-    <!-- Botón para mostrar los detalles (debe repetirse para cada fila de la tabla) -->
-    <!-- <a class="ver-detalles" data-username="Usuario1" data-email="usuario1@example.com" data-role="Admin" data-phone="123456789" data-description="Descripción del usuario 1">Ver detalles</a>
-
-  <a class="ver-detalles" data-username="Usuario2" data-email="usuario2@example.com" data-role="Jefe" data-phone="987654321" data-description="Descripción del usuario 2">Ver detalles</a> -->
-    <!-- scripts -->
-    <script src="/frontend/aseets/js/index.js"></script>
-    <script src="/frontend/aseets/js/users.js"></script>
-    <script src="/frontend/aseets/js/disable_user.js"></script>
-  </footer>
-
   </div>
 
-</body>
+  <!-- Botón para mostrar los detalles (debe repetirse para cada fila de la tabla) -->
+  <!-- <a class="ver-detalles" data-username="Usuario1" data-email="usuario1@example.com" data-role="Admin" data-phone="123456789" data-description="Descripción del usuario 1">Ver detalles</a>
+
+  <a class="ver-detalles" data-username="Usuario2" data-email="usuario2@example.com" data-role="Jefe" data-phone="987654321" data-description="Descripción del usuario 2">Ver detalles</a> -->
+  <!-- scripts -->
+  <script src="/frontend/aseets/js/index.js"></script>
+  <script src="/frontend/aseets/js/users.js"></script>
+
+</footer>
+
+</div>
+
 
 </html>

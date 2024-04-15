@@ -18,7 +18,7 @@ main {
 .estadisticas h2 {
   text-align: center; /* Centrar el texto */
   width: 100%; /* Ocupar todo el ancho disponible */
-  color: var(--color-mod);
+  color: var(--color-H2);
   font-size: 28px;
   padding: 20px;
   margin-top: 10px;
@@ -70,7 +70,7 @@ main {
   position: relative;
   height: 160px;
   width: 160px;
-  border: 8px solid rgb(185, 180, 218);
+  border: 8px solid var(--color-circle);
   border-radius: 50%;
 }
 
@@ -97,7 +97,7 @@ main {
 .card .circle .box span {
   font-size: 48px;
   font-weight: 600;
-  color: rgb(157, 155, 228);
+  color: var(--color-circle);
   transform: translate(-50%, -50%);
   /* background: -webkit-linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
   -webkit-background-clip: text;
@@ -107,7 +107,7 @@ main {
 .card .text {
   font-size: 18px;
   font-weight: 500;
-  color: var(--color-mod);
+  color: var(--color--card);
 }
 
 /* Estilo base para las estadísticas */

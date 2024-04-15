@@ -1,81 +1,43 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const startBtn = document.querySelector(".startBtn");
-  const stepBtns = document.querySelectorAll(".stepBtn");
-  const nums = document.querySelectorAll(".num");
-  const slider = document.querySelector(".card-wrapper");
-  const cards = document.querySelectorAll(".card");
-  const endBtn = document.querySelector(".endBtn");
-  const totalSlides = cards.length;
-  let currentSlide = 0;
+// Obtener referencia al modal y al contenido de los detalles
+const modalDetalles = document.getElementById("modalDetalles");
+const detallesContent = document.getElementById("detallesContent");
 
-  // Función para mostrar el slide actual
-  function showSlide(index) {
-    cards.forEach((card) => {
-      card.style.display = "none";
-    });
-    cards[index].style.display = "block";
-    currentSlide = index;
-    updateButtons();
+// Agregar evento click a los botones "Ver detalles"
+document.querySelectorAll(".ver-detalles").forEach((button) => {
+  button.addEventListener("click", () => {
+    // Obtener los detalles del usuario a través del atributo data-*
+    const username = button.getAttribute("data-username");
+    const email = button.getAttribute("data-email");
+    const role = button.getAttribute("data-role");
+    const phone = button.getAttribute("data-phone");
+    const description = button.getAttribute("data-description");
+    const estado = button.getAttribute("data-estado");
+
+    // Mostrar los detalles del usuario en el modal
+    detallesContent.innerHTML = `
+      <p><strong>Username:</strong> ${username}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Rol:</strong> ${role}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Description:</strong> ${description}</p>
+      <p><strong>Estado:</strong> ${estado}</p>
+    `;
+
+    // Mostrar el modal
+    modalDetalles.style.display = "block";
+  });
+});
+
+// Agregar evento click al botón de cerrar del modal
+document
+  .querySelector("#modalDetalles .close")
+  .addEventListener("click", () => {
+    modalDetalles.style.display = "none";
+  });
+
+// Cerrar el modal si se hace clic fuera de él
+window.addEventListener("click", (event) => {
+  if (event.target === modalDetalles) {
+    modalDetalles.style.display = "none";
   }
-
-  // Función para actualizar el estado de los botones de navegación
-  function updateButtons() {
-    if (currentSlide === 0) {
-      startBtn.disabled = true;
-      stepBtns[0].disabled = true;
-    } else {
-      startBtn.disabled = false;
-      stepBtns[0].disabled = false;
-    }
-
-    if (currentSlide === totalSlides - 1) {
-      stepBtns[1].disabled = true;
-      endBtn.disabled = true;
-    } else {
-      stepBtns[1].disabled = false;
-      endBtn.disabled = false;
-    }
-
-    nums.forEach((num, index) => {
-      if (index === currentSlide) {
-        num.classList.add("active");
-      } else {
-        num.classList.remove("active");
-      }
-    });
-  }
-
-  // Evento para el botón de inicio
-  startBtn.addEventListener("click", function () {
-    showSlide(0);
-  });
-
-  // Evento para el botón de retroceso
-  stepBtns[0].addEventListener("click", function () {
-    if (currentSlide > 0) {
-      showSlide(currentSlide - 1);
-    }
-  });
-
-  // Evento para el botón de avance
-  stepBtns[1].addEventListener("click", function () {
-    if (currentSlide < totalSlides - 1) {
-      showSlide(currentSlide + 1);
-    }
-  });
-
-  // Evento para los números de paginación
-  nums.forEach((num, index) => {
-    num.addEventListener("click", function () {
-      showSlide(index);
-    });
-  });
-
-  // Evento para el botón de final
-  endBtn.addEventListener("click", function () {
-    showSlide(totalSlides - 1);
-  });
-
-  // Mostrar el primer slide al cargar la página
-  showSlide(0);
 });

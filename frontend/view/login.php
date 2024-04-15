@@ -37,33 +37,46 @@ if (isset($_POST['submit'])) {
     $row = mysqli_fetch_assoc($result);
 
     if ($row && password_verify($password, $row['password'])) {
-      // Obtener el nivel del usuario
-      $userLevel = $row['role_id_fk'];
-      // Redirigir según el nivel del usuario
-      switch ($userLevel) {
-        case 1:
-          // Usuario de nivel 1 (admin)
-          header("Location: /frontend/view/admin/level_admin.php");
-          break;
-        case 2:
-          // Usuario de nivel 2 (jefe)
-          header("Location: /frontend/view/jefe/level_jefe.php");
-          break;
-        case 3:
-          // Usuario de nivel 3 (administrativo)
-          header("Location: /frontend/view/pers_adm/level_pers_admi.php");
-          break;
-          echo "
+      // Verificar si el usuario está activo
+      if ($row['activo'] == 1) {
+        // Obtener el nivel del usuario
+        $userLevel = $row['role_id_fk'];
+        // Redirigir según el nivel del usuario
+        switch ($userLevel) {
+          case 1:
+            // Usuario de nivel 1 (admin)
+            header("Location: /frontend/view/admin/level_admin.php");
+            break;
+          case 2:
+            // Usuario de nivel 2 (jefe)
+            header("Location: /frontend/view/jefe/level_jefe.php");
+            break;
+          case 3:
+            // Usuario de nivel 3 (administrativo)
+            header("Location: /frontend/view/pers_adm/level_pers_admi.php");
+            break;
+        }
+        // Establecer la sesión
+        $_SESSION['username'] = $username;
+      } else {
+        // Mostrar el modal de usuario desactivado
+        echo "
         <script>
-            function showAlert() {
-                alert('Usuario o contraseña incorrecta');
-            }
-            showAlert();
-        </script>";
-          break;
+          document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('modalUsuarioDesactivado').style.display = 'block';
+          });
+        </script>
+        ";
       }
-      // Establecer la sesión
-      $_SESSION['username'] = $username;
+    } else {
+      // Mostrar alerta de usuario o contraseña incorrecta
+      echo "
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          alert('Usuario o contraseña incorrecta');
+        });
+      </script>
+      ";
     }
   }
 }
@@ -77,7 +90,7 @@ if (isset($_POST['submit'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="../aseets/img/logo-gob2.png" />
   <link rel="stylesheet" href="../aseets/css/login-signup.css" />
-
+  <link rel="stylesheet" href="../aseets/css/try-error.css" />
   <title>Login and sign up</title>
 </head>
 
@@ -143,8 +156,16 @@ if (isset($_POST['submit'])) {
     </div>
   </div>
 
+  <!-- Modal de usuario desactivado -->
+  <div id="modalUsuarioDesactivado" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Usuario desactivado</p>
+    </div>
+  </div>
 
   <script src="../aseets/js/login-signup.js"></script>
+  <script src="../aseets/js/try-error.js"></script>
 
 </body>
 

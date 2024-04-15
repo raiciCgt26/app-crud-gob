@@ -24,3 +24,10 @@ for (var i = 0; i < closeButtons.length; i++) {
     modal.style.display = "none";
   };
 }
+
+// Cerrar modal al hacer clic en la "x"
+document.querySelectorAll(".close").forEach(function (closeBtn) {
+  closeBtn.addEventListener("click", function () {
+    document.getElementById("modalUsuarioDesactivado").style.display = "none";
+  });
+});

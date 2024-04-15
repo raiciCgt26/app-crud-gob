@@ -135,14 +135,138 @@ session_start(); // Inicia la sesión
   </div>
   <!-- menu-navbar-header -->
 
+  <div class="center">
+    <div class="container wrapper">
+      <section class="users">
+        <header>
+          <div class="content">
+            <img src="/frontend/aseets/img/avatar-.png" alt="">
+            <div class="details">
+              <span class="tittle-chat">Chat</span>
+              <p>En linea</p>
+            </div>
+
+          </div>
+          <a href="#" class="logout">Cerrar sesion</a>
+        </header>
+        <div class="search">
+          <span class="text">Seleccione un usuario para empezar un chat</span>
+          <input type="text" placeholder="Buscar...">
+          <button><img src="/frontend/aseets/icons/bx-search-alt-2.svg" alt=""></button>
+        </div>
+        <div class="users-list">
+          <a href="#">
+            <div class="content">
+              <img src="/frontend/aseets/img/avatar_2.png" alt="">
+              <div class="details">
+                <span class="tittle-chat">Chat</span>
+                <p>En linea</p>
+              </div>
+            </div>
+            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+          </a>
+          <a href="#">
+            <div class="content">
+              <img src="/frontend/aseets/img/avatar_2.png" alt="">
+              <div class="details">
+                <span class="tittle-chat">Chat</span>
+                <p>En linea</p>
+              </div>
+            </div>
+            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+          </a>
+          <a href="#">
+            <div class="content">
+              <img src="/frontend/aseets/img/avatar_2.png" alt="">
+              <div class="details">
+                <span class="tittle-chat">Chat</span>
+                <p>En linea</p>
+              </div>
+            </div>
+            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+          </a>
+          <a href="#">
+            <div class="content">
+              <img src="/frontend/aseets/img/avatar_2.png" alt="">
+              <div class="details">
+                <span class="tittle-chat">Chat</span>
+                <p>En linea</p>
+              </div>
+            </div>
+            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+          </a>
+          <a href="#">
+            <div class="content">
+              <img src="/frontend/aseets/img/avatar_2.png" alt="">
+              <div class="details">
+                <span class="tittle-chat">Chat</span>
+                <p>En linea</p>
+              </div>
+            </div>
+            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+          </a>
+          <a href="#">
+            <div class="content">
+              <img src="/frontend/aseets/img/avatar_2.png" alt="">
+              <div class="details">
+                <span class="tittle-chat">Chat</span>
+                <p>En linea</p>
+              </div>
+            </div>
+            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+          </a>
+          <a href="#">
+            <div class="content">
+              <img src="/frontend/aseets/img/avatar_2.png" alt="">
+              <div class="details">
+                <span class="tittle-chat">Chat</span>
+                <p>En linea</p>
+              </div>
+            </div>
+            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+          </a>
+          <a href="#">
+            <div class="content">
+              <img src="/frontend/aseets/img/avatar_2.png" alt="">
+              <div class="details">
+                <span class="tittle-chat">Chat</span>
+                <p>En linea</p>
+              </div>
+            </div>
+            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+          </a>
+          <a href="#">
+            <div class="content">
+              <img src="/frontend/aseets/img/avatar_2.png" alt="">
+              <div class="details">
+                <span class="tittle-chat">Chat</span>
+                <p>En linea</p>
+              </div>
+            </div>
+            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+          </a>
+          <a href="#">
+            <div class="content">
+              <img src="/frontend/aseets/img/avatar_2.png" alt="">
+              <div class="details">
+                <span class="tittle-chat">Chat</span>
+                <p>En linea</p>
+              </div>
+            </div>
+            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
 
 
   <footer>
     <!-- scripts -->
     <script src="/frontend/aseets/js/index.js"></script>
+    <script src="/frontend/aseets/js/chat.js"></script>
   </footer>
 
-  </div>
 </body>
 
 </html>

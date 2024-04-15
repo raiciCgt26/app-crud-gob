@@ -122,14 +122,13 @@ div p.text {
 h2.detalles {
   font-size: 25px;
   font-weight: 800;
-  color: var(--color-mod);
-  /* text-align: center; */
+  color: var(--color--card);
 }
 
 div.detallesCont {
   font-size: 18px;
   font-weight: 300;
-  color: var(--color-mod);
+  color: var(--color--card);
   text-align: justify;
 }
 /* 
