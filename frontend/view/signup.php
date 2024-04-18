@@ -6,6 +6,7 @@ $passwordError = "";
 $rolError = "";
 $phoneError = "";
 $descriptionError = "";
+$fileError = "";
 
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
@@ -13,6 +14,10 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $phone = $_POST['phone'];
   $description = $_POST['description'];
+  $file = $_FILES['file']['name'];
+  $tempname = $_FILES['file']['tmp_name'];
+  $folder = '/frontend/aseets/image';
+
 
   if (isset($_POST['role_id_fk']) && $_POST['role_id_fk'] !== '') {
     $rol = $_POST['role_id_fk'];
@@ -66,12 +71,29 @@ if (isset($_POST['submit'])) {
     $descriptionError = "El nombre de la institución es obligatorio";
   }
 
+  $extensionesPermitidas = ['jpg', 'jpeg', 'png', 'gif'];
+  // Verificar si el archivo se subió correctamente antes de intentar obtener su tipo de imagen
+  if (!isset($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK || !is_uploaded_file($_FILES['file']['tmp_name'])) {
+    $fileError = "Error al subir el archivo.";
+  } else {
+    // Verificar si el archivo es una imagen
+    $tipoImagen = exif_imagetype($_FILES['file']['tmp_name']);
+    if ($tipoImagen === false || !in_array(image_type_to_extension($tipoImagen, false), $extensionesPermitidas)) {
+      $fileError = "Por favor selecciona un archivo de imagen válido (jpg, jpeg, png, gif).";
+    }
+  }
+
+  // Mover la imagen al directorio de destino
+  if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+    move_uploaded_file($_FILES['file']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $folder . '/' . $file);
+  }
+
   // Hashear la contraseña
   $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 
   // Si todas las validaciones pasan, proceder con la inserción en la base de datos
-  if (empty($nameError) && empty($emailError) && empty($passwordError) && empty($rolError) && empty($phoneError) && empty($descriptionError)) {
+  if (empty($nameError) && empty($emailError) && empty($passwordError) && empty($rolError) && empty($phoneError) && empty($descriptionError) && empty($fileError)) {
     require('/xampp/htdocs/backend/php/dbconnection.php');
 
     // Verificar si el nombre de usuario o correo ya existen
@@ -83,14 +105,18 @@ if (isset($_POST['submit'])) {
     document.getElementById('myModalInfo').style.display = 'block';
   });</script>";
     } else {
+
       // Insertar en la base de datos
       $username = mysqli_real_escape_string($con, $username);
       $email = mysqli_real_escape_string($con, $email);
       $rol = mysqli_real_escape_string($con, $rol);
       $phone = mysqli_real_escape_string($con, $phone);
       $description = mysqli_real_escape_string($con, $description);
+      $file = mysqli_real_escape_string($con, $file);
+      // Cambiar el estado del usuario a "desconectado"
+      $status = "desconectado";
 
-      $sql = "INSERT INTO `usuarios` (`username`, `email`,`password`,`role_id_fk`, `phone`, `description`) VALUES ('$username', '$email', '$hashedPassword', '$rol', '$phone', '$description')";
+      $sql = "INSERT INTO `usuarios` (`username`, `email`,`password`,`role_id_fk`, `phone`, `description`, `file`, `status`) VALUES ('$username', '$email', '$hashedPassword', '$rol', '$phone', '$description','$file', '$status')";
       $result = mysqli_query($con, $sql);
 
       if ($result) {
@@ -138,7 +164,7 @@ if (isset($_POST['submit'])) {
         <div class="form-information-childs">
           <h2>Crear una cuenta</h2>
           <div class="icons">
-            <form class="form" action="" method="POST">
+            <form class="form" action="" method="POST" enctype="multipart/form-data">
               <p>
                 <label for="name">
                   <img src="../aseets/icons/bx-user.svg" />
@@ -158,9 +184,10 @@ if (isset($_POST['submit'])) {
                 </span>
               </p>
               <p>
-                <label for="pwd">
+                <label class="field input" for="pwd">
                   <img src="../aseets/icons/bx-lock-alt.svg" />
                   <input type="password" placeholder="Escribe tu contraseña" name="password" id="password-reg" />
+                  <img class="eye" src="/frontend/aseets/icons/eye.svg" alt="">
                 </label>
                 <span class="form-error">
                   <?php echo $passwordError ?>
@@ -224,6 +251,16 @@ if (isset($_POST['submit'])) {
                   <?php echo $descriptionError ?>
                 </span>
               </p>
+
+              <p>
+                <label for="file">
+                  <input type="file" name="file" />
+                </label>
+                <span class="form-error">
+                  <?php echo $fileError ?>
+                </span>
+              </p>
+
 
               <input class="btn-login" name="submit" type="submit" value="Registrarse" />
             </form>

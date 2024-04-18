@@ -13,7 +13,6 @@ $row = mysqli_fetch_assoc($result);
 $nombreUsuario = $row['username'];
 $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,9 +25,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 </head>
 
 <body>
-
   <!-- menu-navbar-header -->
-
   <div class="menu">
     <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
     <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
@@ -48,7 +45,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
     <nav class="navegacion">
       <ul>
         <li>
-          <a id="inbox" href="/frontend/view/admin/index.php">
+          <a id="inbox" href="/frontend/view/jefe/index.php">
             <ion-icon name="mail-unread-outline">
               <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
             </ion-icon>
@@ -57,7 +54,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         </li>
 
         <li>
-          <a class="user" href="/frontend/view/admin/level_admin.php">
+          <a class="user" href="/frontend/view/jefe/level_jefe.php">
             <ion-icon name="mail-unread-outline">
               <img class="icono-inc" src="/frontend/aseets/icons/envelope-paper.svg" />
             </ion-icon>
@@ -67,7 +64,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 
 
         <li>
-          <a class="user" href="/frontend/view/admin/users.php">
+          <a class="user" href="/frontend/view/jefe/users.php">
             <ion-icon name="star-outline">
               <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
             </ion-icon>
@@ -76,7 +73,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         </li>
 
         <li>
-          <a class="user" href="/frontend/view/admin/chat.php">
+          <a class="user" href="/frontend/view/jefe/chat.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
             </ion-icon>
@@ -85,7 +82,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         </li>
 
         <li>
-          <a href="/frontend/view/admin/setting.php">
+          <a href="/frontend/view/jefe/setting.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
             </ion-icon>
@@ -114,7 +111,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         <div class="nombre-email">
           <span class="nombre">
             <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
-            <span class="title-profile">Level 1
+            <span class="title-profile">Level 2
             </span>
           </span>
         </div>

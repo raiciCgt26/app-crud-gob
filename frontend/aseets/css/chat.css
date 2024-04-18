@@ -7,7 +7,8 @@
 }
 
 .container {
-  max-width: 512px;
+  /* max-width: 512px; */
+  min-width: 512px;
   width: 100%;
   background: #fff;
   border-radius: 12px;
@@ -84,9 +85,14 @@
   border: 1px solid #e6e6e6;
   outline: none;
   border-radius: 5px 0 0 5px;
-  /* opacity: 0;
+  opacity: 0;
   pointer-events: none;
-  transition: all 0.2s ease; */
+  transition: all 0.3s ease;
+}
+
+.users .search input.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .users .search button {
@@ -98,12 +104,20 @@
   font-size: 17px;
   cursor: pointer;
   border: none;
-  background: #2d88a6;
+  background: #ffffff;
   color: #333;
   outline: none;
   border-radius: 0 5px 5px 0;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
+.users .search button.active {
+  background: #44b5ce;
+  color: #fff;
+}
+/* .search button.active img::before {
+  background-image: url(/frontend/aseets/icons/x-circle.svg);
+} */
+
 .users-list {
   max-height: 350px;
   overflow-y: auto;
@@ -142,24 +156,6 @@
 .users-list a .status-dot.offline {
   color: #ccc;
 }
-
-/*
-.users .search input.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.users .search button.active {
-  background: #333;
-  color: #fff;
-}
-.search button.active i::before {
-  content: "\f00d";
-}
-/*
-/*
-/*
-
 
 /* Chat Area CSS Start */
 .chat-area header {

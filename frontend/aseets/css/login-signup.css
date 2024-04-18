@@ -209,16 +209,19 @@ select {
 
 .form-error {
   color: #ff0000;
-  margin-top: -10%;
-  margin-bottom: 10%;
+  margin-top: -20%;
 }
 .form-good {
   color: #333333d5;
   margin-top: -20%;
-
   text-decoration: none;
 }
 
 .form-good:hover {
   color: #008000;
 }
+
+/* .form form .field img.active::before {
+  fill: #333;
+  content: "\f070";
+} */

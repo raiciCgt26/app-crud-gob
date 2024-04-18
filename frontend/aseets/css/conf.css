@@ -308,19 +308,18 @@ button:hover {
 }
 
 .accordion::-webkit-scrollbar {
-  width: 0.8rem;
-  height: 1rem;
+  width: 0;
 }
 
 .accordion::-webkit-scrollbar-thumb {
-  border-radius: 0.5rem;
-  background-color: var(--color-scroll);
+  /* border-radius: 0.5rem;
+  background-color: var(--color-scroll); */
   visibility: hidden;
 }
 
-.accordion:hover::-webkit-scrollbar-thumb {
+/* .accordion:hover::-webkit-scrollbar-thumb {
   visibility: visible;
-}
+} */
 
 .accordion .accordion-content {
   margin: 10px 0;

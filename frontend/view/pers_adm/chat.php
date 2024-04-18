@@ -12,6 +12,12 @@ $row = mysqli_fetch_assoc($result);
 
 $nombreUsuario = $row['username'];
 $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
+
+
+// Obtener la lista de usuarios en línea excluyendo al usuario actual
+$sqlUsuariosEnLinea = "SELECT * FROM `usuarios` WHERE status = 'en línea' AND username != '$username'";
+$resultUsuariosEnLinea = mysqli_query($con, $sqlUsuariosEnLinea);
+
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +34,6 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 <body>
 
   <!-- menu-navbar-header -->
-
   <div class="menu">
     <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
     <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
@@ -48,7 +53,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
     <nav class="navegacion">
       <ul>
         <li>
-          <a id="inbox" href="/frontend/view/admin/index.php">
+          <a id="inbox" href="/frontend/view/pers_adm/index.php">
             <ion-icon name="mail-unread-outline">
               <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
             </ion-icon>
@@ -57,7 +62,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         </li>
 
         <li>
-          <a class="user" href="/frontend/view/admin/level_admin.php">
+          <a class="user" href="/frontend/view/pers_adm/level_pers_admi.php">
             <ion-icon name="mail-unread-outline">
               <img class="icono-inc" src="/frontend/aseets/icons/envelope-paper.svg" />
             </ion-icon>
@@ -67,7 +72,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 
 
         <li>
-          <a class="user" href="/frontend/view/admin/users.php">
+          <a class="user" href="/frontend/view/pers_adm/users.php">
             <ion-icon name="star-outline">
               <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
             </ion-icon>
@@ -76,7 +81,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         </li>
 
         <li>
-          <a class="user" href="/frontend/view/admin/chat.php">
+          <a class="user" href="/frontend/view/pers_adm/chat.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
             </ion-icon>
@@ -85,7 +90,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         </li>
 
         <li>
-          <a href="/frontend/view/admin/setting.php">
+          <a href="/frontend/view/pers_adm/setting.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
             </ion-icon>
@@ -114,7 +119,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         <div class="nombre-email">
           <span class="nombre">
             <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
-            <span class="title-profile">Level 1
+            <span class="title-profile">Level 3
             </span>
           </span>
         </div>
@@ -149,68 +154,61 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 
   <div class="center">
     <div class="container wrapper">
-      <section class="chat-area">
+      <section class="users">
         <header>
-          <a href="" class="back-icon"> <img src="/frontend/aseets/icons/bx-chevron-left.svg" alt=""></a>
-          <img src="/frontend/aseets/img/avatar-.png" alt="">
-          <div class="details">
-            <span class="tittle-chat">Chat</span>
-            <p>En linea</p>
-          </div>
-        </header>
-        <div class="chat-box">
-          <div class="div chat outgoing">
+
+          <div class="content">
+            <img src="<?php echo $imagenUsuario; ?>" alt="">
             <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
+              <span class="tittle-chat"><?php echo $nombreUsuario; ?></span>
+              <p>En linea</p>
             </div>
           </div>
 
+          <a href="#" class="logout">Cerrar sesion</a>
+        </header>
+
+        <div class="search">
+          <!-- Barra de búsqueda -->
+          <span class="text">Seleccione un usuario en línea para empezar un chat</span>
+          <input type="text" placeholder="Buscar..." id="searchInput">
+          <button id="searchButton"><img src="/frontend/aseets/icons/bx-search-alt-2.svg" alt=""></button>
         </div>
-        <form action="#" class="typing-area">
-          <input type="text" placeholder="Escriba su mensaje....">
-          <button><img src="/frontend/aseets/icons/send-fill.svg" alt=""></button>
-        </form>
+
+
+
+        <div class="users-list">
+          <?php
+          while ($rowUsuarioEnLinea = mysqli_fetch_assoc($resultUsuariosEnLinea)) :
+            $usuarioEnLineaUsername = $rowUsuarioEnLinea['username'];
+            $usuarioEnLineaImagen = '/frontend/aseets/image/' . $rowUsuarioEnLinea['file'];
+          ?>
+            <a href="http://localhost/frontend/view/pers_adm/chat-2.php?username=<?php echo $usuarioEnLineaUsername; ?>">
+              <div class="content">
+                <img src="<?php echo $usuarioEnLineaImagen; ?>" alt="">
+                <div class="details">
+                  <span class="tittle-chat"><?php echo $usuarioEnLineaUsername; ?></span>
+                  <p>En línea</p>
+                </div>
+              </div>
+              <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+            </a>
+          <?php endwhile; ?>
+        </div>
+
+
       </section>
     </div>
+  </div>
+
+
+
+
+
+
+  </div>
+  </section>
+  </div>
   </div>
 
 

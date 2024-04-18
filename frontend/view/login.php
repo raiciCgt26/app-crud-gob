@@ -37,6 +37,7 @@ if (isset($_POST['submit'])) {
     $row = mysqli_fetch_assoc($result);
 
     if ($row && password_verify($password, $row['password'])) {
+
       // Verificar si el usuario está activo
       if ($row['activo'] == 1) {
         // Obtener el nivel del usuario
@@ -56,7 +57,11 @@ if (isset($_POST['submit'])) {
             header("Location: /frontend/view/pers_adm/level_pers_admi.php");
             break;
         }
-        // Establecer la sesión
+        // Actualizar el estado del usuario a "en línea"
+        $status = "en línea";
+        $sql2 = mysqli_query($con, "UPDATE usuarios SET status = '{$status}' WHERE username = '{$username}'");
+
+        // Establecer la sesión 
         $_SESSION['username'] = $username;
       } else {
         // Mostrar el modal de usuario desactivado
@@ -108,13 +113,9 @@ if (isset($_POST['submit'])) {
             <input class="btn-login" type="button" value="Registrarse" />
           </a>
 
-
-          <br>
-          <br>
           <div>
             <a class="form-good" href="/frontend/view/recover_password.php">¿Has olvidado tu contraseña? </a>
           </div>
-
 
         </div>
       </div>
@@ -137,10 +138,12 @@ if (isset($_POST['submit'])) {
               </p>
 
               <p>
-                <label for="password">
+                <label class="field input" for="password">
                   <img src="../aseets/icons/bx-lock-alt.svg" />
                   <input type="password" placeholder="Escribe tu contraseña" name="password" id="password-log" />
+                  <img class="eye" src="/frontend/aseets/icons/eye.svg" alt="">
                 </label>
+
                 <span class="form-error">
                   <?php echo $passwordError ?>
                 </span>

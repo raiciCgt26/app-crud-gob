@@ -1,13 +1,12 @@
-// const btnSignIn = document.getElementById("sign-in"),
-//   btnSignUp = document.getElementById("sign-up"),
-//   formRegister = document.getElementById("register"),
-//   formLogin = document.getElementById("login");
+const pswrdField = document.querySelector(".form input[type='password']"),
+  toggleBtn = document.querySelector(".form .field .eye");
 
-// btnSignIn.addEventListener("click", (e) => {
-//   formRegister.classList.add("hide");
-//   formLogin.classList.remove("hide");
-// });
-// btnSignUp.addEventListener("click", (e) => {
-//   formLogin.classList.add("hide");
-//   formRegister.classList.remove("hide");
-// });
+toggleBtn.onclick = () => {
+  if (pswrdField.type == "password") {
+    pswrdField.type = "text";
+    // toggleBtn.classList.add("active");
+  } else {
+    pswrdField.type = "password";
+    // toggleBtn.classList.remove("active");
+  }
+};

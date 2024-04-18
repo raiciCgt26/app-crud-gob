@@ -1,6 +1,12 @@
 <?php
+session_start();
 include('C:\xampp\htdocs\backend\php\dbconnection.php');
 include("/xampp/htdocs/backend/php/antentication.php");
+// Verificar que se haya iniciado sesión
+if (!isset($_SESSION['username'])) {
+  echo "Error: No se ha iniciado sesión.";
+  exit();
+}
 
 // Obtener el nombre de usuario del usuario que inició sesión
 $username = $_SESSION['username'];
@@ -12,6 +18,16 @@ $row = mysqli_fetch_assoc($result);
 
 $nombreUsuario = $row['username'];
 $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
+
+// Verificar que se haya especificado el destinatario del chat
+if (!isset($_GET['username'])) {
+  echo "Error: No se ha especificado el destinatario del chat.";
+  exit();
+}
+$chatUser = $_GET['username'];
+
+// Asignar el valor de $chatUser a una variable JavaScript
+echo "<script>var chatUser = '" . $chatUser . "';</script>";
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +44,6 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 <body>
 
   <!-- menu-navbar-header -->
-
   <div class="menu">
     <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
     <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
@@ -48,7 +63,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
     <nav class="navegacion">
       <ul>
         <li>
-          <a id="inbox" href="/frontend/view/admin/index.php">
+          <a id="inbox" href="/frontend/view/pers_adm/index.php">
             <ion-icon name="mail-unread-outline">
               <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
             </ion-icon>
@@ -57,7 +72,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         </li>
 
         <li>
-          <a class="user" href="/frontend/view/admin/level_admin.php">
+          <a class="user" href="/frontend/view/pers_adm/level_pers_admi.php">
             <ion-icon name="mail-unread-outline">
               <img class="icono-inc" src="/frontend/aseets/icons/envelope-paper.svg" />
             </ion-icon>
@@ -67,7 +82,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 
 
         <li>
-          <a class="user" href="/frontend/view/admin/users.php">
+          <a class="user" href="/frontend/view/pers_adm/users.php">
             <ion-icon name="star-outline">
               <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
             </ion-icon>
@@ -76,7 +91,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         </li>
 
         <li>
-          <a class="user" href="/frontend/view/admin/chat.php">
+          <a class="user" href="/frontend/view/pers_adm/chat.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
             </ion-icon>
@@ -85,7 +100,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         </li>
 
         <li>
-          <a href="/frontend/view/admin/setting.php">
+          <a href="/frontend/view/pers_adm/setting.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
             </ion-icon>
@@ -114,7 +129,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         <div class="nombre-email">
           <span class="nombre">
             <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
-            <span class="title-profile">Level 1
+            <span class="title-profile">Level 3
             </span>
           </span>
         </div>
@@ -147,67 +162,27 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
   </div>
   <!-- menu-navbar-header -->
 
+
   <div class="center">
     <div class="container wrapper">
       <section class="chat-area">
+
         <header>
-          <a href="" class="back-icon"> <img src="/frontend/aseets/icons/bx-chevron-left.svg" alt=""></a>
-          <img src="/frontend/aseets/img/avatar-.png" alt="">
+          <a href="/frontend/view/pers_adm/chat.php" class="back-icon"> <img src="/frontend/aseets/icons/bx-chevron-left.svg" alt=""></a>
+          <img src="<?php echo $imagenUsuario; ?>" alt="">
           <div class="details">
-            <span class="tittle-chat">Chat</span>
+            <span class="tittle-chat"><?php echo $nombreUsuario; ?></span>
             <p>En linea</p>
           </div>
         </header>
-        <div class="chat-box">
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
+
+        <div class="chat-box" id="chat-box">
 
         </div>
-        <form action="#" class="typing-area">
-          <input type="text" placeholder="Escriba su mensaje....">
-          <button><img src="/frontend/aseets/icons/send-fill.svg" alt=""></button>
+
+        <form id="chat-form" class="typing-area">
+          <input type="text" id="mensaje" placeholder="Escriba su mensaje....">
+          <button id="enviarMensaje"><img src="/frontend/aseets/icons/send-fill.svg" alt=""></button>
         </form>
       </section>
     </div>
@@ -216,8 +191,17 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 
   <footer>
     <!-- scripts -->
-    <script src="/frontend/aseets/js/index.js"></script>
-    <script src="/frontend/aseets/js/chat.js"></script>
+    <!-- <script src="/frontend/aseets/js/index.js"></script> -->
+    <script src="/frontend/aseets/js/chat-2.js"></script>
+    <!-- <script>
+      var chatUser = "<?php echo $chatUser; ?>";
+      var username = "<?php echo $username; ?>";
+
+      console.log('Nombre de usuario:', chatUser);
+      console.log('Usuario del chat:', username);
+    </script> -->
+
+
   </footer>
 
 </body>
