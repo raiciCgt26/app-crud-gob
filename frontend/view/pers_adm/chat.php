@@ -165,7 +165,7 @@ $resultUsuariosEnLinea = mysqli_query($con, $sqlUsuariosEnLinea);
             </div>
           </div>
 
-          <a href="#" class="logout">Cerrar sesion</a>
+          <a href="/frontend/view/logout.php" class="logout">Cerrar sesion</a>
         </header>
 
         <div class="search">

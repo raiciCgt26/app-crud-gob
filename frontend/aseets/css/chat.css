@@ -252,9 +252,9 @@
   display: flex;
   justify-content: space-between;
 }
-.typing-area input {
+.typing-area input.text {
   height: 45px;
-  width: calc(100% - 58px);
+  width: 80%;
   font-size: 16px;
   padding: 0 13px;
   border: 1px solid #e6e6e6;
@@ -262,18 +262,21 @@
   border-radius: 5px 0 0 5px;
 }
 
-.typing-area button {
+.typing-area input.btn {
   color: #fff;
-  width: 55px;
+  width: 20%;
   border: none;
   outline: none;
   background: #2d88a6;
   font-size: 19px;
   cursor: pointer;
-  opacity: 0.7;
-  pointer-events: none;
   border-radius: 0 5px 5px 0;
   transition: all 0.3s ease;
+}
+
+.typing-area input.btn:hover {
+  color: #fff;
+  background: #39a9cf;
 }
 
 /* 

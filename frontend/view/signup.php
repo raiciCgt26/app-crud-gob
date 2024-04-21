@@ -162,7 +162,7 @@ if (isset($_POST['submit'])) {
       </div>
       <div class="form-information">
         <div class="form-information-childs">
-          <h2>Crear una cuenta</h2>
+          <h2 class="sign">Crear una cuenta</h2>
           <div class="icons">
             <form class="form" action="" method="POST" enctype="multipart/form-data">
               <p>
@@ -262,7 +262,7 @@ if (isset($_POST['submit'])) {
               </p>
 
 
-              <input class="btn-login" name="submit" type="submit" value="Registrarse" />
+              <input class="btn-login log" name="submit" type="submit" value="Registrarse" />
             </form>
           </div>
         </div>
@@ -271,7 +271,7 @@ if (isset($_POST['submit'])) {
 
 
   </div>
-  <!-- Modal for successful registration -->
+  <!-- Modal para registro exitosp-->
   <div id="myModalSuccess" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -279,7 +279,7 @@ if (isset($_POST['submit'])) {
     </div>
   </div>
 
-  <!-- Modal for failed registration -->
+  <!-- Modal para registro fallido-->
   <div id="myModalError" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -287,7 +287,7 @@ if (isset($_POST['submit'])) {
     </div>
   </div>
 
-  <!-- Modal for Info registration -->
+  <!-- Modal para informacion-->
   <div id="myModalInfo" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>

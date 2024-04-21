@@ -16,6 +16,10 @@
 h2 {
   font-weight: 600;
 }
+/* 
+h2.sign {
+  margin-top: 20px;
+} */
 
 body {
   display: flex;
@@ -68,6 +72,10 @@ body {
   padding: 0 40px;
   color: #525151;
 }
+/* 
+input.log {
+  margin-bottom: 50px;
+} */
 
 .info-childs input {
   background-color: transparent;
@@ -117,13 +125,13 @@ body {
 }
 
 .form {
-  margin: 30px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 .form label {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   border-radius: 20px;
   background-color: #f9f8f3;
   padding: 0 10px;
@@ -209,7 +217,6 @@ select {
 
 .form-error {
   color: #ff0000;
-  margin-top: -20%;
 }
 .form-good {
   color: #333333d5;

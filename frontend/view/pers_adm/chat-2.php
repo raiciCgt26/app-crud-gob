@@ -26,8 +26,8 @@ if (!isset($_GET['username'])) {
 }
 $chatUser = $_GET['username'];
 
-// Asignar el valor de $chatUser a una variable JavaScript
-echo "<script>var chatUser = '" . $chatUser . "';</script>";
+// // Asignar el valor de $chatUser a una variable JavaScript
+echo "<script>var chatUser = " . json_encode($chatUser) . ";</script>";
 ?>
 
 <!DOCTYPE html>
@@ -168,6 +168,7 @@ echo "<script>var chatUser = '" . $chatUser . "';</script>";
       <section class="chat-area">
 
         <header>
+
           <a href="/frontend/view/pers_adm/chat.php" class="back-icon"> <img src="/frontend/aseets/icons/bx-chevron-left.svg" alt=""></a>
           <img src="<?php echo $imagenUsuario; ?>" alt="">
           <div class="details">
@@ -176,13 +177,14 @@ echo "<script>var chatUser = '" . $chatUser . "';</script>";
           </div>
         </header>
 
-        <div class="chat-box" id="chat-box">
+        <div class="chat-box" id="chat-box" data-username="nombre_destinatario">
 
         </div>
 
         <form id="chat-form" class="typing-area">
-          <input type="text" id="mensaje" placeholder="Escriba su mensaje....">
-          <button id="enviarMensaje"><img src="/frontend/aseets/icons/send-fill.svg" alt=""></button>
+          <input class="text" type="text" id="mensaje" placeholder="Escriba su mensaje....">
+          <input class="btn" type="submit" id="enviarMensaje">
+          <!-- <img src="/frontend/aseets/icons/send-fill.svg" alt=""> -->
         </form>
       </section>
     </div>
@@ -193,13 +195,8 @@ echo "<script>var chatUser = '" . $chatUser . "';</script>";
     <!-- scripts -->
     <!-- <script src="/frontend/aseets/js/index.js"></script> -->
     <script src="/frontend/aseets/js/chat-2.js"></script>
-    <!-- <script>
-      var chatUser = "<?php echo $chatUser; ?>";
-      var username = "<?php echo $username; ?>";
+    <script src="/frontend/aseets/js/index.js"></script>
 
-      console.log('Nombre de usuario:', chatUser);
-      console.log('Usuario del chat:', username);
-    </script> -->
 
 
   </footer>

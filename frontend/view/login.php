@@ -75,13 +75,9 @@ if (isset($_POST['submit'])) {
       }
     } else {
       // Mostrar alerta de usuario o contraseña incorrecta
-      echo "
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          alert('Usuario o contraseña incorrecta');
-        });
-      </script>
-      ";
+      echo "<script>document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('myModalInfo').style.display = 'block';
+  });</script>";;
     }
   }
 }
@@ -121,7 +117,7 @@ if (isset($_POST['submit'])) {
       </div>
       <div class="form-information">
         <div class="form-information-childs">
-          <h2>Iniciar sesion</h2>
+          <h2 class="sign">Iniciar sesion</h2>
           <div class="icons">
 
             <form id="loginFom" class="form" action="" method="post">
@@ -163,9 +159,18 @@ if (isset($_POST['submit'])) {
   <div id="modalUsuarioDesactivado" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <p>Usuario desactivado</p>
+      <p class="text-2">Usuario desactivado</p>
     </div>
   </div>
+
+  <!-- Modal para informacion-->
+  <div id="myModalInfo" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p class="text-2">Usuario o contraseña incorrecta.</p>
+    </div>
+  </div>
+
 
   <script src="../aseets/js/login-signup.js"></script>
   <script src="../aseets/js/try-error.js"></script>

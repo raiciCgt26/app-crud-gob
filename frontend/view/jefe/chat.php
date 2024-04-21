@@ -12,8 +12,13 @@ $row = mysqli_fetch_assoc($result);
 
 $nombreUsuario = $row['username'];
 $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
-?>
 
+
+// Obtener la lista de usuarios en línea excluyendo al usuario actual
+$sqlUsuariosEnLinea = "SELECT * FROM `usuarios` WHERE status = 'en línea' AND username != '$username'";
+$resultUsuariosEnLinea = mysqli_query($con, $sqlUsuariosEnLinea);
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +34,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 <body>
 
   <!-- menu-navbar-header -->
+
   <div class="menu">
     <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
     <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
@@ -76,7 +82,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
         </li>
 
         <li>
-          <a class="user" href="/frontend/view/jefe/chat.php">
+          <a class="user" href="/frontend/view/jefe/users.php">
             <ion-icon name="paper-plane-outline">
               <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
             </ion-icon>
@@ -147,10 +153,12 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
   </div>
   <!-- menu-navbar-header -->
 
+
   <div class="center">
     <div class="container wrapper">
       <section class="users">
         <header>
+
           <div class="content">
             <img src="<?php echo $imagenUsuario; ?>" alt="">
             <div class="details">
@@ -158,119 +166,51 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
               <p>En linea</p>
             </div>
           </div>
-          <a href="#" class="logout">Cerrar sesion</a>
+
+          <a href="/frontend/view/logout.php" class="logout">Cerrar sesion</a>
         </header>
 
         <div class="search">
-          <span class="text">Seleccione un usuario para empezar un chat</span>
-          <input type="text" placeholder="Buscar...">
-          <button><img src="/frontend/aseets/icons/bx-search-alt-2.svg" alt=""></button>
+          <!-- Barra de búsqueda -->
+          <span class="text">Seleccione un usuario en línea para empezar un chat</span>
+          <input type="text" placeholder="Buscar..." id="searchInput">
+          <button id="searchButton"><img src="/frontend/aseets/icons/bx-search-alt-2.svg" alt=""></button>
         </div>
 
+
+
         <div class="users-list">
-          <a href="#">
-            <div class="content">
-              <img src="/frontend/aseets/img/avatar_2.png" alt="">
-              <div class="details">
-                <span class="tittle-chat">Chat</span>
-                <p>En linea</p>
+          <?php
+          while ($rowUsuarioEnLinea = mysqli_fetch_assoc($resultUsuariosEnLinea)) :
+            $usuarioEnLineaUsername = $rowUsuarioEnLinea['username'];
+            $usuarioEnLineaImagen = '/frontend/aseets/image/' . $rowUsuarioEnLinea['file'];
+          ?>
+            <a href="http://localhost/frontend/view/pers_adm/chat-2.php?username=<?php echo $usuarioEnLineaUsername; ?>">
+              <div class="content">
+                <img src="<?php echo $usuarioEnLineaImagen; ?>" alt="">
+                <div class="details">
+                  <span class="tittle-chat"><?php echo $usuarioEnLineaUsername; ?></span>
+                  <p>En línea</p>
+                </div>
               </div>
-            </div>
-            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
-          </a>
-          <a href="#">
-            <div class="content">
-              <img src="/frontend/aseets/img/avatar_2.png" alt="">
-              <div class="details">
-                <span class="tittle-chat">Chat</span>
-                <p>En linea</p>
-              </div>
-            </div>
-            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
-          </a>
-          <a href="#">
-            <div class="content">
-              <img src="/frontend/aseets/img/avatar_2.png" alt="">
-              <div class="details">
-                <span class="tittle-chat">Chat</span>
-                <p>En linea</p>
-              </div>
-            </div>
-            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
-          </a>
-          <a href="#">
-            <div class="content">
-              <img src="/frontend/aseets/img/avatar_2.png" alt="">
-              <div class="details">
-                <span class="tittle-chat">Chat</span>
-                <p>En linea</p>
-              </div>
-            </div>
-            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
-          </a>
-          <a href="#">
-            <div class="content">
-              <img src="/frontend/aseets/img/avatar_2.png" alt="">
-              <div class="details">
-                <span class="tittle-chat">Chat</span>
-                <p>En linea</p>
-              </div>
-            </div>
-            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
-          </a>
-          <a href="#">
-            <div class="content">
-              <img src="/frontend/aseets/img/avatar_2.png" alt="">
-              <div class="details">
-                <span class="tittle-chat">Chat</span>
-                <p>En linea</p>
-              </div>
-            </div>
-            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
-          </a>
-          <a href="#">
-            <div class="content">
-              <img src="/frontend/aseets/img/avatar_2.png" alt="">
-              <div class="details">
-                <span class="tittle-chat">Chat</span>
-                <p>En linea</p>
-              </div>
-            </div>
-            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
-          </a>
-          <a href="#">
-            <div class="content">
-              <img src="/frontend/aseets/img/avatar_2.png" alt="">
-              <div class="details">
-                <span class="tittle-chat">Chat</span>
-                <p>En linea</p>
-              </div>
-            </div>
-            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
-          </a>
-          <a href="#">
-            <div class="content">
-              <img src="/frontend/aseets/img/avatar_2.png" alt="">
-              <div class="details">
-                <span class="tittle-chat">Chat</span>
-                <p>En linea</p>
-              </div>
-            </div>
-            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
-          </a>
-          <a href="#">
-            <div class="content">
-              <img src="/frontend/aseets/img/avatar_2.png" alt="">
-              <div class="details">
-                <span class="tittle-chat">Chat</span>
-                <p>En linea</p>
-              </div>
-            </div>
-            <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
-          </a>
+              <div class="status-dot"><img src="/frontend/aseets/icons/circle-fill.svg" alt=""></div>
+            </a>
+          <?php endwhile; ?>
         </div>
+
+
       </section>
     </div>
+  </div>
+
+
+
+
+
+
+  </div>
+  </section>
+  </div>
   </div>
 
 

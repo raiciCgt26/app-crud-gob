@@ -24,7 +24,8 @@ while ($row = mysqli_fetch_assoc($result)) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/frontend/aseets/css/index.css" />
   <link rel="stylesheet" href="/frontend/aseets/css/navbar.css" />
-  <link rel="stylesheet" href="/frontend/aseets/css/estadist.css">
+  <link rel="stylesheet" href="/frontend/aseets/css/estadist.css" />
+  <link rel="stylesheet" href="/frontend/aseets/css/note.css" />
   <title>S.I</title>
 </head>
 
@@ -151,6 +152,25 @@ while ($row = mysqli_fetch_assoc($result)) {
   <main>
     <!-- main -->
     <div class="estadisticas-container">
+
+
+      <div class="center-note">
+        <div class="note">
+          <div class="task-input">
+            <img src="/frontend/aseets/icons/bars-icon.svg" alt="icon">
+            <input type="text" placeholder="Agrega una nota">
+          </div>
+          <div class="controls">
+            <div class="filters">
+              <span class="active" id="all">Todas</span>
+              <span id="pending">Pendientes</span>
+              <span id="completed">Completadas</span>
+            </div>
+            <button class="clear-btn">Limpiar</button>
+          </div>
+          <ul class="task-box"></ul>
+        </div>
+      </div>
 
       <div class="estadisticas estadisticas-incidencias">
         <h2 class="stat-title">Estadísticas de Incidencias por Estado</h2>
@@ -314,6 +334,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
   <script src="/frontend/aseets/js/index.js"></script>
   <script src="/frontend/aseets/js/estadist.js"></script>
+  <script src="/frontend/aseets/js/note.js"></script>
 </body>
 
 </html>

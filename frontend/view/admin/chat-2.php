@@ -1,6 +1,12 @@
 <?php
+session_start();
 include('C:\xampp\htdocs\backend\php\dbconnection.php');
 include("/xampp/htdocs/backend/php/antentication.php");
+// Verificar que se haya iniciado sesión
+if (!isset($_SESSION['username'])) {
+  echo "Error: No se ha iniciado sesión.";
+  exit();
+}
 
 // Obtener el nombre de usuario del usuario que inició sesión
 $username = $_SESSION['username'];
@@ -12,6 +18,16 @@ $row = mysqli_fetch_assoc($result);
 
 $nombreUsuario = $row['username'];
 $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
+
+// Verificar que se haya especificado el destinatario del chat
+if (!isset($_GET['username'])) {
+  echo "Error: No se ha especificado el destinatario del chat.";
+  exit();
+}
+$chatUser = $_GET['username'];
+
+// // Asignar el valor de $chatUser a una variable JavaScript
+echo "<script>var chatUser = " . json_encode($chatUser) . ";</script>";
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +42,7 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 </head>
 
 <body>
+
 
   <!-- menu-navbar-header -->
 
@@ -139,75 +156,34 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 
       </div>
 
-
-
-
     </div>
 
   </div>
   <!-- menu-navbar-header -->
 
+
   <div class="center">
     <div class="container wrapper">
       <section class="chat-area">
+
         <header>
-          <a href="" class="back-icon"> <img src="/frontend/aseets/icons/bx-chevron-left.svg" alt=""></a>
-          <img src="/frontend/aseets/img/avatar-.png" alt="">
+
+          <a href="/frontend/view/pers_adm/chat.php" class="back-icon"> <img src="/frontend/aseets/icons/bx-chevron-left.svg" alt=""></a>
+          <img src="<?php echo $imagenUsuario; ?>" alt="">
           <div class="details">
-            <span class="tittle-chat">Chat</span>
+            <span class="tittle-chat"><?php echo $nombreUsuario; ?></span>
             <p>En linea</p>
           </div>
         </header>
-        <div class="chat-box">
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat outgoing">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
-          <div class="div chat incoming">
-            <img src="/frontend/aseets/img/avatar_2.png" alt="">
-            <div class="details">
-              <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aliquam, quam nesciunt esse voluptatem deserunt voluptates iure dolorum illo vitae amet voluptas dicta debitis ut. Dolore quos totam at veritatis.</p>
-            </div>
-          </div>
+
+        <div class="chat-box" id="chat-box" data-username="nombre_destinatario">
 
         </div>
-        <form action="#" class="typing-area">
-          <input type="text" placeholder="Escriba su mensaje....">
-          <button><img src="/frontend/aseets/icons/send-fill.svg" alt=""></button>
+
+        <form id="chat-form" class="typing-area">
+          <input class="text" type="text" id="mensaje" placeholder="Escriba su mensaje....">
+          <input class="btn" type="submit" id="enviarMensaje">
+          <!-- <img src="/frontend/aseets/icons/send-fill.svg" alt=""> -->
         </form>
       </section>
     </div>
@@ -216,8 +192,12 @@ $imagenUsuario = '/frontend/aseets/image/' . $row['file'];
 
   <footer>
     <!-- scripts -->
+    <!-- <script src="/frontend/aseets/js/index.js"></script> -->
+    <script src="/frontend/aseets/js/chat-2.js"></script>
     <script src="/frontend/aseets/js/index.js"></script>
-    <script src="/frontend/aseets/js/chat.js"></script>
+
+
+
   </footer>
 
 </body>

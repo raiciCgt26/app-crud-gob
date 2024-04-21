@@ -11,9 +11,8 @@
 div.table {
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: 30%;
-  width: 80vw;
-  height: 76vh;
+  /* width: 80vw;
+  height: 80vh; */
   background-color: var(--color-barra-lateral);
   backdrop-filter: blur(7px);
   box-shadow: 0 0.4rem 0.8rem #0005;

@@ -1,6 +1,13 @@
-// Función para cargar los mensajes del chat
+// Función para cargar los mensajes del chat automáticamente
+const cargarMensajesAutomaticamente = () => {
+  setInterval(() => {
+    cargarMensajes();
+  }, 5000); // Consultar cada 5 segundos
+};
+
+// Función para cargar los mensajes del chat del usuario actual
 const cargarMensajes = () => {
-  fetch(`/backend/php/cargar_mensajes.php?receiver=<?php echo $chatUser; ?>`)
+  fetch(`/backend/php/cargar_mensajes.php?receiver=${chatUser}`)
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("chat-box").innerHTML = data;
@@ -8,32 +15,39 @@ const cargarMensajes = () => {
     .catch((error) => console.error("Error al cargar mensajes:", error));
 };
 
-// Funcion enviar
-document.getElementById("chat-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const mensaje = document.getElementById("mensaje");
-  console.log(mensaje);
+// Función para enviar un mensaje
+const enviarMensaje = async (mensaje) => {
   try {
     const response = await fetch("/backend/php/enviar_mensaje.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: `receiver=<?php echo $chatUser; ?>&message=${mensaje}`,
+      body: `receiver=${chatUser}&message=${mensaje}`,
     });
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    document.getElementById("mensaje").value = "";
     cargarMensajes();
   } catch (error) {
     console.error("Error al enviar mensaje:", error);
   }
-});
-// Cargar los mensajes al cargar la página
-document.addEventListener("DOMContentLoaded", cargarMensajes);
+};
 
-// console.log("Mensaje a enviar:", mensaje);
-// console.log("Receptor del mensaje:", chatUser);
+// Event listener para enviar un mensaje cuando se envía el formulario
+document.getElementById("chat-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const mensaje = document.getElementById("mensaje").value.trim();
+  if (mensaje !== "") {
+    enviarMensaje(mensaje);
+    document.getElementById("mensaje").value = "";
+  }
+});
+
+// Cargar mensajes al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  cargarMensajes();
+  cargarMensajesAutomaticamente();
+});

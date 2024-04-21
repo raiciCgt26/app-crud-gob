@@ -21,18 +21,18 @@ if (isset($_SESSION['username'])) {
       while ($row = mysqli_fetch_assoc($query)) {
         if ($row['sender'] === $sender) {
           $output .= '<div class="chat outgoing">
-                                      <div class="details">
-                                          <p>' . $row['message'] . '</p>
-                                      </div>
-                                      </div>';
+  <div class="details">
+    <p>' . $row['message'] . '</p>
+  </div>
+</div>';
         } else {
-          // Aquí necesitarás ajustar cómo obtienes la imagen del usuario receptor, ya que depende de tu estructura de base de datos y cómo almacenas las imágenes.
+          // Verificar si la clave 'file' está definida en el array $row antes de acceder a ella
+          // $file = isset($row['file']) ? $row['file'] : ''; // Asignar un valor predeterminado en caso de que 'file' no esté definido
           $output .= '<div class="chat incoming">
-                                      <img src="/frontend/aseets/image/' . $row['file'] . '" alt="">
-                                      <div class="details">
-                                          <p>' . $row['message'] . '</p>
-                                      </div>
-                                      </div>';
+        <div class="details">
+    <p>' . $row['message'] . '</p>
+  </div>
+</div>';
         }
       }
     } else {

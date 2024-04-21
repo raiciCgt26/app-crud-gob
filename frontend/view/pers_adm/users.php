@@ -141,7 +141,7 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
   <main class="table-pos">
     <div id="tableAndFormContainer">
       <!-- Contenido de la tabla -->
-      <div class="table" id="tab_inc">
+      <div class="table table-2" id="tab_inc">
         <section class="table__header">
           <div class="export__file">
             <label for="export-file" class="export__file-btn" title="Exportar archivo"></label>

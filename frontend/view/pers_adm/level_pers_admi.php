@@ -180,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <div id="tableAndFormContainer">
       <!-- Contenido de la tabla -->
-      <div class="table" id="tab_inc">
+      <div class="table table-2" id="tab_inc">
 
         <section class="table__header">
           <div class="export__file">
@@ -358,9 +358,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div class="input-box">
                   <span class="details">Asignado a - Grupo Tecnico</span>
                   <select name="grupo" class="input-extr">
-                    <option>Carolina Vixleris</option>
-                    <option>Jose Arenas</option>
-                    <option>Juan Lopez</option>
+                    <?php
+                    $fetch_grupo = mysqli_query($con, "SELECT DISTINCT `data-grupo` FROM datos_pers");
+                    while ($r_grupo = mysqli_fetch_array($fetch_grupo)) {
+                      echo "<option>" . $r_grupo['data-grupo'] . "</option>";
+                    }
+                    ?>
                   </select>
                 </div>
 
@@ -368,9 +371,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                   <span class="details">Asignado a - Tecnico</span>
                   <select name="tecnico" class="input-extr">
                     <option selected>Seleccionar...</option>
-                    <option>Carolina Vixleris</option>
-                    <option>Jose Arenas</option>
-                    <option>Juan Lopez</option>
+                    <?php
+                    $fetch_tecnico = mysqli_query($con, "SELECT DISTINCT `data-tecnico` FROM datos_pers");
+                    while ($r_tecnico = mysqli_fetch_array($fetch_tecnico)) {
+                      echo "<option>" . $r_tecnico['data-tecnico'] . "</option>";
+                    }
+                    ?>
                   </select>
                 </div>
 
@@ -378,11 +384,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                   <span class="details">Categoria</span>
                   <select name="categoria" class="input-extr">
                     <option selected>Seleccionar...</option>
-                    <option>01 Direccion de informatica y sistemas > division de desarrollo de sistemas</option>
-                    <option>01 Direccion de informatica y sistemas > division de soporte tecnico</option>
-                    <option>01 Direccion de informatica y sistemas > division de problemas de internet</option>
+                    <?php
+                    $fetch_categoria = mysqli_query($con, "SELECT DISTINCT `data-categoria` FROM datos_pers");
+                    while ($r_categoria = mysqli_fetch_array($fetch_categoria)) {
+                      echo "<option>" . $r_categoria['data-categoria'] . "</option>";
+                    }
+                    ?>
                   </select>
                 </div>
+
 
 
               </div>
