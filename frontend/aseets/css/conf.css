@@ -1,6 +1,7 @@
 div.center {
   margin: auto;
   margin-top: 10%;
+  margin-left: 25%;
 }
 
 ::selection {
@@ -118,6 +119,7 @@ div.center {
 @media (max-width: 1300px) {
   div.center {
     margin: 10%;
+    margin-left: 25%;
   }
 }
 
@@ -147,15 +149,15 @@ div.center {
   }
 
   .content .text {
-    margin-top: 0; /* Ajuste para evitar que el texto se superponga al menú */
+    margin-top: 0;
   }
 
   .content .text .title {
-    font-size: 18px; /* Reducción del tamaño del título */
+    font-size: 18px;
   }
 
   .content .text p {
-    font-size: 12px; /* Reducción del tamaño del texto */
+    font-size: 12px;
   }
 }
 
@@ -185,15 +187,15 @@ div.center {
   }
 
   .content .text {
-    margin-top: 0; /* Ajuste para evitar que el texto se superponga al menú */
+    margin-top: 0;
   }
 
   .content .text .title {
-    font-size: 16px; /* Reducción adicional del tamaño del título */
+    font-size: 16px;
   }
 
   .content .text p {
-    font-size: 12px; /* Reducción adicional del tamaño del texto */
+    font-size: 12px;
   }
 }
 
@@ -225,6 +227,16 @@ input {
   box-sizing: border-box;
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.btn-elim {
+  margin-top: 20px;
+}
+
 button {
   padding: 8px 15px;
   background-color: #27b5b8;
@@ -253,21 +265,8 @@ button:hover {
   border-color: #057582;
 }
 
-/* .image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  height: 15vh;
-}
-
-.info-log {
-  max-width: 100%; 
-  max-height: 100%; 
-} */
-
 .modal {
-  display: none; /* Ocultar el modal por defecto */
+  display: none;
   position: fixed;
   z-index: 2;
   left: 0;
@@ -303,8 +302,8 @@ button:hover {
 
 /* acordeon */
 .accordion {
-  overflow-y: auto; /* Agregar desplazamiento vertical */
-  height: 240px; /* Altura fija del contenedor */
+  overflow-y: auto;
+  height: 240px;
 }
 
 .accordion::-webkit-scrollbar {
@@ -312,14 +311,8 @@ button:hover {
 }
 
 .accordion::-webkit-scrollbar-thumb {
-  /* border-radius: 0.5rem;
-  background-color: var(--color-scroll); */
   visibility: hidden;
 }
-
-/* .accordion:hover::-webkit-scrollbar-thumb {
-  visibility: visible;
-} */
 
 .accordion .accordion-content {
   margin: 10px 0;

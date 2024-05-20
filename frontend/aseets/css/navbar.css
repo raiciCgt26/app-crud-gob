@@ -77,17 +77,8 @@
   box-sizing: border-box;
   font-family: "Montserrat";
 }
-/* 
-body {
-  background-image: url(/aseets/img/casa-verde.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  backdrop-filter: blur(6px);
-} */
 
 body {
-  /* background: linear-gradient(135deg, #f8b645, #ffb0cb);
-  backdrop-filter: blur(6px); */
   height: 100vh;
   width: 100%;
   background-color: var(--fondo);
@@ -136,7 +127,7 @@ img.icono-inc {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 250px;
+  width: 240px;
   height: 100%;
   overflow: hidden;
   padding: 20px 15px;
@@ -332,7 +323,8 @@ img.icono-inc {
     margin-bottom: 3px;
   }
 }
-@media (max-width: 600px) {
+
+@media (max-width: 900px) {
   .barra-lateral {
     position: fixed;
     left: -250px;

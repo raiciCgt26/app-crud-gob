@@ -12,7 +12,7 @@ if (session_destroy()) {
   $result = mysqli_query($con, $sql);
 
   if ($result) {
-    header("Location: /frontend/view/signup.php");
+    header("Location: /frontend/view/login.php");
   } else {
     // Manejar el error de actualización
     echo "Error al actualizar el estado del usuario";

@@ -1,9 +1,17 @@
 div.table {
   position: fixed;
   z-index: 1;
-  left: 15%;
   top: 12%;
+  left: 15%;
   right: -15%;
   width: 80%;
   height: 80%;
+}
+
+@media (min-width: 900px) {
+  div.table {
+    left: 26%;
+    right: -22%;
+    width: 60%;
+  }
 }

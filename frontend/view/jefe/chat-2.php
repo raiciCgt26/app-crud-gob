@@ -44,123 +44,125 @@ echo "<script>var chatUser = " . json_encode($chatUser) . ";</script>";
 <body>
 
   <!-- menu-navbar-header -->
-
-  <div class="menu">
-    <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
-    <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
-  </div>
-  <div class="barra-lateral">
-    <div>
-
-      <div class="nombre-pagina">
-        <ion-icon id="cloud" name="cloud-outline">
-          <img id="log-gob" class="img-log" src="/frontend/aseets/img/logo-round.jpg" />
-        </ion-icon>
-        <span class="nombre">Sistema de Incidencias</span>
-      </div>
-
+  <main>
+    <div class="menu">
+      <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
+      <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
     </div>
+    <div class="barra-lateral">
+      <div>
 
-    <nav class="navegacion">
-      <ul>
-        <li>
-          <a id="inbox" href="/frontend/view/jefe/index.php">
-            <ion-icon name="mail-unread-outline">
-              <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
-            </ion-icon>
-            <span>Pagina principal</span>
-          </a>
-        </li>
-
-        <li>
-          <a class="user" href="/frontend/view/jefe/level_jefe.php">
-            <ion-icon name="mail-unread-outline">
-              <img class="icono-inc" src="/frontend/aseets/icons/envelope-paper.svg" />
-            </ion-icon>
-            <span>Incidencias</span>
-          </a>
-        </li>
-
-
-        <li>
-          <a class="user" href="/frontend/view/jefe/users.php">
-            <ion-icon name="star-outline">
-              <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
-            </ion-icon>
-            <span>Usuarios</span>
-          </a>
-        </li>
-
-        <li>
-          <a class="user" href="/frontend/view/jefe/users.php">
-            <ion-icon name="paper-plane-outline">
-              <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
-            </ion-icon>
-            <span>Chat</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/frontend/view/jefe/setting.php">
-            <ion-icon name="paper-plane-outline">
-              <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
-            </ion-icon>
-            <span>Configuracion</span>
-          </a>
-        </li>
-
-
-        <li>
-          <a href="/frontend/view/logout.php">
-            <ion-icon name="document-text-outline">
-              <img class="icons-menu ico-center" src="/frontend/aseets/icons/file-lock2.svg" />
-            </ion-icon>
-            <span>Cerrar sesion</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    <div>
-      <div class="linea"></div>
-
-
-
-      <div class="info-usuario">
-        <div class="nombre-email">
-          <span class="nombre">
-            <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
-            <span class="title-profile">Level 2
-            </span>
-          </span>
+        <div class="nombre-pagina">
+          <ion-icon id="cloud" name="cloud-outline">
+            <img id="log-gob" class="img-log" src="/frontend/aseets/img/logo-round.jpg" />
+          </ion-icon>
+          <span class="nombre">Sistema de Incidencias</span>
         </div>
+
       </div>
 
+      <nav class="navegacion">
+        <ul>
+          <li>
+            <a id="inbox" href="/frontend/view/jefe/index.php">
+              <ion-icon name="mail-unread-outline">
+                <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
+              </ion-icon>
+              <span>Pagina principal</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="user" href="/frontend/view/jefe/level_jefe.php">
+              <ion-icon name="mail-unread-outline">
+                <img class="icono-inc" src="/frontend/aseets/icons/envelope-paper.svg" />
+              </ion-icon>
+              <span>Incidencias</span>
+            </a>
+          </li>
+
+
+          <li>
+            <a class="user" href="/frontend/view/jefe/users.php">
+              <ion-icon name="star-outline">
+                <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
+              </ion-icon>
+              <span>Usuarios</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="user" href="/frontend/view/jefe/users.php">
+              <ion-icon name="paper-plane-outline">
+                <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
+              </ion-icon>
+              <span>Chat</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/frontend/view/jefe/setting.php">
+              <ion-icon name="paper-plane-outline">
+                <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
+              </ion-icon>
+              <span>Configuracion</span>
+            </a>
+          </li>
+
+
+          <li>
+            <a href="/frontend/view/logout.php">
+              <ion-icon name="document-text-outline">
+                <img class="icons-menu ico-center" src="/frontend/aseets/icons/file-lock2.svg" />
+              </ion-icon>
+              <span>Cerrar sesion</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <div class="linea"></div>
 
 
 
-      <div class="modo-oscuro">
-        <div class="info">
-          <img class="ico ico-center" src="/frontend/aseets/icons/bx-moon.svg" />
-          <span class="dark-text">Modo oscuro</span>
-        </div>
-
-        <div class="switch">
-          <div class="base">
-            <div class="circulo">
-
-            </div>
+        <div class="info-usuario">
+          <div class="nombre-email">
+            <span class="nombre">
+              <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
+              <!-- <span class="title-profile">Level 2
+            </span> -->
+            </span>
           </div>
         </div>
 
+
+
+
+        <div class="modo-oscuro">
+          <div class="info">
+            <img class="ico ico-center" src="/frontend/aseets/icons/bx-moon.svg" />
+            <span class="dark-text">Modo oscuro</span>
+          </div>
+
+          <div class="switch">
+            <div class="base">
+              <div class="circulo">
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
       </div>
 
-
-
-
     </div>
+  </main>
 
-  </div>
   <!-- menu-navbar-header -->
 
 
@@ -171,7 +173,7 @@ echo "<script>var chatUser = " . json_encode($chatUser) . ";</script>";
 
         <header>
 
-          <a href="/frontend/view/pers_adm/chat.php" class="back-icon"> <img src="/frontend/aseets/icons/bx-chevron-left.svg" alt=""></a>
+          <a href="/frontend/view/jefe/chat.php" class="back-icon"> <img src="/frontend/aseets/icons/bx-chevron-left.svg" alt=""></a>
           <img src="<?php echo $imagenUsuario; ?>" alt="">
           <div class="details">
             <span class="tittle-chat"><?php echo $nombreUsuario; ?></span>

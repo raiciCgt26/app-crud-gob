@@ -104,8 +104,8 @@ include('C:\xampp\htdocs\backend\php\dbconnection.php');
         <div class="nombre-email">
           <span class="nombre">
             <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
-            <span class="title-profile">Level 2
-            </span>
+            <!-- <span class="title-profile">Nivel Jefe
+            </span> -->
           </span>
         </div>
       </div>

@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="form-information">
           <div class="form-information-childs">
-            <h2>Iniciar sesion</h2>
+            <h2>Recuperacion de contraseña</h2>
             <div class="icons">
 
               <form id="loginFom" class="form" action="" method="post">

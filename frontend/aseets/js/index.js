@@ -113,24 +113,32 @@ const pdf_btn = document.querySelector("#toPDF");
 const tab_inc = document.querySelector("#tab_inc");
 
 const toPDF = function (tab_inc) {
-  const html_code = `
-   <link rel="stylesheet" href="/frontend/aseets/css/index.css"/>
-   <link rel="stylesheet" href="/frontend/aseets/css/navbar.css"/>
-   <div class="table" id="tab_inc">${tab_inc.innerHTML}</div>`;
+  const rows = tab_inc.querySelectorAll("tr");
+  const cols = rows[0].querySelectorAll("th, td");
+  const colCount = cols.length;
+  const rowCount = rows.length;
+
+  let pdfContent = "<table>";
+  for (let i = 0; i < rowCount; i++) {
+    pdfContent += "<tr>";
+    for (let j = 0; j < colCount; j++) {
+      pdfContent +=
+        "<td>" + rows[i].querySelectorAll("td, th")[j].innerText + "</td>";
+    }
+    pdfContent += "</tr>";
+  }
+  pdfContent += "</table>";
 
   const new_window = window.open();
-  new_window.document.write(html_code);
-
-  setTimeout(() => {
-    new_window.print();
-    new_window.close();
-  }, 200);
+  new_window.document.write(pdfContent);
+  new_window.document.close();
+  new_window.print();
+  new_window.close();
 };
 
 pdf_btn.onclick = () => {
   toPDF(tab_inc);
 };
-
 // // 4. Convertir una tabla HTML a JSON
 
 const json_btn = document.querySelector("#toJSON");
@@ -166,7 +174,7 @@ const toJSON = function (table) {
 
 json_btn.onclick = () => {
   const json = toJSON(tab_inc);
-  downloadFile(json, "json", "listado de incidencias");
+  downloadFile(json, "json", "listado");
 };
 
 // 5. Convertir una tabla HTML a un archivo CSV
@@ -185,7 +193,7 @@ const toCSV = function (table) {
 
 csv_btn.onclick = () => {
   const csv = toCSV(tab_inc);
-  downloadFile(csv, "csv", "listado de incidencias");
+  downloadFile(csv, "csv", "listado");
 };
 
 // 6. Conversión de tabla HTML a archivo EXCEL
@@ -203,7 +211,7 @@ const toExcel = function (table) {
 
 excel_btn.onclick = () => {
   const excel = toExcel(tab_inc);
-  downloadFile(excel, "excel", "listado de incidencias");
+  downloadFile(excel, "excel", "listado");
 };
 
 const downloadFile = function (data, fileType, fileName = "") {
@@ -296,6 +304,18 @@ startBtn.addEventListener("click", () => {
 stepBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     currentPage += e.target.id === "next" ? 1 : -1;
+    showPage(currentPage);
+    updateBtns();
+  });
+});
+
+stepBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    if (e.target.id === "next" && currentPage < totalPages - 1) {
+      currentPage++;
+    } else if (e.target.id !== "next" && currentPage > 0) {
+      currentPage--;
+    }
     showPage(currentPage);
     updateBtns();
   });

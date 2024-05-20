@@ -1,18 +1,26 @@
+.btn-agregar {
+  width: calc(100% - 20%); /* Ancho del 100% menos el margen derecho */
+  margin: auto; /* Margen derecho para separar del borde derecho */
+  box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
+}
+
 main {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  max-width: 100vw;
+  max-width: 60vw;
   padding: 20px;
   margin: auto;
 }
 
 .estadisticas {
+  margin-top: 4%;
+  margin-left: 4%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1000px;
+  width: 1100px;
   flex-wrap: wrap; /* Para que los elementos se ajusten al ancho */
 }
 
@@ -30,13 +38,13 @@ main {
   display: flex;
   flex-direction: column; /* Apila los elementos verticalmente */
   align-items: center; /* Centra horizontalmente */
-  margin-bottom: 50px; /* Espacio inferior */
+  margin-bottom: 10px; /* Espacio inferior */
 }
 
 /* Estilo para el contenedor de estadísticas de incidencias */
 .estadisticas-incidencias,
 .estadisticas-usuarios {
-  width: 70%; /* Ocupa todo el ancho disponible */
+  width: 100%; /* Ocupa todo el ancho disponible */
   margin-bottom: 20px;
 }
 
@@ -55,9 +63,9 @@ main {
 }
 
 .estadisticas .card {
-  width: calc(33% - 20px);
+  width: calc(16% - 25px);
   background-color: var(--color-barra-lateral);
-  height: 260px;
+  height: 180px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -69,9 +77,9 @@ main {
 
 .estadisticas .card .circle {
   position: relative;
-  height: 160px;
-  width: 160px;
-  border: 8px solid var(--color-circle);
+  height: 116px;
+  width: 116px;
+  border: 6px solid var(--color-circle);
   border-radius: 50%;
 }
 
@@ -90,19 +98,11 @@ main {
   border-radius: 50%;
 }
 
-/* .card:hover {
-  transform: scale(1.05);
-  /* background: var(--color-gradiente2); 
-} */
-
 .card .circle .box span {
   font-size: 48px;
   font-weight: 600;
   color: var(--color-circle);
   transform: translate(-50%, -50%);
-  /* background: -webkit-linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
 }
 
 .card .text {
@@ -123,11 +123,7 @@ main {
   opacity: 1;
   transform: translateY(0);
 }
-/*
-/*
-/*
-/*
-/* 
+
 /* Estilo base para los títulos h2 */
 h2 {
   text-align: center; /* Centrado del texto */
@@ -135,10 +131,12 @@ h2 {
   opacity: 0; /* Inicialmente invisible */
   transition: opacity 0.5s; /* Transición de opacidad de 0.5 segundos */
 }
+
 /* Media query para pantalla pequeña (hasta 600px) */
 @media (max-width: 600px) {
   .estadisticas .card {
-    width: 160px; /* Ocupa todo el ancho */
+    width: calc(16% - 25px);
+    background-color: var(--color-barra-lateral);
     margin: 0 auto 20px; /* Margen en la parte inferior y centrado horizontalmente */
     height: 160px; /* Altura fija de la tarjeta */
     display: flex; /* Para alinear elementos internos */
@@ -168,7 +166,10 @@ h2 {
 }
 
 /* Media query para pantalla mediana (entre 401px y 800px) */
-@media (min-width: 401px) and (max-width: 800px) {
+@media (max-width: 1028px) {
+  main {
+    margin-left: 25%;
+  }
   .estadisticas {
     flex-wrap: wrap; /* Para que los elementos se ajusten al ancho */
   }
@@ -200,5 +201,37 @@ h2 {
 
   .estadisticas h2 {
     font-size: 26px; /* Tamaño del título */
+  }
+}
+
+@media (min-width: 1030px) {
+  .estadisticas .card {
+    width: calc(18% - 24px);
+    background-color: var(--color-barra-lateral);
+    margin: 0 auto 10px; /* Margen en la parte inferior y centrado horizontalmente */
+    height: 160px; /* Altura fija de la tarjeta */
+    display: flex; /* Para alinear elementos internos */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    padding: 10px; /* Espaciado interno */
+  }
+
+  .card .circle {
+    height: 50px; /* Altura fija del círculo */
+    width: 50px; /* Ancho fijo del círculo */
+    border-width: 4px; /* Grosor del borde */
+    margin: 0; /* Eliminar margen */
+  }
+
+  .card .circle .box {
+    font-size: 18px; /* Tamaño de la fuente */
+  }
+
+  .card .text {
+    font-size: 16px; /* Tamaño del texto */
+  }
+
+  .estadisticas h2 {
+    font-size: 20px; /* Tamaño del título */
   }
 }

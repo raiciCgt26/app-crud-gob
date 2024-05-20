@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['data-tecnico']) && iss
         <div class="nombre-email">
           <span class="nombre">
             <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
-            <span class="title-profile">Level 1
+            <span class="title-profile">Nivel Admin
             </span>
           </span>
         </div>
@@ -180,6 +180,158 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['data-tecnico']) && iss
 
     <div class="estadisticas-container">
 
+
+      <div class="estadisticas estadisticas-incidencias">
+        <!-- <div class="estadisticas estadisticas-incidencias"> -->
+        <!-- <h2 class="stat-title">Estadisticas de Incidencias por Estado y Usuarios registrados </h2> -->
+
+        <div class="card">
+          <div class="circle">
+            <div class="bar">
+
+              <div class="box">
+                <span>
+                  <?php echo isset($incidencias_por_estado['Resuelto']) ? $incidencias_por_estado['Resuelto'] : 0; ?>
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="text">Resueltas</div>
+
+        </div>
+
+
+
+        <div class="card">
+          <div class="circle">
+            <div class="bar">
+
+              <div class="box">
+                <span>
+                  <?php echo isset($incidencias_por_estado['En Curso']) ? $incidencias_por_estado['En Curso'] : 0; ?>
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="text">En Curso</div>
+
+        </div>
+
+        <div class="card">
+          <div class="circle">
+            <div class="bar">
+
+              <div class="box">
+                <span>
+                  <?php echo isset($incidencias_por_estado['Sin resolver']) ? $incidencias_por_estado['Sin resolver'] : 0; ?>
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="text"> Sin Resolver</div>
+
+        </div>
+
+        <!-- </div> -->
+
+        <?php
+        include('C:\xampp\htdocs\backend\php\dbconnection.php');
+
+        // Consulta SQL para obtener el número de usuarios por nivel de usuario
+        $query = "SELECT role_id_fk, COUNT(*) AS cantidad FROM usuarios GROUP BY role_id_fk";
+        $result = mysqli_query($con, $query);
+
+        // Crear un array asociativo para almacenar los resultados
+        $usuarios_por_nivel = array();
+
+        while ($row = mysqli_fetch_assoc($result)) {
+          $nivel = $row['role_id_fk'];
+          $cantidad = $row['cantidad'];
+          $nivel_texto = '';
+
+          // Asignar texto según el nivel de usuario
+          switch ($nivel) {
+            case 1:
+              $nivel_texto = 'Admin';
+              break;
+            case 2:
+              $nivel_texto = 'Jefe';
+              break;
+            case 3:
+              $nivel_texto = 'Administrativo';
+              break;
+          }
+
+          $usuarios_por_nivel[$nivel_texto] = $cantidad;
+        }
+        ?>
+
+        <!-- <div class="estadisticas estadisticas-usuarios"> -->
+        <!-- <h2 class="stat-title">Usuarios por Nivel</h2> -->
+        <div class="card">
+          <div class="circle">
+            <div class="bar">
+
+              <div class="box">
+                <span>
+                  <?php echo isset($usuarios_por_nivel['Admin']) ? $usuarios_por_nivel['Admin'] : 0; ?>
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="text"> Admin</div>
+
+        </div>
+
+
+
+        <div class="card">
+          <div class="circle">
+            <div class="bar">
+
+              <div class="box">
+                <span>
+                  <?php echo isset($usuarios_por_nivel['Jefe']) ? $usuarios_por_nivel['Jefe'] : 0; ?>
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="text">Jefe</div>
+
+        </div>
+
+        <div class="card">
+          <div class="circle">
+            <div class="bar">
+
+              <div class="box">
+                <span>
+                  <?php echo isset($usuarios_por_nivel['Administrativo']) ? $usuarios_por_nivel['Administrativo'] : 0; ?>
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="text">Administrativo</div>
+
+        </div>
+
+        <!-- </div> -->
+      </div>
+
+
+
       <div class="center-note">
         <div class="note">
           <div class="task-input">
@@ -199,6 +351,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['data-tecnico']) && iss
           </ul>
         </div>
       </div>
+
+      <button class="btn-add btn-agregar">Agregar</button>
 
       <section class="center-table ">
 
@@ -314,7 +468,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['data-tecnico']) && iss
 
           </div>
 
-          <button class="btn-add show-modal">Agregar</button>
 
           <div id="modalForm" class="modal-box formulario ">
             <!-- Contenido del formulario -->
@@ -370,156 +523,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['data-tecnico']) && iss
 
       </section>
 
-
-
-      <div class="estadisticas estadisticas-incidencias">
-        <h2 class="stat-title">Incidencias por Estado</h2>
-        <div class="card">
-          <div class="circle">
-            <div class="bar">
-
-              <div class="box">
-                <span>
-                  <?php echo isset($incidencias_por_estado['Resuelto']) ? $incidencias_por_estado['Resuelto'] : 0; ?>
-                </span>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="text">Resueltas</div>
-
-        </div>
-
-
-
-        <div class="card">
-          <div class="circle">
-            <div class="bar">
-
-              <div class="box">
-                <span>
-                  <?php echo isset($incidencias_por_estado['En Curso']) ? $incidencias_por_estado['En Curso'] : 0; ?>
-                </span>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="text">En Curso</div>
-
-        </div>
-
-        <div class="card">
-          <div class="circle">
-            <div class="bar">
-
-              <div class="box">
-                <span>
-                  <?php echo isset($incidencias_por_estado['Sin resolver']) ? $incidencias_por_estado['Sin resolver'] : 0; ?>
-                </span>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="text"> Sin Resolver</div>
-
-        </div>
-
-      </div>
-
-
-      <?php
-      include('C:\xampp\htdocs\backend\php\dbconnection.php');
-
-      // Consulta SQL para obtener el número de usuarios por nivel de usuario
-      $query = "SELECT role_id_fk, COUNT(*) AS cantidad FROM usuarios GROUP BY role_id_fk";
-      $result = mysqli_query($con, $query);
-
-      // Crear un array asociativo para almacenar los resultados
-      $usuarios_por_nivel = array();
-
-      while ($row = mysqli_fetch_assoc($result)) {
-        $nivel = $row['role_id_fk'];
-        $cantidad = $row['cantidad'];
-        $nivel_texto = '';
-
-        // Asignar texto según el nivel de usuario
-        switch ($nivel) {
-          case 1:
-            $nivel_texto = 'Admin';
-            break;
-          case 2:
-            $nivel_texto = 'Jefe';
-            break;
-          case 3:
-            $nivel_texto = 'Administrativo';
-            break;
-        }
-
-        $usuarios_por_nivel[$nivel_texto] = $cantidad;
-      }
-      ?>
-
-
-
-      <div class="estadisticas estadisticas-usuarios">
-        <h2 class="stat-title">Usuarios por Nivel</h2>
-        <div class="card">
-          <div class="circle">
-            <div class="bar">
-
-              <div class="box">
-                <span>
-                  <?php echo isset($usuarios_por_nivel['Admin']) ? $usuarios_por_nivel['Admin'] : 0; ?>
-                </span>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="text"> Admin</div>
-
-        </div>
-
-
-
-        <div class="card">
-          <div class="circle">
-            <div class="bar">
-
-              <div class="box">
-                <span>
-                  <?php echo isset($usuarios_por_nivel['Jefe']) ? $usuarios_por_nivel['Jefe'] : 0; ?>
-                </span>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="text">Jefe</div>
-
-        </div>
-
-        <div class="card">
-          <div class="circle">
-            <div class="bar">
-
-              <div class="box">
-                <span>
-                  <?php echo isset($usuarios_por_nivel['Administrativo']) ? $usuarios_por_nivel['Administrativo'] : 0; ?>
-                </span>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="text">Administrativo</div>
-
-        </div>
-
-      </div>
 
 
     </div>

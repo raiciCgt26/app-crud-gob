@@ -4,8 +4,35 @@ div.table-2 {
   left: 15%;
   top: 12%;
   right: -15%;
+  bottom: 1%;
   width: 80%;
   height: 80%;
+}
+
+@media (min-width: 1030px) {
+  div.table-2 {
+    position: fixed;
+    z-index: 1;
+    left: 24%;
+    top: 12%;
+    right: -15%;
+    bottom: 1%;
+    width: 70%;
+    height: 80%;
+  }
+}
+
+@media (min-width: 900px) {
+  div.table-2 {
+    position: fixed;
+    z-index: 1;
+    left: 26%;
+    top: 12%;
+    right: -6%;
+    bottom: 1%;
+    width: 70%;
+    height: 80%;
+  }
 }
 
 #modalForm {

@@ -14,27 +14,28 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $grupo = $_POST['grupo'];
   $categoria = $_POST['categoria'];
 
-  // Verifica si ya existe un registro con los mismos valores
-  $existing_record_query = mysqli_query($con, "SELECT * FROM incidencias WHERE titulo='$titulo' AND estado='$estado' AND fecha='$fecha' AND prioridad='$prioridad' AND solicitante='$solicitante' AND tecnico='$tecnico' AND grupo='$grupo' AND categoria='$categoria'");
-  $existing_record_count = mysqli_num_rows($existing_record_query);
+  // // Verifica si ya existe un registro con los mismos valores
+  // $existing_record_query = mysqli_query($con, "SELECT * FROM incidencias WHERE titulo='$titulo' AND estado='$estado' AND fecha='$fecha' AND prioridad='$prioridad' AND solicitante='$solicitante' AND tecnico='$tecnico' AND grupo='$grupo' AND categoria='$categoria'");
+  // $existing_record_count = mysqli_num_rows($existing_record_query);
 
-  // Si ya existe un registro con los mismos valores, muestra un mensaje de alerta
-  if ($existing_record_count > 0) {
-    echo "<script>window.onload = function() { mostrarModalConfirmacion(); }</script>";
+  // // Si ya existe un registro con los mismos valores, muestra un mensaje de alerta
+  // if ($existing_record_count > 0) {
+  //   echo "<script>window.onload = function() { mostrarModalConfirmacion(); }</script>";
+  // } else {
+
+  // Inserta el nuevo registro en la base de datos
+  $query = mysqli_query($con, "INSERT INTO incidencias (titulo, estado, fecha, prioridad, solicitante, tecnico, grupo, categoria) VALUES ('$titulo','$estado','$fecha','$prioridad','$solicitante','$tecnico','$grupo', '$categoria')");
+
+  // Verifica si la consulta se realizó con éxito
+  if ($query) {
+    // Si se inserta el registro correctamente, muestra un mensaje de éxito
+    echo "<script>window.onload = function() { mostrarModalRegistroExitoso(); }</script>";
   } else {
-    // Inserta el nuevo registro en la base de datos
-    $query = mysqli_query($con, "INSERT INTO incidencias (titulo, estado, fecha, prioridad, solicitante, tecnico, grupo, categoria) VALUES ('$titulo','$estado','$fecha','$prioridad','$solicitante','$tecnico','$grupo', '$categoria')");
-
-    // Verifica si la consulta se realizó con éxito
-    if ($query) {
-      // Si se inserta el registro correctamente, muestra un mensaje de éxito
-      echo "<script>window.onload = function() { mostrarModalRegistroExitoso(); }</script>";
-    } else {
-      // Si hay un error al insertar el registro, muestra un mensaje de error
-      echo "<script>window.onload = function() { mostrarModalRegistroFallido(); }</script>";
-    }
+    // Si hay un error al insertar el registro, muestra un mensaje de error
+    echo "<script>window.onload = function() { mostrarModalRegistroFallido(); }</script>";
   }
 }
+// }
 ?>
 
 
@@ -140,8 +141,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <div class="nombre-email">
           <span class="nombre">
             <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
-            <span class="title-profile">Level 3
-            </span>
+            <!-- <span class="title-profile">Level 3
+            </span> -->
           </span>
         </div>
       </div>
@@ -245,7 +246,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     ?>
                     <td> <?php echo $r['titulo'] ?></td>
                     <td> <?php echo $r['estado'] ?></td>
-                    <td> <?php echo $r['fecha'] ?></td>
+                    <td><?php echo date("d-m-Y", strtotime($r['fecha'])); ?></td>
                     <td> <?php echo $r['prioridad'] ?></td>
                     <td> <?php echo $r['solicitante'] ?></td>
                     <td> <?php echo $r['tecnico'] ?></td>
@@ -443,7 +444,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <p class="text-1">Hubo un error al agregar el registro. Por favor, inténtalo de nuevo.</p>
       </div>
     </div>
-
+    <!-- 
     <div id="modalConfirmacion" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -453,7 +454,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <button id="cancelarRegistro" class="button-can">Cancelar</button>
         </div>
       </div>
-    </div>
+    </div> -->
 
 
     <div id="modalDetalles" class="modal">

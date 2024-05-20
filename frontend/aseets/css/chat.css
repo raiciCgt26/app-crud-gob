@@ -7,7 +7,6 @@
 }
 
 .container {
-  /* max-width: 512px; */
   min-width: 512px;
   width: 100%;
   background: #fff;
@@ -279,13 +278,6 @@
   background: #39a9cf;
 }
 
-/* 
-.typing-area button.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-/*
-
 /* Responive media query */
 @media screen and (max-width: 450px) {
   .form,
@@ -350,5 +342,11 @@
   }
   .chat-area form button {
     width: 45px;
+  }
+}
+
+@media (min-width: 900px) {
+  .center {
+    margin-left: 35%;
   }
 }

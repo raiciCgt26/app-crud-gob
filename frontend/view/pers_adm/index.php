@@ -116,8 +116,8 @@ while ($row = mysqli_fetch_assoc($result)) {
         <div class="nombre-email">
           <span class="nombre">
             <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
-            <span class="title-profile">Level 3
-            </span>
+            <!-- <span class="title-profile">Level 3
+            </span> -->
           </span>
         </div>
       </div>
@@ -152,25 +152,13 @@ while ($row = mysqli_fetch_assoc($result)) {
   <main>
     <!-- main -->
     <div class="estadisticas-container">
-      <div class="center-note">
-        <div class="note">
-          <div class="task-input">
-            <img src="/frontend/aseets/icons/bars-icon.svg" alt="icon">
-            <input type="text" placeholder="Agrega una nota">
-          </div>
-          <div class="controls">
-            <div class="filters">
-              <span class="active" id="all">Todas</span>
-              <span id="pending">Pendientes</span>
-              <span id="completed">Completadas</span>
-            </div>
-            <button class="clear-btn">Limpiar</button>
-          </div>
-          <ul class="task-box"></ul>
-        </div>
-      </div>
+
+
+
       <div class="estadisticas estadisticas-incidencias">
-        <h2 class="stat-title">Estadísticas de Incidencias por Estado</h2>
+        <!-- <div class="estadisticas estadisticas-incidencias"> -->
+        <!-- <h2 class="stat-title">Incidencias por Estado</h2> -->
+
         <div class="card">
           <div class="circle">
             <div class="bar">
@@ -224,45 +212,42 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         </div>
 
-      </div>
+        <!-- </div> -->
 
+        <?php
+        include('C:\xampp\htdocs\backend\php\dbconnection.php');
 
-      <?php
-      include('C:\xampp\htdocs\backend\php\dbconnection.php');
+        // Consulta SQL para obtener el número de usuarios por nivel de usuario
+        $query = "SELECT role_id_fk, COUNT(*) AS cantidad FROM usuarios GROUP BY role_id_fk";
+        $result = mysqli_query($con, $query);
 
-      // Consulta SQL para obtener el número de usuarios por nivel de usuario
-      $query = "SELECT role_id_fk, COUNT(*) AS cantidad FROM usuarios GROUP BY role_id_fk";
-      $result = mysqli_query($con, $query);
+        // Crear un array asociativo para almacenar los resultados
+        $usuarios_por_nivel = array();
 
-      // Crear un array asociativo para almacenar los resultados
-      $usuarios_por_nivel = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+          $nivel = $row['role_id_fk'];
+          $cantidad = $row['cantidad'];
+          $nivel_texto = '';
 
-      while ($row = mysqli_fetch_assoc($result)) {
-        $nivel = $row['role_id_fk'];
-        $cantidad = $row['cantidad'];
-        $nivel_texto = '';
+          // Asignar texto según el nivel de usuario
+          switch ($nivel) {
+            case 1:
+              $nivel_texto = 'Admin';
+              break;
+            case 2:
+              $nivel_texto = 'Jefe';
+              break;
+            case 3:
+              $nivel_texto = 'Administrativo';
+              break;
+          }
 
-        // Asignar texto según el nivel de usuario
-        switch ($nivel) {
-          case 1:
-            $nivel_texto = 'Admin';
-            break;
-          case 2:
-            $nivel_texto = 'Jefe';
-            break;
-          case 3:
-            $nivel_texto = 'Administrativo';
-            break;
+          $usuarios_por_nivel[$nivel_texto] = $cantidad;
         }
+        ?>
 
-        $usuarios_por_nivel[$nivel_texto] = $cantidad;
-      }
-      ?>
-
-
-
-      <div class="estadisticas estadisticas-usuarios">
-        <h2 class="stat-title">Estadísticas de Usuarios por Nivel</h2>
+        <!-- <div class="estadisticas estadisticas-usuarios"> -->
+        <!-- <h2 class="stat-title">Usuarios por Nivel</h2> -->
         <div class="card">
           <div class="circle">
             <div class="bar">
@@ -316,7 +301,28 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         </div>
 
+        <!-- </div> -->
       </div>
+
+      <div class="center-note">
+        <div class="note">
+          <div class="task-input">
+            <img src="/frontend/aseets/icons/bars-icon.svg" alt="icon">
+            <input type="text" placeholder="Agrega una nota">
+          </div>
+          <div class="controls">
+            <div class="filters">
+              <span class="active" id="all">Todas</span>
+              <span id="pending">Pendientes</span>
+              <span id="completed">Completadas</span>
+            </div>
+            <button class="clear-btn">Limpiar</button>
+          </div>
+          <ul class="task-box"></ul>
+        </div>
+      </div>
+
+
 
 
     </div>

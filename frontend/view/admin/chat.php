@@ -26,8 +26,8 @@ $resultUsuariosEnLinea = mysqli_query($con, $sqlUsuariosEnLinea);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/frontend/aseets/css/chat.css" />
   <link rel="stylesheet" href="/frontend/aseets/css/navbar.css" />
+  <link rel="stylesheet" href="/frontend/aseets/css/chat.css" />
   <title>S.I</title>
 </head>
 
@@ -35,120 +35,121 @@ $resultUsuariosEnLinea = mysqli_query($con, $sqlUsuariosEnLinea);
 
 
   <!-- menu-navbar-header -->
-
-  <div class="menu">
-    <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
-    <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
-  </div>
-  <div class="barra-lateral">
-    <div>
-
-      <div class="nombre-pagina">
-        <ion-icon id="cloud" name="cloud-outline">
-          <img id="log-gob" class="img-log" src="/frontend/aseets/img/logo-round.jpg" />
-        </ion-icon>
-        <span class="nombre">Sistema de Incidencias</span>
-      </div>
-
+  <main>
+    <div class="menu">
+      <ion-icon name="menu-outline"> <img src="/frontend/aseets/icons/list.svg" alt=""></ion-icon>
+      <ion-icon name="close-outline"> <img src="/frontend/aseets/icons/x.svg" alt=""></ion-icon>
     </div>
+    <div class="barra-lateral">
+      <div>
 
-    <nav class="navegacion">
-      <ul>
-        <li>
-          <a id="inbox" href="/frontend/view/admin/index.php">
-            <ion-icon name="mail-unread-outline">
-              <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
-            </ion-icon>
-            <span>Pagina principal</span>
-          </a>
-        </li>
-
-        <li>
-          <a class="user" href="/frontend/view/admin/level_admin.php">
-            <ion-icon name="mail-unread-outline">
-              <img class="icono-inc" src="/frontend/aseets/icons/envelope-paper.svg" />
-            </ion-icon>
-            <span>Incidencias</span>
-          </a>
-        </li>
-
-
-        <li>
-          <a class="user" href="/frontend/view/admin/users.php">
-            <ion-icon name="star-outline">
-              <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
-            </ion-icon>
-            <span>Usuarios</span>
-          </a>
-        </li>
-
-        <li>
-          <a class="user" href="/frontend/view/admin/chat.php">
-            <ion-icon name="paper-plane-outline">
-              <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
-            </ion-icon>
-            <span>Chat</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/frontend/view/admin/setting.php">
-            <ion-icon name="paper-plane-outline">
-              <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
-            </ion-icon>
-            <span>Configuracion</span>
-          </a>
-        </li>
-
-
-        <li>
-          <a href="/frontend/view/logout.php">
-            <ion-icon name="document-text-outline">
-              <img class="icons-menu ico-center" src="/frontend/aseets/icons/file-lock2.svg" />
-            </ion-icon>
-            <span>Cerrar sesion</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    <div>
-      <div class="linea"></div>
-
-
-
-      <div class="info-usuario">
-        <div class="nombre-email">
-          <span class="nombre">
-            <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
-            <span class="title-profile">Level 1
-            </span>
-          </span>
+        <div class="nombre-pagina">
+          <ion-icon id="cloud" name="cloud-outline">
+            <img id="log-gob" class="img-log" src="/frontend/aseets/img/logo-round.jpg" />
+          </ion-icon>
+          <span class="nombre">Sistema de Incidencias</span>
         </div>
+
       </div>
 
+      <nav class="navegacion">
+        <ul>
+          <li>
+            <a id="inbox" href="/frontend/view/admin/index.php">
+              <ion-icon name="mail-unread-outline">
+                <img class="ico-center" src="/frontend/aseets/icons/house.svg" />
+              </ion-icon>
+              <span>Pagina principal</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="user" href="/frontend/view/admin/level_admin.php">
+              <ion-icon name="mail-unread-outline">
+                <img class="icono-inc" src="/frontend/aseets/icons/envelope-paper.svg" />
+              </ion-icon>
+              <span>Incidencias</span>
+            </a>
+          </li>
 
 
+          <li>
+            <a class="user" href="/frontend/view/admin/users.php">
+              <ion-icon name="star-outline">
+                <img class="ico-center" src="/frontend/aseets/icons/person.svg" />
+              </ion-icon>
+              <span>Usuarios</span>
+            </a>
+          </li>
 
-      <div class="modo-oscuro">
-        <div class="info">
-          <img class="ico ico-center" src="/frontend/aseets/icons/bx-moon.svg" />
-          <span class="dark-text">Modo oscuro</span>
-        </div>
+          <li>
+            <a class="user" href="/frontend/view/admin/chat.php">
+              <ion-icon name="paper-plane-outline">
+                <img class="ico-center" src="/frontend/aseets/icons/chat.svg" />
+              </ion-icon>
+              <span>Chat</span>
+            </a>
+          </li>
 
-        <div class="switch">
-          <div class="base">
-            <div class="circulo">
+          <li>
+            <a href="/frontend/view/admin/setting.php">
+              <ion-icon name="paper-plane-outline">
+                <img class="ico-center" src="/frontend/aseets/icons/gear.svg" />
+              </ion-icon>
+              <span>Configuracion</span>
+            </a>
+          </li>
 
-            </div>
+
+          <li>
+            <a href="/frontend/view/logout.php">
+              <ion-icon name="document-text-outline">
+                <img class="icons-menu ico-center" src="/frontend/aseets/icons/file-lock2.svg" />
+              </ion-icon>
+              <span>Cerrar sesion</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <div class="linea"></div>
+
+
+        <div class="info-usuario">
+          <div class="nombre-email">
+            <span class="nombre">
+              <span class="title-profile">Bienvenid@ <?php echo $_SESSION['username'] ?> </span>
+              <span class="title-profile">Nivel Admin
+              </span>
+            </span>
           </div>
         </div>
 
+
+
+
+        <div class="modo-oscuro">
+          <div class="info">
+            <img class="ico ico-center" src="/frontend/aseets/icons/bx-moon.svg" />
+            <span class="dark-text">Modo oscuro</span>
+          </div>
+
+          <div class="switch">
+            <div class="base">
+              <div class="circulo">
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
+  </main>
 
-  </div>
   <!-- menu-navbar-header -->
 
   <div class="center">
@@ -182,7 +183,7 @@ $resultUsuariosEnLinea = mysqli_query($con, $sqlUsuariosEnLinea);
             $usuarioEnLineaUsername = $rowUsuarioEnLinea['username'];
             $usuarioEnLineaImagen = '/frontend/aseets/image/' . $rowUsuarioEnLinea['file'];
           ?>
-            <a href="http://localhost/frontend/view/pers_adm/chat-2.php?username=<?php echo $usuarioEnLineaUsername; ?>">
+            <a href="http://localhost/frontend/view/admin/chat-2.php?username=<?php echo $usuarioEnLineaUsername; ?>">
               <div class="content">
                 <img src="<?php echo $usuarioEnLineaImagen; ?>" alt="">
                 <div class="details">

@@ -27,7 +27,9 @@ function showTodo(filter) {
                       <p class="${completed}">${todo.name}</p>
                     </label>
                     <div class="settings">
-                      <i onclick="showMenu(this)" class="uil uil-ellipsis-h"> <img src="/frontend/aseets/icons/gear.svg" alt=""> </i>
+                      <i onclick="showMenu(this)" class="uil uil-ellipsis-h">
+                   
+                       </i>
                       <ul class="task-menu">
                         <li><button class="edit-btn" onclick='editTask(${id}, "${todo.name}")'><img src="/frontend/aseets/icons/pencil-fill.svg" alt=""></button>Edit</li>
                         <li><button class="delete-btn" onclick='deleteTask(${id}, "${filter}")'><img src="/frontend/aseets/icons/x.svg" alt=""></button>Delete</li>
