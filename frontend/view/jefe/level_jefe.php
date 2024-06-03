@@ -173,10 +173,56 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   </div>
   <!-- menu-navbar-header -->
 
-
-
-
   <main class="table-pos">
+
+    <button class="btn-add-2 show-modal-2">Generar reporte</button>
+
+    <div id="reportModal" class="modal-1">
+      <div class="modal-content-1">
+        <span class="close-1">&times;</span>
+        <div class="report post">
+          <div class="report-filters">
+            <h2>Generar Reporte</h2>
+            <form id="reportForm" method="POST" action="/backend/php/generar_reporte.php">
+              <div class="filter-group">
+                <label for="startDate">Fecha de inicio:</label>
+                <input type="date" id="startDate" name="startDate" required>
+              </div>
+              <div class="filter-group">
+                <label for="endDate">Fecha de fin:</label>
+                <input type="date" id="endDate" name="endDate" required>
+              </div>
+              <div class="filter-group">
+                <label for="category">Categoría:</label>
+                <select id="category" name="category">
+                  <option value="">Seleccionar...</option>
+                  <?php
+                  $fetch_categoria = mysqli_query($con, "SELECT DISTINCT `data-categoria` FROM datos_pers");
+                  while ($r_categoria = mysqli_fetch_array($fetch_categoria)) {
+                    echo "<option>" . $r_categoria['data-categoria'] . "</option>";
+                  }
+                  ?>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="status">Estado:</label>
+                <select id="status" name="status">
+                  <option value="">Seleccionar...</option>
+                  <option value="Sin resolver">Sin resolver</option>
+                  <option value="En Curso">En Curso</option>
+                  <option value="Resuelto">Resuelto</option>
+                </select>
+              </div>
+              <button type="submit" class="button-generate-report">Generar Reporte</button>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
 
     <div id="tableAndFormContainer">
       <!-- Contenido de la tabla -->
@@ -218,7 +264,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <table>
             <thead>
               <tr>
-                <!-- <th>Id <span class="icon-arrow">&UpArrow;</span></th> -->
+                <th>Id <span class="icon-arrow">&UpArrow;</span></th>
                 <th>Titulo<span class="icon-arrow">&UpArrow;</span></th>
                 <th>Estado<span class="icon-arrow">&UpArrow;</span></th>
                 <th>Modificacion <span class="icon-arrow">&UpArrow;</span></th>
@@ -241,8 +287,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               ?>
 
                   <tr>
-                    <?php // echo $r['id'] // 
-                    ?>
+                    <td><?php echo $r['id'] ?></td>
                     <td> <?php echo $r['titulo'] ?></td>
                     <td> <?php echo $r['estado'] ?></td>
                     <td><?php echo date("d-m-Y", strtotime($r['fecha'])); ?></td>
@@ -471,7 +516,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <script src="/frontend/aseets/js/index.js"></script>
   <script src="/frontend/aseets/js/modalAdd.js"></script>
   <script src="../../aseets/js/modalConf.js"></script>
-  <script src="../../aseets/js/details.js"></script>
+  <script src="../../aseets/js/details-2.js"></script>
+  <script src="/frontend/aseets/js/filtr.js"></script>
 </body>
 
 </html>

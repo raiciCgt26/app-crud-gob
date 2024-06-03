@@ -30,10 +30,6 @@ for (var i = 0; i < closeButtons.length; i++) {
 //
 //
 //
-///
-//
-//
-//
 // Evento para mostrar el modal de confirmación al intentar agregar un registro existente
 document
   .getElementById("guardarRegistro")

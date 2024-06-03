@@ -15,14 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $grupo = $_POST['grupo'];
   $categoria = $_POST['categoria'];
 
-  // // Verifica si ya existe un registro con los mismos valores
-  // $existing_record_query = mysqli_query($con, "SELECT * FROM incidencias WHERE titulo='$titulo' AND estado='$estado' AND fecha='$fecha' AND prioridad='$prioridad' AND solicitante='$solicitante' AND tecnico='$tecnico' AND grupo='$grupo' AND categoria='$categoria'");
-  // $existing_record_count = mysqli_num_rows($existing_record_query);
 
-  // // Si ya existe un registro con los mismos valores, muestra un mensaje de alerta
-  // if ($existing_record_count > 0) {
-  //   echo "<script>window.onload = function() { mostrarModalConfirmacion(); }</script>";
-  // } else {
   // Inserta el nuevo registro en la base de datos
   $query = mysqli_query($con, "INSERT INTO incidencias (titulo, estado, fecha, prioridad, solicitante, tecnico, grupo, categoria) VALUES ('$titulo','$estado','$fecha','$prioridad','$solicitante','$tecnico','$grupo', '$categoria')");
 
@@ -35,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     echo "<script>window.onload = function() { mostrarModalRegistroFallido(); }</script>";
   }
 }
-// }
+
+
 ?>
 
 
@@ -49,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <link rel="stylesheet" href="/frontend/aseets/css/navbar.css" />
   <link rel="stylesheet" href="/frontend/aseets/css/modalAdd.css" />
   <link rel="stylesheet" href="/frontend/aseets/css/modaConf.css" />
+
   <title>S.I</title>
 </head>
 
@@ -174,16 +169,67 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   </div>
   <!-- menu-navbar-header -->
 
-
-
-
   <main class="table-pos">
 
+    <button class="btn-add-2 show-modal-2">Generar reporte</button>
+
+
+    <div id="reportModal" class="modal-1">
+      <div class="modal-content-1">
+        <span class="close-1">&times;</span>
+        <div class="report post">
+          <div class="report-filters">
+            <h2>Generar Reporte</h2>
+            <form id="reportForm" method="POST" action="/backend/php/generar_reporte.php">
+              <div class="filter-group">
+                <label for="startDate">Fecha de inicio:</label>
+                <input type="date" id="startDate" name="startDate" required>
+              </div>
+              <div class="filter-group">
+                <label for="endDate">Fecha de fin:</label>
+                <input type="date" id="endDate" name="endDate" required>
+              </div>
+              <div class="filter-group">
+                <label for="category">Categoría:</label>
+                <select id="category" name="category">
+                  <option value="">Seleccionar...</option>
+                  <?php
+                  $fetch_categoria = mysqli_query($con, "SELECT DISTINCT `data-categoria` FROM datos_pers");
+                  while ($r_categoria = mysqli_fetch_array($fetch_categoria)) {
+                    echo "<option>" . $r_categoria['data-categoria'] . "</option>";
+                  }
+                  ?>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="status">Estado:</label>
+                <select id="status" name="status">
+                  <option value="">Seleccionar...</option>
+                  <option value="Sin resolver">Sin resolver</option>
+                  <option value="En Curso">En Curso</option>
+                  <option value="Resuelto">Resuelto</option>
+                </select>
+              </div>
+              <button type="submit" class="button-generate-report">Generar Reporte</button>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
     <div id="tableAndFormContainer">
+
       <!-- Contenido de la tabla -->
       <div class="table table-2" id="tab_inc">
 
         <section class="table__header">
+
+
           <div class="export__file">
             <label for="export-file" class="export__file-btn" title="Exportar archivo"></label>
             <input type="checkbox" id="export-file">
@@ -202,8 +248,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           </div>
           <h1>Lista de Incidencias</h1>
 
-
-
           <div class="input-group">
             <input type="search" placeholder="Buscar...">
             <img src="/frontend/aseets/icons/bx-search-alt-2.svg" alt="">
@@ -219,7 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <table>
             <thead>
               <tr>
-                <!-- <th>Id <span class="icon-arrow">&UpArrow;</span></th> -->
+                <th>Id <span class="icon-arrow">&UpArrow;</span></th>
                 <th>Titulo<span class="icon-arrow">&UpArrow;</span></th>
                 <th>Estado<span class="icon-arrow">&UpArrow;</span></th>
                 <th>Modificacion <span class="icon-arrow">&UpArrow;</span></th>
@@ -242,8 +286,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               ?>
 
                   <tr>
-                    <?php // echo $r['id'] // 
-                    ?>
+                    <td><?php echo $r['id'] ?></td>
                     <td> <?php echo $r['titulo'] ?></td>
                     <td> <?php echo $r['estado'] ?></td>
                     <td><?php echo date("d-m-Y", strtotime($r['fecha'])); ?></td>
@@ -259,6 +302,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                           <!-- <a href="/backend/php/borrar.php?delete=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/x.svg" alt="Borrar"></a> -->
 
                           <a href="/backend/php/editar_admin.php?id=<?php echo $r['id'] ?>"><img src="/frontend/aseets/icons/pencil-fill.svg" alt="Editar"></a>
+
 
                           <a class="ver-detalles" data-titulo="<?php echo $r['titulo']; ?>" data-estado="<?php echo $r['estado']; ?>" data-fecha="<?php echo $r['fecha']; ?>" data-prioridad="<?php echo $r['prioridad']; ?>" data-solicitante="<?php echo $r['solicitante']; ?>" data-tecnico="<?php echo $r['tecnico']; ?>" data-grupo="<?php echo $r['grupo']; ?>" data-categoria="<?php echo $r['categoria']; ?>">
                             <img src="/frontend/aseets/icons/envelope-paper.svg" alt="">
@@ -302,11 +346,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           </div>
 
 
-
-
         </section>
 
       </div>
+
 
       <button class="btn-add show-modal">Agregar Incidencia</button>
 
@@ -421,6 +464,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   </main>
 
 
@@ -469,7 +525,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <script src="/frontend/aseets/js/index.js"></script>
   <script src="/frontend/aseets/js/modalAdd.js"></script>
   <script src="/frontend/aseets/js/modalConf.js"></script>
-  <script src="/frontend/aseets/js/details.js"></script>
+  <script src="/frontend/aseets/js/details-1.js"></script>
+  <script src="/frontend/aseets/js/filtr.js"></script>
 </body>
 
 </html>

@@ -187,6 +187,7 @@ echo "<script>var chatUser = " . json_encode($chatUser) . ";</script>";
           <input class="btn" type="submit" id="enviarMensaje">
           <!-- <img src="/frontend/aseets/icons/send-fill.svg" alt=""> -->
         </form>
+
       </section>
     </div>
   </div>

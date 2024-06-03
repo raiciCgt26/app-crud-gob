@@ -206,292 +206,206 @@ session_start();
             <div class="accordion">
               <div class="accordion-content">
                 <header>
-                  <span> <strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>1. ¿Cómo registro una cuenta?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
-                </p>
-              </div>
-
-              <div class="accordion-content">
-                <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
-                  <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
-                </header>
-
-                <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
-                </p>
-              </div>
-
-              <div class="accordion-content">
-                <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
-                  <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
-                </header>
-
-                <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem? Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit. Iusto neque, sed inventore illum ut quis ducimus
+                  Para registrar una cuenta, ve a la página de registro y completa el formulario con tu información personal. Luego se mostrará una ventana emergente que te indicara si el registro fue exitoso, o si no se te indicara si hay algún problema con la información solicitada.<br>
 
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
+                  <span><strong>2. ¿Cómo inicio sesión en la aplicación?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
+                  Para iniciar sesión, ve a la página de inicio de sesión e ingresa tu nombre de usuario y contraseña. Luego, haz clic en el botón de inicio de sesión para acceder a tu cuenta.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span> <strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>3. ¿Cómo puedo recuperar mi contraseña si la olvidé?</strong> </span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
+                  Si olvidaste tu contraseña, ve a la página de inicio de sesión y haz clic en el enlace "¿Haz olvidado tu contraseña?" Se te pedirá que ingreses tu correo electrónico y se te enviará un enlace para restablecer tu contraseña.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
+                  <span><strong>4. ¿Cómo puedo ver las estadísticas de incidencias?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
+                  Para ver las estadísticas de incidencias, ve a la página principal de la aplicación. Allí encontrarás gráficos o tablas que muestran el número de incidencias resueltas, en curso y pendientes.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>5. ¿Cómo puedo agregar una nueva incidencia?</strong> </span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem? Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit. Iusto neque, sed inventore illum ut quis ducimus
-
+                  Para agregar una nueva incidencia, ve al módulo de incidencias y haz clic en el botón "Agregar incidencia". Completa el formulario con los detalles de la incidencia y guarda los cambios.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>6. ¿Cómo puedo editar una incidencia existente?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
+                  Para editar una incidencia existente, ve al módulo de incidencias y busca la incidencia que deseas editar. Haz clic en el botón de edición y realiza los cambios necesarios.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span> <strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>7. ¿Cómo puedo cambiar el estado de una incidencia (resolver, en curso, pendiente)?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
+                  Para cambiar el estado de una incidencia, ve al módulo de incidencias y busca la incidencia en cuestión. Allí encontrarás la opción para cambiar el estado a resolver, en curso o pendiente, dependiendo de tus permisos de usuario.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>8. ¿Cómo puedo ver las incidencias asignadas a mí?</strong> </span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
+                  Para ver las incidencias asignadas a ti, ve al módulo de incidencias y coloca tu nombre en el buscador. Allí encontrarás una lista de todas las incidencias que te han sido asignadas.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>9. ¿Cómo puedo ver todas las incidencias en la aplicación?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem? Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit. Iusto neque, sed inventore illum ut quis ducimus
-
+                  Para ver todas las incidencias en la aplicación, ve al módulo de incidencias y busca la opción de desacarga en pdf o excel para ver todas las incidencias. Esto te mostrará una lista completa de todas las incidencias en la aplicación.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>10. ¿Cómo puedo agregar un nuevo usuario?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
+                  Para agregar un nuevo usuario, ve al módulo de registro. Completa el formulario con los detalles del nuevo usuario y guarda los cambios.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span> <strong>What do you mean by Accordion?</strong></span>
+                  <span><strong>11. ¿Cómo puedo editar los datos de un usuario existente?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
+                  Para editar los datos de un usuario existente, ve al módulo de usuarios y busca el usuario que deseas editar. Haz clic en el botón de edición y realiza los cambios necesarios.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>12. ¿Cómo puedo deshabilitar o bloquear a un usuario?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
+                  Para deshabilitar o bloquear a un usuario, ve al módulo de usuarios y busca el usuario en cuestión. Allí encontrarás la opción para deshabilitar o bloquear al usuario, dependiendo de tus permisos de usuario.(Solo el admin tiene ese permiso)
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>13. ¿Cómo puedo ver la lista de usuarios en la aplicación?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem? Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit. Iusto neque, sed inventore illum ut quis ducimus
-
+                  Para ver la lista de usuarios en la aplicación, ve al módulo de usuarios y encontrarás una lista completa de todos los usuarios registrados en la aplicación.
                 </p>
               </div>
 
               <div class="accordion-content">
                 <header>
-                  <span><strong>What do you mean by Accordion?</strong></span>
+                  <span> <strong>14. ¿Cómo puedo cambiar mi información personal en la aplicación?</strong></span>
                   <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
                 </header>
 
                 <p class="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus nobis
-                  ut perspiciatis minima quidem nisi, obcaecati, delectus consequatur
-                  fuga nostrum iusto ipsam ducimus quibusdam possimus. Maiores non enim
-                  numquam voluptatem?
+                  Para cambiar tu información personal, ve a la lista de usuario y haz clic en el botón de edición. Allí podrás actualizar tu información personal y guardar los cambios.
                 </p>
               </div>
+
+              <div class="accordion-content">
+                <header>
+                  <span> <strong>15. ¿Cómo puedo utilizar la función de chat en la aplicación?</strong></span>
+                  <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
+                </header>
+
+                <p class="description">
+                  Para utilizar la función de chat, ve al módulo de chat y selecciona la persona con la que deseas chatear. Escribe tu mensaje y envíalo para iniciar la conversación.
+                </p>
+              </div>
+
+              <div class="accordion-content">
+                <header>
+                  <span> <strong>16. ¿Cómo puedo realizar un respaldo de la base de datos?</strong></span>
+                  <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
+                </header>
+
+                <p class="description">
+                  Para realizar un respaldo de la base de datos, ve al módulo de configuraciones y busca la opción de respaldo de base de datos. Allí encontrarás la opción para realizar un respaldo de la base de datos.
+                </p>
+              </div>
+
+              <div class="accordion-content">
+                <header>
+                  <span> <strong>17. ¿Cómo puedo restaurar la base de datos desde un respaldo?</strong>/span>
+                    <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
+                </header>
+
+                <p class="description">
+                  Para restaurar la base de datos desde un respaldo, ve al módulo de configuraciones y busca la opción de restauración de base de datos. Allí encontrarás la opción para restaurar la base de datos desde un respaldo.
+                </p>
+              </div>
+
+              <div class="accordion-content">
+                <header>
+                  <span> <strong>18. ¿Cómo puedo acceder al manual de usuario de la aplicación?</strong></span>
+                  <img src="/frontend/aseets/icons/arrow-down-circle.svg" alt="">
+                </header>
+
+                <p class="description">
+                  Para acceder al manual de usuario de la aplicación, ve al módulo de configuraciones y busca la opción de manual de usuario. Allí encontrarás un enlace para acceder al manual de usuario de la aplicación.
+                </p>
+              </div>
+
             </div>
-            <!-- <p>
-              <strong>1. ¿Cómo registro una cuenta?</strong><br>
-              Para registrar una cuenta, ve a la página de registro y completa el formulario con tu información personal. Una vez enviado, recibirás un correo electrónico de confirmación para activar tu cuenta.<br>
-
-              <strong>2. ¿Cómo inicio sesión en la aplicación?</strong><br>
-              Para iniciar sesión, ve a la página de inicio de sesión e ingresa tu nombre de usuario y contraseña. Luego, haz clic en el botón de inicio de sesión para acceder a tu cuenta.<br>
-
-              <strong>3. ¿Cómo puedo recuperar mi contraseña si la olvidé?</strong><br>
-              Si olvidaste tu contraseña, ve a la página de inicio de sesión y haz clic en el enlace "¿Olvidaste tu contraseña?" Se te pedirá que ingreses tu correo electrónico y se te enviará un enlace para restablecer tu contraseña.<br>
 
 
-              <strong>4. ¿Cómo puedo ver las estadísticas de incidencias?</strong><br>
-              Para ver las estadísticas de incidencias, ve a la página principal de la aplicación. Allí encontrarás gráficos o tablas que muestran el número de incidencias resueltas, en curso y pendientes.<br> -->
-            <!--  
-              <strong>5. ¿Cómo puedo agregar una nueva incidencia?</strong><br>
-              Para agregar una nueva incidencia, ve al módulo de incidencias y haz clic en el botón "Agregar incidencia". Completa el formulario con los detalles de la incidencia y guarda los cambios.<br>
-              
-              <strong>6. ¿Cómo puedo editar una incidencia existente?</strong><br>
-              Para editar una incidencia existente, ve al módulo de incidencias y busca la incidencia que deseas editar. Haz clic en el botón de edición y realiza los cambios necesarios.<br>
-
-              <strong>7. ¿Cómo puedo cambiar el estado de una incidencia (resolver, en curso, pendiente)?</strong><br>
-              Para cambiar el estado de una incidencia, ve al módulo de incidencias y busca la incidencia en cuestión. Allí encontrarás la opción para cambiar el estado a resolver, en curso o pendiente, dependiendo de tus permisos de usuario.<br>
-
-              <strong>8. ¿Cómo puedo ver las incidencias asignadas a mí?</strong><br>
-              Para ver las incidencias asignadas a ti, ve al módulo de incidencias y busca la sección de incidencias asignadas. Allí encontrarás una lista de todas las incidencias que te han sido asignadas.<br>
-
-              <strong>9. ¿Cómo puedo ver todas las incidencias en la aplicación?</strong><br>
-              Para ver todas las incidencias en la aplicación, ve al módulo de incidencias y busca la opción para ver todas las incidencias. Esto te mostrará una lista completa de todas las incidencias en la aplicación.<br>
-
-              <strong>10. ¿Cómo puedo agregar un nuevo usuario?</strong><br>
-              Para agregar un nuevo usuario, ve al módulo de usuarios y haz clic en el botón "Agregar usuario". Completa el formulario con los detalles del nuevo usuario y guarda los cambios.<br> -->
-            <!-- 
-              <strong>11. ¿Cómo puedo editar los datos de un usuario existente?</strong><br>
-              Para editar los datos de un usuario existente, ve al módulo de usuarios y busca el usuario que deseas editar. Haz clic en el botón de edición y realiza los cambios necesarios.<br>
-
-              <strong>12. ¿Cómo puedo deshabilitar o bloquear a un usuario?</strong><br>
-              Para deshabilitar o bloquear a un usuario, ve al módulo de usuarios y busca el usuario en cuestión. Allí encontrarás la opción para deshabilitar o bloquear al usuario, dependiendo de tus permisos de usuario.<br>
-
-              <strong>13. ¿Cómo puedo ver la lista de usuarios en la aplicación?</strong><br>
-              Para ver la lista de usuarios en la aplicación, ve al módulo de usuarios y encontrarás una lista completa de todos los usuarios registrados en la aplicación.<br>
-
-              <strong>14. ¿Cómo puedo cambiar mi información personal en la aplicación?</strong><br>
-              Para cambiar tu información personal, ve a tu perfil de usuario y haz clic en el botón de edición. Allí podrás actualizar tu información personal y guardar los cambios.<br>
-
-              <strong>15. ¿Cómo puedo utilizar la función de chat en la aplicación?</strong><br>
-              Para utilizar la función de chat, ve al módulo de chat y selecciona la persona con la que deseas chatear. Escribe tu mensaje y envíalo para iniciar la conversación.<br>
-
-              <strong>16. ¿Cómo puedo realizar un respaldo de la base de datos?</strong><br>
-              Para realizar un respaldo de la base de datos, ve al módulo de configuraciones y busca la opción de respaldo de base de datos. Allí encontrarás la opción para realizar un respaldo de la base de datos.<br>
-
-              <strong>17. ¿Cómo puedo restaurar la base de datos desde un respaldo?</strong><br>
-              Para restaurar la base de datos desde un respaldo, ve al módulo de configuraciones y busca la opción de restauración de base de datos. Allí encontrarás la opción para restaurar la base de datos desde un respaldo.<br>
-
-              <strong>18. ¿Cómo puedo acceder al manual de usuario de la aplicación?</strong><br>
-              Para acceder al manual de usuario de la aplicación, ve al módulo de configuraciones y busca la opción de manual de usuario. Allí encontrarás un enlace para acceder al manual de usuario de la aplicación.<br> -->
-            </p>
           </div>
           <div class="code text">
             <div class="title">Manual de usuarios</div>

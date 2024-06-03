@@ -540,3 +540,150 @@ tbody td.active {
   background: #0b778c93;
   color: #fff;
 }
+
+/* filtros */
+div.report {
+  z-index: 1;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  padding: 14px 22px;
+  border: none;
+  background-color: rgb(44, 160, 192);
+  border-radius: 6px;
+}
+
+div.post {
+  position: absolute;
+  right: 18%;
+  top: 5%;
+  box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
+}
+
+.report-filters {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.report-filters h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#reportForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.filter-group {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button-generate-report {
+  background-color: #4caf50;
+
+  color: white;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: center;
+}
+
+.button-generate-report:hover {
+  background-color: #45a049;
+}
+
+/* Estilos para el modal */
+.modal-1 {
+  display: none;
+  position: fixed;
+  z-index: 9999; /* Asegúrate de que sea un valor alto para que esté por encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+  padding-top: 60px;
+}
+
+.modal-content-1 {
+  margin: 5% auto;
+  padding: 20px;
+  width: 100%;
+  max-width: 900px;
+  position: relative; /* Ajuste para centrar el modal */
+}
+
+@media (max-width: 1000px) {
+  .modal-content-1 {
+    margin: 10%;
+  }
+}
+
+/* .close-1 {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-1:hover,
+.close-1:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} */
+
+/* Ocultar tabla cuando el modal está abierto */
+.hide-table {
+  display: none;
+}
+
+/*  */
+
+.filter-group {
+  margin-bottom: 15px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.filter-group input,
+.filter-group select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.button-generate-report {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.button-generate-report:hover {
+  background-color: #45a049;
+}

@@ -219,7 +219,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <table>
             <thead>
               <tr>
-                <!-- <th>Id <span class="icon-arrow">&UpArrow;</span></th> -->
+                <th>Id <span class="icon-arrow">&UpArrow;</span></th>
                 <th>Titulo<span class="icon-arrow">&UpArrow;</span></th>
                 <th>Estado<span class="icon-arrow">&UpArrow;</span></th>
                 <th>Modificacion <span class="icon-arrow">&UpArrow;</span></th>
@@ -242,8 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               ?>
 
                   <tr>
-                    <?php // echo $r['id'] // 
-                    ?>
+                    <td><?php echo $r['id'] ?></td>
                     <td> <?php echo $r['titulo'] ?></td>
                     <td> <?php echo $r['estado'] ?></td>
                     <td><?php echo date("d-m-Y", strtotime($r['fecha'])); ?></td>
@@ -472,7 +471,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <script src="/frontend/aseets/js/index.js"></script>
   <script src="/frontend/aseets/js/modalAdd.js"></script>
   <script src="../../aseets/js/modalConf.js"></script>
-  <script src="../../aseets/js/details.js"></script>
+  <script src="../../aseets/js/details-3.js"></script>
 </body>
 
 </html>
